@@ -3,7 +3,7 @@ import Logo from './components/Logo';
 import './scss/app.scss';
 
 const app = () => {
-    Logo();
+    document.querySelector('.main-page__container').innerHTML = Logo();
 }
 
 app();

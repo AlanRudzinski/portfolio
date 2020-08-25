@@ -1,14 +1,12 @@
 const Logo = () => {
-    const text = "Alan Rudzinski"
-    const logoText = document.querySelector('#logo__text')
-    const splitText = text.split('');
-    console.log(logoText)
-
-    for(let i = 0; i < splitText.length; i++) {
-        logoText.innerHTML += `<span>${splitText[i]}</span>`
-        console.log(splitText[i])
-    }
-
+    const template = `
+    <div class="logo">
+        <h1 class="logo__text"> Alan Rudzinski <br> Web Developer </h1>
+        <div class="logo__underline"></div>
+        <div class="logo__clipcover"></div>       
+    </div>
+    `
+    return template;
 }
 
 export default Logo;

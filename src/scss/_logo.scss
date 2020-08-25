@@ -1,5 +1,38 @@
-#logo {
+@import 'animations';
+
+.logo {
     color: tomato;
     font-family: 'Kumar One', cursive;
+    font-size: 1.3rem;
     text-align: center;
+    line-height: 2.7rem;
+    &__text {
+        background-color: $main-grey;
+        position: relative;
+        z-index: 100;
+    }
+    &__underline {
+        z-index: 0;
+        position: absolute;
+        left: 0;
+        min-height: 3px;
+        top: 47.6vh;
+        width: 100vw;
+        background: linear-gradient($gradient-direction, $start-gradient, $end-gradient);
+    }
+    &__clipcover {
+        position: absolute;
+        width: 100vw;
+        left: 0;
+        top: 35vh;
+        height: 150px;
+        z-index: 150;
+        background-color: $main-grey;
+        animation-name: reveal-from-left, hide-line;
+        animation-duration: .5s, .5s;
+        animation-delay: 1s, 1.5s;
+        animation-iteration-count: 1, 1;
+        animation-fill-mode: none, forwards;    
+    }
+    
 }
