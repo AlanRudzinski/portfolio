@@ -3,13 +3,12 @@
 $logo-width: 300px;
 
 .logo {
-    color: tomato;
-    font-family: 'Kumar One', cursive;
     font-size: 1.5rem;
-    line-height: 2.7rem;
+    line-height: 3.8rem;
     position: relative;
     min-width: $logo-width;
     margin-bottom: 100px;
+    font-family: 'Kumar One', cursive;
     &__text {
         background-color: $main-grey;
         position: relative;
@@ -19,16 +18,16 @@ $logo-width: 300px;
     &__underline {
         z-index: 0;
         position: absolute;
-        left: calc(-50vw + (#{$logo-width}/2));
+        left: calc(-50vw + 50%);
         min-height: 3px;
-        top: calc(50% - 15px);
-        width: 103vw;
+        top: calc(50% - 22px);
+        width: 100vw;
         background: linear-gradient($gradient-direction, $start-gradient, $end-gradient);
     }
     &__clipcover {
         position: absolute;
-        width: 103vw;
-        left: calc(-50vw + (#{$logo-width}/2));
+        width: 100vw;
+        left: calc(-50vw + 50%);
         top: -20px;
         height: 140px;
         z-index: 150;

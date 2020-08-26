@@ -13,6 +13,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  font-family: "Tomorrow", sans-serif;
+  color: tomato;
 }
 .main-page__container {
   display: flex;
@@ -44,13 +46,12 @@
   }
 }
 .logo {
-  color: tomato;
-  font-family: "Kumar One", cursive;
   font-size: 1.5rem;
-  line-height: 2.7rem;
+  line-height: 3.8rem;
   position: relative;
   min-width: 300px;
   margin-bottom: 100px;
+  font-family: "Kumar One", cursive;
 }
 .logo__text {
   background-color: #1d1d1b;
@@ -61,16 +62,16 @@
 .logo__underline {
   z-index: 0;
   position: absolute;
-  left: calc(-50vw + (300px/2));
+  left: calc(-50vw + 50%);
   min-height: 3px;
-  top: calc(50% - 15px);
-  width: 103vw;
+  top: calc(50% - 22px);
+  width: 100vw;
   background: linear-gradient(0.75turn, #f49718, #e20512);
 }
 .logo__clipcover {
   position: absolute;
-  width: 103vw;
-  left: calc(-50vw + (300px/2));
+  width: 100vw;
+  left: calc(-50vw + 50%);
   top: -20px;
   height: 140px;
   z-index: 150;
@@ -105,9 +106,7 @@
 }
 
 .nav-list {
-  color: tomato;
-  font-family: "Kumar One", cursive;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   display: flex;
   width: 600px;
   justify-content: space-between;
@@ -122,7 +121,7 @@
 }
 .nav-list__item::after {
   content: "";
-  width: 3px;
+  width: 2px;
   height: 0px;
   position: absolute;
   background-color: tomato;
@@ -131,14 +130,14 @@
   transition: all 0.3s ease-out;
 }
 .nav-list__item:hover::after {
-  height: 35vh;
+  height: 34vh;
 }
 
 .nav-list__underline {
   z-index: 0;
   position: absolute;
   left: calc(-50vw + (600px/2));
-  min-height: 3px;
+  min-height: 2px;
   top: calc(50% + 3px);
   width: 100vw;
   background: linear-gradient(0.75turn, #f49718, #e20512);

@@ -7,9 +7,7 @@ $list-width: 600px;
 }
 
 .nav-list {
-    color: tomato;
-    font-family: 'Kumar One', cursive;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     display: flex;
     width: $list-width;
     justify-content: space-between;
@@ -22,7 +20,7 @@ $list-width: 600px;
         text-align: center;
         &::after {
             content: "";
-            width: 3px;
+            width: 2px;
             height: 0px;
             position: absolute;
             background-color: tomato;
@@ -31,7 +29,7 @@ $list-width: 600px;
             transition: all .3s ease-out;
         }
         &:hover::after {
-            height: 35vh;
+            height: 34vh;
         }
     }
 }
@@ -40,7 +38,7 @@ $list-width: 600px;
     z-index: 0;
     position: absolute;
     left: calc(-50vw + (#{$list-width}/2));
-    min-height: 3px;
+    min-height: 2px;
     top: calc(50% + 3px);
     width: 100vw;
     background: linear-gradient($gradient-direction, $start-gradient, $end-gradient);
