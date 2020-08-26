@@ -1,0 +1,63 @@
+@import 'animations';
+
+$list-width: 600px;
+
+.nav-container {
+    position: relative;
+}
+
+.nav-list {
+    color: tomato;
+    font-family: 'Kumar One', cursive;
+    font-size: 1.2rem;
+    display: flex;
+    width: $list-width;
+    justify-content: space-between;
+    align-items: center;
+    &__item {
+        cursor: pointer;
+        background-color: $main-grey;
+        position: relative;
+        z-index: 100;
+        text-align: center;
+        &::after {
+            content: "";
+            width: 3px;
+            height: 0px;
+            position: absolute;
+            background-color: tomato;
+            left: 15%;
+            bottom: -33vh;
+            transition: all .3s ease-out;
+        }
+        &:hover::after {
+            height: 35vh;
+        }
+    }
+}
+
+.nav-list__underline {
+    z-index: 0;
+    position: absolute;
+    left: calc(-50vw + (#{$list-width}/2));
+    min-height: 3px;
+    top: calc(50% + 3px);
+    width: 100vw;
+    background: linear-gradient($gradient-direction, $start-gradient, $end-gradient);
+}
+
+.nav-list__clipcover {
+    position: absolute;
+    width: 100vw;
+    left: calc(-50vw + (#{$list-width}/2));
+    top: -20px;
+    height: 80px;
+    z-index: 150;
+    background-color: $main-grey;
+    animation-name: reveal-from-left, hide-line;
+    animation-duration: .5s, .5s;
+    animation-delay: 2.5s, 3s;
+    animation-iteration-count: 1, 1;
+    animation-fill-mode: none, forwards;  
+}
+
