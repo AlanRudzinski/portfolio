@@ -132,6 +132,21 @@ var Logo = function Logo() {
 
 var _default = Logo;
 exports.default = _default;
+},{}],"../src/components/Navigation.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var Navigation = function Navigation() {
+  var template = "\n    <nav class=\"nav-container\">\n        <ul class=\"nav-list\">\n            <li class=\"nav-list__item\">about me</li>\n            <li class=\"nav-list__item\">projects</li>\n            <li class=\"nav-list__item\">technology</li>\n            <li class=\"nav-list__item\">contact</li>\n        </ul>\n        <div class=\"nav-list__underline\"></div>\n        <div class=\"nav-list__clipcover\"></div>\n    </nav>\n    ";
+  return template;
+};
+
+var _default = Navigation;
+exports.default = _default;
 },{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
@@ -209,16 +224,20 @@ module.hot.accept(reloadCSS);
 
 var _Logo = _interopRequireDefault(require("./components/Logo"));
 
+var _Navigation = _interopRequireDefault(require("./components/Navigation"));
+
 require("./scss/app.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = function app() {
-  document.querySelector('.main-page__container').innerHTML = (0, _Logo.default)();
+  var mainPage = document.querySelector('.main-page__container');
+  mainPage.innerHTML += (0, _Logo.default)();
+  mainPage.innerHTML += (0, _Navigation.default)();
 };
 
 app();
-},{"./components/Logo":"../src/components/Logo.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./components/Logo":"../src/components/Logo.js","./components/Navigation":"../src/components/Navigation.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -246,7 +265,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45429" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44309" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

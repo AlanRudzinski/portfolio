@@ -14,21 +14,22 @@ $gradient-direction: 0.75turn;
 .main-page {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient($gradient-direction, $start-gradient, $end-gradient);
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     &__container {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        width:100%;
-        height: 97%;
+        width: 100%;
+        height: 100%;
         background-color: $main-grey;
         vertical-align: middle;
     }
 }
 
 
-@import 'logo'
-
+@import 'logo';
+@import 'navigation';

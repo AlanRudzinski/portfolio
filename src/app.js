@@ -1,9 +1,12 @@
 import Logo from './components/Logo';
+import Navigation from './components/Navigation';
 
 import './scss/app.scss';
 
 const app = () => {
-    document.querySelector('.main-page__container').innerHTML = Logo();
+    let mainPage = document.querySelector('.main-page__container');
+    mainPage.innerHTML += Logo();
+    mainPage.innerHTML += Navigation();
 }
 
 app();
