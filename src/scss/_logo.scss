@@ -1,4 +1,4 @@
-@import 'animations';
+@import 'animations', 'mixins';
 
 $logo-width: 300px;
 
@@ -16,27 +16,10 @@ $logo-width: 300px;
         text-align: center;
     }
     &__underline {
-        z-index: 0;
-        position: absolute;
-        left: calc(-50vw + 50%);
-        min-height: 3px;
-        top: calc(50% - 22px);
-        width: 100vw;
-        background: linear-gradient($gradient-direction, $start-gradient, $end-gradient);
+        @include underline(3px, 22px);
     }
     &__clipcover {
-        position: absolute;
-        width: 100vw;
-        left: calc(-50vw + 50%);
-        top: -20px;
-        height: 140px;
-        z-index: 150;
-        background-color: $main-grey;
-        animation-name: reveal-from-left, hide-line;
-        animation-duration: .5s, .5s;
-        animation-delay: 1s, 1.5s;
-        animation-iteration-count: 1, 1;
-        animation-fill-mode: none, forwards;    
+        @include clipcover-animation(.5s, .5s, 1s, 1.5s); 
     }
     
 }
