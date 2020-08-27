@@ -1,0 +1,26 @@
+@import 'animations';
+
+@mixin underline ($height, $top-offset){
+    z-index: 0;
+    position: absolute;
+    left: calc(-50vw + 50%);
+    min-height: $height;
+    top: calc(50% - #{$top-offset});
+    width: 100vw;
+    background: linear-gradient($gradient-direction, $start-gradient, $end-gradient);
+}
+
+@mixin clipcover-animation($reveal-duration, $hide-duration, $reveal-delay, $hide-delay) {
+    position: absolute;
+    width: 100vw;
+    left: calc(-50vw + 50%);
+    top: -20px;
+    height: 140px;
+    z-index: 150;
+    background-color: $main-grey;
+    animation-name: reveal-from-left, hide-line;
+    animation-duration: $reveal-duration, $hide-duration;
+    animation-delay: $reveal-delay, $hide-delay;
+    animation-iteration-count: 1, 1;
+    animation-fill-mode: none, forwards;    
+}

@@ -1,15 +1,14 @@
-@import 'animations';
+@import 'animations', 'mixins';
 
 $logo-width: 300px;
 
 .logo {
-    color: tomato;
-    font-family: 'Kumar One', cursive;
     font-size: 1.5rem;
-    line-height: 2.7rem;
+    line-height: 3.8rem;
     position: relative;
     min-width: $logo-width;
     margin-bottom: 100px;
+    font-family: 'Kumar One', cursive;
     &__text {
         background-color: $main-grey;
         position: relative;
@@ -17,27 +16,10 @@ $logo-width: 300px;
         text-align: center;
     }
     &__underline {
-        z-index: 0;
-        position: absolute;
-        left: calc(-50vw + (#{$logo-width}/2));
-        min-height: 3px;
-        top: calc(50% - 15px);
-        width: 103vw;
-        background: linear-gradient($gradient-direction, $start-gradient, $end-gradient);
+        @include underline(3px, 22px);
     }
     &__clipcover {
-        position: absolute;
-        width: 103vw;
-        left: calc(-50vw + (#{$logo-width}/2));
-        top: -20px;
-        height: 140px;
-        z-index: 150;
-        background-color: $main-grey;
-        animation-name: reveal-from-left, hide-line;
-        animation-duration: .5s, .5s;
-        animation-delay: 1s, 1.5s;
-        animation-iteration-count: 1, 1;
-        animation-fill-mode: none, forwards;    
+        @include clipcover-animation(.5s, .5s, 1s, 1.5s); 
     }
     
 }
