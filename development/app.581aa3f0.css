@@ -6,244 +6,103 @@
   list-style: none;
 }
 
-.main-page {
-  width: 100vw;
+body {
+  background: #1d1d1b;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  font-family: "Tomorrow", sans-serif;
-  color: tomato;
+}
+
+.main-page {
+  background-color: #1d1d1b;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 .main-page__container {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: #1d1d1b;
-  vertical-align: middle;
+}
+.main-page__navigation {
+  position: relative;
 }
 
-@keyframes reveal-from-left {
-  0% {
-    clip-path: inset(0);
-  }
-  100% {
-    clip-path: inset(0 0 0 100%);
-  }
-}
-@keyframes hide-line {
-  0% {
-    clip-path: inset(0 100% 0 0);
-    z-index: 50;
-  }
-  100% {
-    clip-path: inset(0);
-    z-index: 50;
-  }
-}
-@keyframes list-item-line {
-  0% {
-    height: 0vh;
-  }
-  50% {
-    height: 34vh;
-    bottom: -33vh;
-  }
-  100% {
-    height: 0vh;
-    bottom: 1vh;
-  }
-}
-@keyframes reveal-from-left {
-  0% {
-    clip-path: inset(0);
-  }
-  100% {
-    clip-path: inset(0 0 0 100%);
-  }
-}
-@keyframes hide-line {
-  0% {
-    clip-path: inset(0 100% 0 0);
-    z-index: 50;
-  }
-  100% {
-    clip-path: inset(0);
-    z-index: 50;
-  }
-}
-@keyframes list-item-line {
-  0% {
-    height: 0vh;
-  }
-  50% {
-    height: 34vh;
-    bottom: -33vh;
-  }
-  100% {
-    height: 0vh;
-    bottom: 1vh;
-  }
-}
 .logo {
-  font-size: 1.5rem;
-  line-height: 3.8rem;
   position: relative;
-  min-width: 300px;
-  margin-bottom: 100px;
-  font-family: "Kumar One", cursive;
 }
 .logo__text {
-  background-color: #1d1d1b;
-  position: relative;
-  z-index: 100;
+  font-family: "Kumar One", cursive;
   text-align: center;
+  color: tomato;
+  background-color: #1d1d1b;
+  line-height: 4rem;
+  font-size: 3.5rem;
+  z-index: 20;
+  position: relative;
 }
 .logo__underline {
-  z-index: 0;
-  position: absolute;
-  left: calc(-50vw + 50%);
-  min-height: 3px;
-  top: calc(50% - 22px);
+  min-height: 2px;
   width: 100vw;
-  background: linear-gradient(0.75turn, #f49718, #e20512);
+  background-color: tomato;
+  position: absolute;
+  top: 2.8rem;
+  left: -29vw;
+  z-index: 10;
 }
-.logo__clipcover {
-  position: absolute;
-  width: 100vw;
-  left: calc(-50vw + 50%);
-  top: -20px;
-  height: 140px;
-  z-index: 150;
+.logo__cover {
   background-color: #1d1d1b;
-  animation-name: reveal-from-left, hide-line;
-  animation-duration: 0.5s, 0.5s;
-  animation-delay: 1s, 1.5s;
-  animation-iteration-count: 1, 1;
-  animation-fill-mode: none, forwards;
-}
-
-@keyframes reveal-from-left {
-  0% {
-    clip-path: inset(0);
-  }
-  100% {
-    clip-path: inset(0 0 0 100%);
-  }
-}
-@keyframes hide-line {
-  0% {
-    clip-path: inset(0 100% 0 0);
-    z-index: 50;
-  }
-  100% {
-    clip-path: inset(0);
-    z-index: 50;
-  }
-}
-@keyframes list-item-line {
-  0% {
-    height: 0vh;
-  }
-  50% {
-    height: 34vh;
-    bottom: -33vh;
-  }
-  100% {
-    height: 0vh;
-    bottom: 1vh;
-  }
-}
-@keyframes reveal-from-left {
-  0% {
-    clip-path: inset(0);
-  }
-  100% {
-    clip-path: inset(0 0 0 100%);
-  }
-}
-@keyframes hide-line {
-  0% {
-    clip-path: inset(0 100% 0 0);
-    z-index: 50;
-  }
-  100% {
-    clip-path: inset(0);
-    z-index: 50;
-  }
-}
-@keyframes list-item-line {
-  0% {
-    height: 0vh;
-  }
-  50% {
-    height: 34vh;
-    bottom: -33vh;
-  }
-  100% {
-    height: 0vh;
-    bottom: 1vh;
-  }
-}
-.nav-container {
-  position: relative;
+  width: 110%;
+  height: 120%;
+  position: absolute;
+  z-index: 30;
+  top: -10%;
+  right: -5%;
 }
 
 .nav-list {
-  font-size: 1.5rem;
+  color: tomato;
   display: flex;
-  width: 600px;
+  width: 50vw;
   justify-content: space-between;
-  align-items: center;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  font-family: "Tomorrow", sans-serif;
 }
 .nav-list__item {
   cursor: pointer;
-  background-color: #1d1d1b;
   position: relative;
-  z-index: 100;
-  text-align: center;
-}
-.nav-list__item::after {
-  content: "";
-  width: 2px;
-  height: 0px;
-  position: absolute;
-  background-color: tomato;
-  left: 15%;
-  bottom: -33vh;
-  animation-duration: 0.5s;
-}
-.nav-list__item:hover::after {
-  animation-name: list-item-line;
-}
-
-.nav-list__underline {
-  z-index: 0;
-  position: absolute;
-  left: calc(-50vw + 50%);
-  min-height: 2px;
-  top: calc(50% - -5px);
-  width: 100vw;
-  background: linear-gradient(0.75turn, #f49718, #e20512);
-}
-
-.nav-list__clipcover {
-  position: absolute;
-  width: 100vw;
-  left: calc(-50vw + 50%);
-  top: -20px;
-  height: 140px;
-  z-index: 150;
   background-color: #1d1d1b;
-  animation-name: reveal-from-left, hide-line;
-  animation-duration: 0.5s, 0.5s;
-  animation-delay: 2.5s, 3s;
-  animation-iteration-count: 1, 1;
-  animation-fill-mode: none, forwards;
+  z-index: 5;
+}
+.nav-list__item__crossline {
+  position: absolute;
+  left: 1rem;
+  bottom: -120vh;
+  width: 2px;
+  height: 70vh;
+  background-color: tomato;
+  z-index: 5;
+}
+
+.nav__underline {
+  min-height: 2px;
+  width: 100vw;
+  background-color: tomato;
+  position: absolute;
+  bottom: 5px;
+  left: -25vw;
+  z-index: 3;
+}
+
+.nav__cover {
+  width: 110%;
+  background-color: #1d1d1b;
+  height: 80%;
+  position: absolute;
+  right: -5%;
+  bottom: -5%;
+  z-index: 20;
 }
 
 /*# sourceMappingURL=/app.581aa3f0.css.map */
