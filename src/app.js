@@ -1,12 +1,14 @@
-import Logo from './components/Logo';
-import Navigation from './components/Navigation';
+import LogoAnimations from './components/Animations/LogoAnimations';
+import NavItemAnimations from './components/Animations/NavItemsAnimations';
+
+import anime from 'animejs/lib/anime.es.js';
 
 import './scss/app.scss';
 
 const app = () => {
-    let mainPage = document.querySelector('.main-page__container');
-    mainPage.innerHTML += Logo();
-    mainPage.innerHTML += Navigation();
+    LogoAnimations('.logo__underline', '.logo__cover', 0);
+    LogoAnimations('.nav__underline', '.nav__cover', 900);
+    NavItemAnimations();
 }
 
 app();
