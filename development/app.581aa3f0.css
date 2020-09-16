@@ -11,21 +11,50 @@ body {
   height: 100vh;
 }
 
-.main-page {
-  background-color: #1d1d1b;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-.main-page__container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.main-page__navigation {
+.navigation {
   position: relative;
+}
+.navigation__underline {
+  min-height: 2px;
+  width: 100vw;
+  background-color: tomato;
+  position: absolute;
+  bottom: 5px;
+  left: -25vw;
+  z-index: 3;
+}
+.navigation__cover {
+  width: 110%;
+  background-color: #1d1d1b;
+  height: 80%;
+  position: absolute;
+  right: -5%;
+  bottom: -5%;
+  z-index: 20;
+}
+.navigation__list {
+  color: tomato;
+  display: flex;
+  width: 50vw;
+  justify-content: space-between;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  font-family: "Tomorrow", sans-serif;
+}
+.navigation__list__item {
+  cursor: pointer;
+  position: relative;
+  background-color: #1d1d1b;
+  z-index: 5;
+}
+.navigation__list__item__crossline {
+  position: absolute;
+  left: 1rem;
+  bottom: -120vh;
+  width: 2px;
+  height: 70vh;
+  background-color: tomato;
+  z-index: 5;
 }
 
 .logo {
@@ -60,49 +89,24 @@ body {
   right: -5%;
 }
 
-.nav-list {
-  color: tomato;
+.main-page {
+  background-color: #1d1d1b;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.main-page__container {
+  height: 100%;
   display: flex;
-  width: 50vw;
-  justify-content: space-between;
-  margin-top: 3rem;
-  font-size: 1.5rem;
-  font-family: "Tomorrow", sans-serif;
-}
-.nav-list__item {
-  cursor: pointer;
-  position: relative;
-  background-color: #1d1d1b;
-  z-index: 5;
-}
-.nav-list__item__crossline {
-  position: absolute;
-  left: 1rem;
-  bottom: -120vh;
-  width: 2px;
-  height: 70vh;
-  background-color: tomato;
-  z-index: 5;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.nav__underline {
-  min-height: 2px;
-  width: 100vw;
-  background-color: tomato;
+.test {
   position: absolute;
-  bottom: 5px;
-  left: -25vw;
-  z-index: 3;
-}
-
-.nav__cover {
-  width: 110%;
-  background-color: #1d1d1b;
-  height: 80%;
-  position: absolute;
-  right: -5%;
-  bottom: -5%;
-  z-index: 20;
+  left: 85%;
+  top: 75%;
 }
 
 /*# sourceMappingURL=/app.581aa3f0.css.map */

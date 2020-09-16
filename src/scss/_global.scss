@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+$main-grey: #1d1d1b;
+$start-gradient: #f49718;
+$end-gradient:#e20512;
+$gradient-direction: 0.75turn;
+
+body {
+    background: $main-grey;
+    height: 100vh;
+}

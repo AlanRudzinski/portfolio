@@ -20,7 +20,7 @@ function NavItemAnimations(line, moveDirection) {
     NavAnimations.play();
 }
 
-const navItem = document.querySelectorAll('.nav-list__item');
+const navItem = document.querySelectorAll('.navigation__list__item');
 navItem.forEach((el, i) => {
     el.addEventListener('mouseover', () => NavItemAnimations(`.l${i}`, 'normal'));
     // MouseOut

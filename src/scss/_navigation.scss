@@ -1,0 +1,45 @@
+.navigation {
+    position: relative;
+    &__underline {
+        min-height: 2px;
+        width: 100vw;
+        background-color: tomato;
+        position: absolute;
+        bottom: 5px;
+        left: -25vw;
+        z-index: 3;
+    }
+    &__cover {
+        width: 110%;
+        background-color: $main-grey;
+        height: 80%;
+        position: absolute;
+        right: -5%;
+        bottom: -5%;
+        z-index: 20;
+    }
+    &__list {
+        color: tomato;
+        display: flex;
+        width: 50vw;
+        justify-content: space-between;
+        margin-top: 3rem;
+        font-size: 1.5rem;
+        font-family: 'Tomorrow', sans-serif;
+        &__item {
+            cursor: pointer;
+            position: relative;
+            background-color: $main-grey;
+            z-index: 5;
+            &__crossline {
+                position: absolute;
+                left: 1rem;
+                bottom: -120vh;
+                width: 2px;
+                height: 70vh;
+                background-color: tomato;
+                z-index: 5;
+            }
+        }
+    }
+}

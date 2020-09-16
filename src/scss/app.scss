@@ -1,21 +1,4 @@
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-}
-
-
-$main-grey: #1d1d1b;
-$start-gradient: #f49718;
-$end-gradient:#e20512;
-$gradient-direction: 0.75turn;
-
-body {
-    background: $main-grey;
-    height: 100vh;
-}
+@import 'global', 'navigation', 'logo';
 
 .main-page {
     background-color: $main-grey;
@@ -29,84 +12,11 @@ body {
         align-items: center;
         justify-content: center;
     }
-    &__navigation {
-        position: relative;
-    }
 }
 
-.logo {
-    position: relative;
-    &__text {
-        font-family: 'Kumar One', cursive;
-        text-align: center;
-        color: tomato;
-        background-color: $main-grey;
-        line-height: 4rem;
-        font-size: 3.5rem;
-        z-index: 20;
-        position: relative;
-    }
-    &__underline {
-        min-height: 2px;
-        width: 100vw;
-        background-color: tomato;
-        position: absolute;
-        top: 2.8rem;
-        left: -29vw;
-        z-index: 10;
-    }
-    &__cover {
-        background-color: $main-grey;
-        width: 110%;
-        height: 120%;
-        position: absolute;
-        z-index: 30;
-        top: -10%;
-        right: -5%;
-    }
-}
 
-.nav-list {
-    color: tomato;
-    display: flex;
-    width: 50vw;
-    justify-content: space-between;
-    margin-top: 3rem;
-    font-size: 1.5rem;
-    font-family: 'Tomorrow', sans-serif;
-    &__item {
-        cursor: pointer;
-        position: relative;
-        background-color: $main-grey;
-        z-index: 5;
-        &__crossline {
-            position: absolute;
-            left: 1rem;
-            bottom: -120vh;
-            width: 2px;
-            height: 70vh;
-            background-color: tomato;
-            z-index: 5;
-        }
-    }
-}
-
-.nav__underline {
-    min-height: 2px;
-    width: 100vw;
-    background-color: tomato;
+.test {
     position: absolute;
-    bottom: 5px;
-    left: -25vw;
-    z-index: 3;
-}
-
-.nav__cover {
-    width: 110%;
-    background-color: $main-grey;
-    height: 80%;
-    position: absolute;
-    right: -5%;
-    bottom: -5%;
-    z-index: 20;
+    left: 85%;
+    top: 75%;
 }

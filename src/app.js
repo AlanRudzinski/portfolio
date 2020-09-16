@@ -7,7 +7,7 @@ import './scss/app.scss';
 
 const app = () => {
     LogoAnimations('.logo__underline', '.logo__cover', 0);
-    LogoAnimations('.nav__underline', '.nav__cover', 900);
+    LogoAnimations('.navigation__underline', '.navigation__cover', 900);
     NavItemAnimations();
 }
 

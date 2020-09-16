@@ -1930,7 +1930,7 @@ function NavItemAnimations(line, moveDirection) {
   NavAnimations.play();
 }
 
-var navItem = document.querySelectorAll('.nav-list__item');
+var navItem = document.querySelectorAll('.navigation__list__item');
 navItem.forEach(function (el, i) {
   el.addEventListener('mouseover', function () {
     return NavItemAnimations(".l".concat(i), 'normal');
@@ -2026,7 +2026,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = function app() {
   (0, _LogoAnimations.default)('.logo__underline', '.logo__cover', 0);
-  (0, _LogoAnimations.default)('.nav__underline', '.nav__cover', 900);
+  (0, _LogoAnimations.default)('.navigation__underline', '.navigation__cover', 900);
   (0, _NavItemsAnimations.default)();
 };
 
@@ -2059,7 +2059,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44943" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41115" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
