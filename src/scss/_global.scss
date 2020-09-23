@@ -11,8 +11,11 @@ $main-grey: #1d1d1b;
 $start-gradient: #f49718;
 $end-gradient:#e20512;
 $gradient-direction: 0.75turn;
+$global-height: 500vh;
+$global-width: 500vw;
 
 body {
     background: $main-grey;
-    height: 100vh;
+    height: $global-height;
+    width: $global-width;
 }

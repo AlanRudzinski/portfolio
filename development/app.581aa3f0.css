@@ -8,7 +8,8 @@
 
 body {
   background: #1d1d1b;
-  height: 100vh;
+  height: 500vh;
+  width: 500vw;
 }
 
 .navigation {
@@ -42,10 +43,12 @@ body {
   font-family: "Tomorrow", sans-serif;
 }
 .navigation__list__item {
-  cursor: pointer;
   position: relative;
   background-color: #1d1d1b;
   z-index: 5;
+}
+.navigation__list__item-link {
+  cursor: pointer;
 }
 .navigation__list__item__crossline {
   position: absolute;
@@ -91,9 +94,9 @@ body {
 
 .main-page {
   background-color: #1d1d1b;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  height: 100vh;
+  width: 100vw;
+  transform: translateX(200vw) translateY(200vh);
 }
 .main-page__container {
   height: 100%;
@@ -103,10 +106,25 @@ body {
   justify-content: center;
 }
 
-.test {
+.section {
   position: absolute;
-  left: 85%;
-  top: 75%;
+  width: 100vw;
+  height: 100vh;
+  transform: translateX(200vw) translateY(200vh);
+}
+
+#leading-line0 {
+  width: 100%;
+  height: 100%;
+}
+
+.svg-container {
+  width: 150vw;
+  height: 100vh;
+  position: absolute;
+  right: 95%;
+  bottom: 18%;
+  z-index: -1;
 }
 
 /*# sourceMappingURL=/app.581aa3f0.css.map */

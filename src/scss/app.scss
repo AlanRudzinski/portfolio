@@ -2,9 +2,11 @@
 
 .main-page {
     background-color: $main-grey;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    height: 100vh;
+    width: 100vw;
+    transform: translateX(($global-width/2) - 50vw) translateY(($global-height/2) - 50vh);
+    // overflow-x: hidden;
+    // overflow-y: hidden;
     &__container {
         height: 100%;
         display: flex;
@@ -14,9 +16,29 @@
     }
 }
 
-
-.test {
+.section {
     position: absolute;
-    left: 85%;
-    top: 75%;
+    width: 100vw;
+    height: 100vh;
+    transform: translateX(($global-width/2) - 50vw) translateY(($global-height/2) - 50vh);
+}
+
+
+#leading-line0 {
+    width: 100%;
+    height: 100%;
+}
+
+#leading-line0 polyline {
+    // stroke-dasharray: 2600;
+    // stroke-dashoffset: 2600;
+}
+
+.svg-container {
+    width: 150vw;
+    height: 100vh;
+    position: absolute;
+    right: 95%;
+    bottom: 18%;
+    z-index: -1;
 }

@@ -1,5 +1,6 @@
 import LogoAnimations from './components/Animations/LogoAnimations';
 import NavItemAnimations from './components/Animations/NavItemsAnimations';
+import NavItemLeadingLines from './components/Animations/NavItemsLeadingLines';
 
 import anime from 'animejs/lib/anime.es.js';
 
@@ -9,6 +10,7 @@ const app = () => {
     LogoAnimations('.logo__underline', '.logo__cover', 0);
     LogoAnimations('.navigation__underline', '.navigation__cover', 900);
     NavItemAnimations();
+    NavItemLeadingLines();
 }
 
 app();

@@ -27,10 +27,12 @@
         font-size: 1.5rem;
         font-family: 'Tomorrow', sans-serif;
         &__item {
-            cursor: pointer;
             position: relative;
             background-color: $main-grey;
             z-index: 5;
+            &-link {
+                cursor: pointer;
+            }
             &__crossline {
                 position: absolute;
                 left: 1rem;

@@ -2,7 +2,7 @@ import anime from 'animejs/lib/anime.es.js';
 
 
 function NavItemAnimations(line, moveDirection) {
-    const NavAnimations = anime({
+    const NavCrosslines = anime({
         targets: line,
         keyframes: [
             {bottom: ['-120vh', '-69vh'],
@@ -17,14 +17,12 @@ function NavItemAnimations(line, moveDirection) {
         easing: 'easeOutQuad',
         direction: moveDirection
     })
-    NavAnimations.play();
+    NavCrosslines.play();
 }
 
-const navItem = document.querySelectorAll('.navigation__list__item');
+const navItem = document.querySelectorAll('.navigation__list__item-link');
 navItem.forEach((el, i) => {
     el.addEventListener('mouseover', () => NavItemAnimations(`.l${i}`, 'normal'));
-    // MouseOut
-    // el.addEventListener('mouseout', () => NavItemAnimations(`.l${i}`, 'reverse'));
 });
 
 export default NavItemAnimations;
