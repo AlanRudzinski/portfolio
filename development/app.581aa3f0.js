@@ -1950,7 +1950,7 @@ navItem.forEach(function (el, i) {
 });
 var _default = NavItemAnimations;
 exports.default = _default;
-},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/components/Animations/NavItemsLeadingLines.js":[function(require,module,exports) {
+},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/components/Animations/NavItemsLeadingLinesAboutMe.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1964,26 +1964,52 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function animateLeadingLine(target) {
   var scrollElement = window.document.scrollingElement || window.document.body || window.document.documentElement;
-  (0, _animeEs.default)({
-    targets: "#leading-line".concat(target[target.length - 1], " polyline"),
-    strokeDashoffset: [_animeEs.default.setDashoffset, 0],
-    duration: 3000,
-    easing: 'easeInQuart'
-  });
-  (0, _animeEs.default)({
-    targets: scrollElement,
-    keyframes: [{
-      scrollLeft: 5 * window.innerWidth / 5,
-      duration: 2000
-    }, {
-      scrollTop: 5 * window.innerHeight / 3.3,
-      duration: 500
-    }, {
-      scrollLeft: '0',
-      duration: 500
-    }],
-    easing: 'easeInQuart'
-  });
+
+  if (target[target.length - 1] === '0') {
+    (0, _animeEs.default)({
+      targets: "#leading-line".concat(target[target.length - 1], " polyline"),
+      strokeDashoffset: [_animeEs.default.setDashoffset, 0],
+      duration: 3000,
+      easing: 'easeInQuart'
+    });
+    (0, _animeEs.default)({
+      targets: scrollElement,
+      keyframes: [{
+        scrollLeft: 5 * window.innerWidth / 5,
+        duration: 2000
+      }, {
+        scrollTop: 5 * window.innerHeight / 3.3,
+        duration: 500
+      }, {
+        scrollLeft: '0',
+        duration: 500
+      }],
+      easing: 'easeInQuart'
+    });
+  }
+
+  if (target[target.length - 1] === '3') {
+    (0, _animeEs.default)({
+      targets: "#leading-line".concat(target[target.length - 1], " polyline"),
+      strokeDashoffset: [_animeEs.default.setDashoffset, 0],
+      duration: 3000,
+      easing: 'easeInQuart'
+    });
+    (0, _animeEs.default)({
+      targets: scrollElement,
+      keyframes: [{
+        scrollLeft: 5 * window.innerWidth * 0.7,
+        duration: 2400
+      }, {
+        scrollTop: 5 * window.innerHeight * 0.7,
+        duration: 400
+      }, {
+        scrollLeft: 5 * window.innerWidth,
+        duration: 200
+      }],
+      easing: 'easeInQuart'
+    });
+  }
 }
 
 var navItem = document.querySelectorAll('.navigation__list__item-link');
@@ -1994,7 +2020,25 @@ navItem.forEach(function (el) {
 });
 var _default = animateLeadingLine;
 exports.default = _default;
-},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/components/CenterView.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function CenterView() {
+  window.onload = function () {
+    var scrollElement = window.document.scrollingElement || window.document.body || window.document.documentElement;
+    scrollElement.scrollLeft = window.innerWidth * 2;
+    scrollElement.scrollTop = window.innerHeight * 2;
+  };
+}
+
+var _default = CenterView;
+exports.default = _default;
+},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -2073,7 +2117,9 @@ var _LogoAnimations = _interopRequireDefault(require("./components/Animations/Lo
 
 var _NavItemsAnimations = _interopRequireDefault(require("./components/Animations/NavItemsAnimations"));
 
-var _NavItemsLeadingLines = _interopRequireDefault(require("./components/Animations/NavItemsLeadingLines"));
+var _NavItemsLeadingLinesAboutMe = _interopRequireDefault(require("./components/Animations/NavItemsLeadingLinesAboutMe"));
+
+var _CenterView = _interopRequireDefault(require("./components/CenterView"));
 
 var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
 
@@ -2082,14 +2128,15 @@ require("./scss/app.scss");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = function app() {
+  (0, _CenterView.default)();
   (0, _LogoAnimations.default)('.logo__underline', '.logo__cover', 0);
   (0, _LogoAnimations.default)('.navigation__underline', '.navigation__cover', 900);
   (0, _NavItemsAnimations.default)();
-  (0, _NavItemsLeadingLines.default)();
+  (0, _NavItemsLeadingLinesAboutMe.default)();
 };
 
 app();
-},{"./components/Animations/LogoAnimations":"../src/components/Animations/LogoAnimations.js","./components/Animations/NavItemsAnimations":"../src/components/Animations/NavItemsAnimations.js","./components/Animations/NavItemsLeadingLines":"../src/components/Animations/NavItemsLeadingLines.js","animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./components/Animations/LogoAnimations":"../src/components/Animations/LogoAnimations.js","./components/Animations/NavItemsAnimations":"../src/components/Animations/NavItemsAnimations.js","./components/Animations/NavItemsLeadingLinesAboutMe":"../src/components/Animations/NavItemsLeadingLinesAboutMe.js","./components/CenterView":"../src/components/CenterView.js","animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2117,7 +2164,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41793" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41959" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
