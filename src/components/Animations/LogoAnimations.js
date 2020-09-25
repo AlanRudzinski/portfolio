@@ -22,8 +22,20 @@ function LogoAnimations(targetLogoUnderline, targetCover, inputDelay) {
         })
     }
 
+    function animateRemoveLinesAfter() {
+        anime({
+            targets: targetLogoUnderline,
+            width: 0,
+            delay: inputDelay + 875,
+            autoplay: true,
+            duration: 100,
+            easing: 'linear'
+        })
+    }
+
     animateLogoUnderline();
     animateLogoCover();
+    animateRemoveLinesAfter();
 }
 
 export default LogoAnimations;
