@@ -1950,7 +1950,7 @@ navItem.forEach(function (el, i) {
 });
 var _default = NavItemAnimations;
 exports.default = _default;
-},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/components/Animations/NavItemsLeadingLinesAboutMe.js":[function(require,module,exports) {
+},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/components/Animations/NavLinks/NavLinkHomeAboutMe.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1962,53 +1962,139 @@ var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function navLinkHomeAboutMe(scrollElement) {
+  var lineAnimation = (0, _animeEs.default)({
+    targets: "#leading-line0 polyline",
+    strokeDashoffset: [_animeEs.default.setDashoffset, 0],
+    duration: 3000,
+    easing: 'easeInQuart'
+  });
+  var viewAnimation = (0, _animeEs.default)({
+    targets: scrollElement,
+    keyframes: [{
+      scrollLeft: 5 * window.innerWidth / 5,
+      duration: 2000
+    }, {
+      scrollTop: 5 * window.innerHeight / 3.3,
+      duration: 500
+    }, {
+      scrollLeft: '0',
+      duration: 500
+    }],
+    easing: 'easeInQuart'
+  });
+  lineAnimation.play();
+  viewAnimation.play();
+}
+
+;
+var _default = navLinkHomeAboutMe;
+exports.default = _default;
+},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/components/Animations/NavLinks/NavLinkHomeContact.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function navLinkHomeContact(scrollElement) {
+  var lineAnimation = (0, _animeEs.default)({
+    targets: "#leading-line3 polyline",
+    strokeDashoffset: [_animeEs.default.setDashoffset, 0],
+    duration: 3000,
+    easing: 'easeInQuart'
+  });
+  var viewAnimation = (0, _animeEs.default)({
+    targets: scrollElement,
+    keyframes: [{
+      scrollLeft: 5 * window.innerWidth * 0.7,
+      duration: 2400
+    }, {
+      scrollTop: 5 * window.innerHeight * 0.7,
+      duration: 400
+    }, {
+      scrollLeft: 5 * window.innerWidth,
+      duration: 200
+    }],
+    easing: 'easeInQuart'
+  });
+  lineAnimation.play();
+  viewAnimation.play();
+}
+
+;
+var _default = navLinkHomeContact;
+exports.default = _default;
+},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/components/Animations/NavLinks/NavLinkHomeTechnologies.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function navLinkHomeTechnologies(scrollElement) {
+  var lineAnimation = (0, _animeEs.default)({
+    targets: "#leading-line2 polyline",
+    strokeDashoffset: [_animeEs.default.setDashoffset, 0],
+    duration: 3000,
+    easing: 'easeInQuart'
+  });
+  var viewAnimation = (0, _animeEs.default)({
+    targets: scrollElement,
+    keyframes: [{
+      scrollTop: 5 * window.innerHeight * 0.65,
+      duration: 2300
+    }, {
+      scrollLeft: 5 * window.innerWidth * 0.1,
+      duration: 500
+    }, {
+      scrollTop: 5 * window.innerHeight,
+      duration: 500
+    }],
+    easing: 'easeInQuart'
+  });
+  lineAnimation.play();
+  viewAnimation.play();
+}
+
+;
+var _default = navLinkHomeTechnologies;
+exports.default = _default;
+},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/components/Animations/NavLinks/NavLinks.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _NavLinkHomeAboutMe = _interopRequireDefault(require("./NavLinkHomeAboutMe"));
+
+var _NavLinkHomeContact = _interopRequireDefault(require("./NavLinkHomeContact"));
+
+var _NavLinkHomeTechnologies = _interopRequireDefault(require("./NavLinkHomeTechnologies"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function animateLeadingLine(target) {
   var scrollElement = window.document.scrollingElement || window.document.body || window.document.documentElement;
 
   if (target[target.length - 1] === '0') {
-    (0, _animeEs.default)({
-      targets: "#leading-line".concat(target[target.length - 1], " polyline"),
-      strokeDashoffset: [_animeEs.default.setDashoffset, 0],
-      duration: 3000,
-      easing: 'easeInQuart'
-    });
-    (0, _animeEs.default)({
-      targets: scrollElement,
-      keyframes: [{
-        scrollLeft: 5 * window.innerWidth / 5,
-        duration: 2000
-      }, {
-        scrollTop: 5 * window.innerHeight / 3.3,
-        duration: 500
-      }, {
-        scrollLeft: '0',
-        duration: 500
-      }],
-      easing: 'easeInQuart'
-    });
-  }
-
-  if (target[target.length - 1] === '3') {
-    (0, _animeEs.default)({
-      targets: "#leading-line".concat(target[target.length - 1], " polyline"),
-      strokeDashoffset: [_animeEs.default.setDashoffset, 0],
-      duration: 3000,
-      easing: 'easeInQuart'
-    });
-    (0, _animeEs.default)({
-      targets: scrollElement,
-      keyframes: [{
-        scrollLeft: 5 * window.innerWidth * 0.7,
-        duration: 2400
-      }, {
-        scrollTop: 5 * window.innerHeight * 0.7,
-        duration: 400
-      }, {
-        scrollLeft: 5 * window.innerWidth,
-        duration: 200
-      }],
-      easing: 'easeInQuart'
-    });
+    (0, _NavLinkHomeAboutMe.default)(scrollElement);
+  } else if (target[target.length - 1] === '2') {
+    (0, _NavLinkHomeTechnologies.default)(scrollElement);
+  } else if (target[target.length - 1] === '3') {
+    (0, _NavLinkHomeContact.default)(scrollElement);
   }
 }
 
@@ -2020,7 +2106,7 @@ navItem.forEach(function (el) {
 });
 var _default = animateLeadingLine;
 exports.default = _default;
-},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/components/CenterView.js":[function(require,module,exports) {
+},{"./NavLinkHomeAboutMe":"../src/components/Animations/NavLinks/NavLinkHomeAboutMe.js","./NavLinkHomeContact":"../src/components/Animations/NavLinks/NavLinkHomeContact.js","./NavLinkHomeTechnologies":"../src/components/Animations/NavLinks/NavLinkHomeTechnologies.js"}],"../src/components/CenterView.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2117,7 +2203,7 @@ var _LogoAnimations = _interopRequireDefault(require("./components/Animations/Lo
 
 var _NavItemsAnimations = _interopRequireDefault(require("./components/Animations/NavItemsAnimations"));
 
-var _NavItemsLeadingLinesAboutMe = _interopRequireDefault(require("./components/Animations/NavItemsLeadingLinesAboutMe"));
+var _NavLinks = _interopRequireDefault(require("./components/Animations/NavLinks/NavLinks"));
 
 var _CenterView = _interopRequireDefault(require("./components/CenterView"));
 
@@ -2132,11 +2218,11 @@ var app = function app() {
   (0, _LogoAnimations.default)('.logo__underline', '.logo__cover', 0);
   (0, _LogoAnimations.default)('.navigation__underline', '.navigation__cover', 900);
   (0, _NavItemsAnimations.default)();
-  (0, _NavItemsLeadingLinesAboutMe.default)();
+  (0, _NavLinks.default)();
 };
 
 app();
-},{"./components/Animations/LogoAnimations":"../src/components/Animations/LogoAnimations.js","./components/Animations/NavItemsAnimations":"../src/components/Animations/NavItemsAnimations.js","./components/Animations/NavItemsLeadingLinesAboutMe":"../src/components/Animations/NavItemsLeadingLinesAboutMe.js","./components/CenterView":"../src/components/CenterView.js","animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./components/Animations/LogoAnimations":"../src/components/Animations/LogoAnimations.js","./components/Animations/NavItemsAnimations":"../src/components/Animations/NavItemsAnimations.js","./components/Animations/NavLinks/NavLinks":"../src/components/Animations/NavLinks/NavLinks.js","./components/CenterView":"../src/components/CenterView.js","animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2164,7 +2250,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41959" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43193" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -16,11 +16,15 @@
     }
 }
 
-.section {
+section {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    transform: translateX(($global-width/2) - 50vw) translateY(($global-height/2) - 50vh);
+}
+
+.contact-page {
+    transform: translateX($global-width - 100vw) translateY($global-height/2);
+
 }
 
 
@@ -44,12 +48,29 @@
     stroke-dashoffset: 2600;
 }
 
+#leading-line2 {
+    width: 100%;
+    height: 100%;
+}
+
+#leading-line2 polyline {
+    stroke-dasharray: 2600;
+    stroke-dashoffset: 2600;
+}
 .svg-container {
     width: 150vw;
     height: 100vh;
     position: absolute;
     right: 95%;
     bottom: 18%;
+    z-index: -1;
+}
+.svg-container2 {
+    width: 120vw;
+    height: 170vh;
+    position: absolute;
+    right: 10%;
+    top: 80%;
     z-index: -1;
 }
 
