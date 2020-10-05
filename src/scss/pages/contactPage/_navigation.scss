@@ -1,0 +1,22 @@
+.contact-page__navigation {
+    margin-top: 6%;
+    margin-left: 25%;
+    &__list {
+        color: tomato;
+        display: flex;
+        width: 50vw;
+        justify-content: space-between;
+        margin-top: 3rem;
+        font-size: 1.5rem;
+        font-family: 'Tomorrow', sans-serif;
+        &__item {
+            &-link {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+#contact__main-link3 {
+    text-transform: uppercase;
+}

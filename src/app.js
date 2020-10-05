@@ -1,7 +1,9 @@
-import LogoAnimations from './components/Animations/LogoAnimations';
-import NavItemAnimations from './components/Animations/NavItemsAnimations';
-import NavLinks from './components/Animations/NavLinks/NavLinks';
-import CenterView from './components/CenterView';
+import LogoAnimations from './scripts/Animations/LogoAnimations';
+import NavItemAnimations from './scripts/Animations/NavItemsAnimations';
+import NavLinks from './scripts/Animations/NavLinks/NavLinks';
+import CenterView from './scripts/CenterView';
+
+
 
 import anime from 'animejs/lib/anime.es.js';
 

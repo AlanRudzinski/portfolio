@@ -19,3 +19,9 @@ body {
     height: $global-height;
     width: $global-width;
 }
+
+section {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
