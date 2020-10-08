@@ -1,9 +1,10 @@
-function CenterView() {
+import DOM from './commons/DOMelements'
+
+export default () => {
     window.onload = () => {
-        const scrollElement = window.document.scrollingElement || window.document.body || window.document.documentElement;
-        scrollElement.scrollLeft = window.innerWidth*2
-        scrollElement.scrollTop = window.innerHeight*2
+        window.location.hash = '#main';
+        const mainPage = DOM.pages.mainPage
+        mainPage.scrollIntoView();
     }
 
 }
-export default CenterView;

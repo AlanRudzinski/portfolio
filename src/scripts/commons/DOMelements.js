@@ -5,4 +5,8 @@ export default  {
         homeContactLine: document.getElementById("leading-line3"),
         homeAboutLine: document.getElementsByClassName("svg-container")
     },
+    pages: {
+        contactPage: document.getElementById("contact-page"),
+        mainPage: document.getElementById("main-page"),
+    },
 }
