@@ -2016,7 +2016,7 @@ var _default = {
   navItemLinks: document.querySelectorAll('.navigation__list__item-link'),
   svgs: {
     homeContactLine: document.getElementById("leading-line3"),
-    homeAboutLine: document.getElementsByClassName("svg-container")
+    homeAboutLine: document.getElementById("leading-line0")
   },
   pages: {
     contactPage: document.getElementById("contact-page"),
@@ -2077,7 +2077,9 @@ var _default = function _default() {
 exports.default = _default;
 
 function animateLeadingLine(target) {
-  if (target[target.length - 1] === '0') {} else if (target[target.length - 1] === '2') {} else if (target[target.length - 1] === '3') {
+  if (target[target.length - 1] === '0') {
+    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeAboutLine, 3800, 5000).play();
+  } else if (target[target.length - 1] === '2') {} else if (target[target.length - 1] === '3') {
     (0, _AnimateLine.default)(_DOMelements.default.svgs.homeContactLine, 3800, 5000).play();
   }
 }
@@ -3663,7 +3665,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43429" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44617" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

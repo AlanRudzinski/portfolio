@@ -145,14 +145,14 @@ a {
   height: 100%;
 }
 
-#leading-line0 polyline {
-  stroke-dasharray: 2600;
-  stroke-dashoffset: 2600;
-}
-
 #leading-line3 {
   width: 100%;
   height: 100%;
+}
+
+#leading-line3 polyline {
+  stroke-dasharray: 3800;
+  stroke-dashoffset: 3800;
 }
 
 #leading-line2 {
