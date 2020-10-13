@@ -1971,37 +1971,7 @@ var _default = function _default(element, lineOffset, duration) {
     autoplay: false
   });
   return lineAnimation;
-}; // function navLinkHomeContact(scrollElement, directionNormal = true) {
-//     const line = DOM.svgs.homeContactLine[0].getBoundingClientRect()
-//     const lineAnimation = anime({
-//         targets: `#leading-line3 polyline`,
-//         strokeDashoffset: [anime.setDashoffset, 0],
-//         duration: 3000,
-//         easing: 'easeInQuart'
-//     })
-//     const viewAnimation = anime({
-//         targets: scrollElement,
-//         keyframes: [
-//             {scrollLeft: (line.right/1.5 + window.pageXOffset), duration: 2400},
-//             {scrollTop: (line.bottom + window.pageYOffset - 50), duration: 400},
-//             {scrollLeft: (line.right + window.pageXOffset), duration: 200},
-//         ],
-//         easing: 'easeInQuart'
-//     });
-//     if(directionNormal){
-//         lineAnimation.play();
-//         viewAnimation.play();
-//     } else {
-//         lineAnimation.seek(3000);
-//         viewAnimation.seek(3000);
-//         lineAnimation.reverse();
-//         viewAnimation.reverse();
-//         lineAnimation.play();
-//         viewAnimation.play();
-//     }
-// };
-// export default navLinkHomeContact;
-
+};
 
 exports.default = _default;
 },{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/scripts/commons/DOMelements.js":[function(require,module,exports) {
@@ -2015,12 +1985,17 @@ var _default = {
   body: document.querySelector('body'),
   navItemLinks: document.querySelectorAll('.navigation__list__item-link'),
   svgs: {
-    homeContactLine: document.getElementById("leading-line3"),
-    homeAboutLine: document.getElementById("leading-line0")
+    homeAboutLine: document.getElementById("leading-line0"),
+    homeProjectLine: document.getElementById("leading-line1"),
+    homeTechnologyLine: document.getElementById("leading-line2"),
+    homeContactLine: document.getElementById("leading-line3")
   },
   pages: {
     contactPage: document.getElementById("contact-page"),
-    mainPage: document.getElementById("main-page")
+    mainPage: document.getElementById("main-page"),
+    aboutPage: document.getElementById("about-page"),
+    projectPage: document.getElementById("project-page"),
+    technologyPage: document.getElementById("technology-page")
   }
 };
 exports.default = _default;
@@ -2037,16 +2012,39 @@ var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default(element) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3000;
+  var breakpoint = arguments.length > 2 ? arguments[2] : undefined;
   var scrollElement = window.document.scrollingElement || window.document.body || window.document.documentElement;
   var top = element.getBoundingClientRect().top;
   var left = element.getBoundingClientRect().left;
-  var viewAnimation = (0, _animeEs.default)({
-    targets: scrollElement,
+  var frames = [];
+
+  if (breakpoint) {
+    var points = breakpoint.element.firstElementChild.points;
+    var scrollDirection = points[breakpoint.break].x - points[breakpoint.break - 1].x === 0 ? 'y' : 'x';
+
+    if (scrollDirection === 'x') {
+      frames.push({
+        scrollLeft: window.scrollX + points[breakpoint.break].x - points[breakpoint.break - 1].x
+      });
+    } else {
+      frames.push({
+        scrollTop: window.scrollY + points[breakpoint.break].y - points[breakpoint.break - 1].y
+      });
+    }
+  }
+
+  frames.push({
     scrollTop: top + window.scrollY,
-    scrollLeft: left + window.scrollX,
+    scrollLeft: left + window.scrollX
+  });
+  viewAnimation = (0, _animeEs.default)({
+    targets: scrollElement,
+    keyframes: frames,
     easing: 'easeInQuart',
-    duration: 3800
-  }); // return viewAnimation
+    duration: duration
+  });
+  return viewAnimation;
 };
 
 exports.default = _default;
@@ -2078,9 +2076,13 @@ exports.default = _default;
 
 function animateLeadingLine(target) {
   if (target[target.length - 1] === '0') {
-    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeAboutLine, 3800, 5000).play();
-  } else if (target[target.length - 1] === '2') {} else if (target[target.length - 1] === '3') {
-    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeContactLine, 3800, 5000).play();
+    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeAboutLine, 4300, 5000).play();
+  } else if (target[target.length - 1] === '1') {
+    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeProjectLine, 2400, 4000).play();
+  } else if (target[target.length - 1] === '2') {
+    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeTechnologyLine, 5300, 4000).play();
+  } else if (target[target.length - 1] === '3') {
+    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeContactLine, 3800, 4000).play();
   }
 }
 },{"./AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js","../../commons/DOMelements":"../src/scripts/commons/DOMelements.js","./AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js"}],"../src/scripts/CenterView.js":[function(require,module,exports) {
@@ -3481,7 +3483,7 @@ function findHighestAndLowestPoint(polyline) {
     min: Math.min.apply(Math, (0, _toConsumableArray2.default)(xArray))
   };
 }
-},{"@babel/runtime-corejs2/helpers/toConsumableArray":"../node_modules/@babel/runtime-corejs2/helpers/toConsumableArray.js","@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js"}],"../src/scripts/pagePositioning/contactPagePosition.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/helpers/toConsumableArray":"../node_modules/@babel/runtime-corejs2/helpers/toConsumableArray.js","@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js"}],"../src/scripts/pagePositioning/pagePosition.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3489,27 +3491,44 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _DOMelements = _interopRequireDefault(require("../commons/DOMelements"));
-
 var _GetAbsolutePosition = _interopRequireDefault(require("../commons/GetAbsolutePosition"));
 
 var _GetLengthLastLine = _interopRequireDefault(require("../commons/GetLengthLastLine"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = function _default() {
-  var line = _DOMelements.default.svgs.homeContactLine;
-  var lineRect = line.getBoundingClientRect();
-  var contactLink = document.getElementById("contact__main-link3");
-  var elementTransform = _DOMelements.default.pages.contactPage;
-  var moveTop = (0, _GetAbsolutePosition.default)(line).top - (0, _GetAbsolutePosition.default)(contactLink).top + (0, _GetLengthLastLine.default)(line) - contactLink.getBoundingClientRect().height + 5;
-  var moveLeft = (0, _GetAbsolutePosition.default)(line).left - (0, _GetAbsolutePosition.default)(contactLink).left + lineRect.width - contactLink.getBoundingClientRect().width;
-  elementTransform.style.top = "".concat(moveTop, "px");
-  elementTransform.style.left = "".concat(moveLeft, "px");
+var _default = function _default(leadingLine, pageToMove, link, leftPosition, bottomPosition) {
+  var leadingLineRect = leadingLine.getBoundingClientRect();
+  var moveTop = bottomPosition ? (0, _GetAbsolutePosition.default)(leadingLine).top - (0, _GetAbsolutePosition.default)(link).top + leadingLineRect.height - link.getBoundingClientRect().height + 5 : (0, _GetAbsolutePosition.default)(leadingLine).top - (0, _GetAbsolutePosition.default)(link).top + (0, _GetLengthLastLine.default)(leadingLine) - link.getBoundingClientRect().height + 5;
+  var moveLeft = leftPosition ? (0, _GetAbsolutePosition.default)(leadingLine).left - (0, _GetAbsolutePosition.default)(link).left : (0, _GetAbsolutePosition.default)(leadingLine).left - (0, _GetAbsolutePosition.default)(link).left + leadingLineRect.width - link.getBoundingClientRect().width;
+  pageToMove.style.top = "".concat(moveTop, "px");
+  pageToMove.style.left = "".concat(moveLeft, "px");
 };
 
 exports.default = _default;
-},{"../commons/DOMelements":"../src/scripts/commons/DOMelements.js","../commons/GetAbsolutePosition":"../src/scripts/commons/GetAbsolutePosition.js","../commons/GetLengthLastLine":"../src/scripts/commons/GetLengthLastLine.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
+},{"../commons/GetAbsolutePosition":"../src/scripts/commons/GetAbsolutePosition.js","../commons/GetLengthLastLine":"../src/scripts/commons/GetLengthLastLine.js"}],"../src/scripts/pagePositioning/allPagesPosition.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _pagePosition = _interopRequireDefault(require("./pagePosition"));
+
+var _DOMelements = _interopRequireDefault(require("../commons/DOMelements"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default() {
+  (0, _pagePosition.default)(_DOMelements.default.svgs.homeAboutLine, _DOMelements.default.pages.aboutPage, document.getElementById("about__main-link0"), true);
+  (0, _pagePosition.default)(_DOMelements.default.svgs.homeProjectLine, _DOMelements.default.pages.projectPage, document.getElementById("project__main-link1"), true, true);
+  (0, _pagePosition.default)(_DOMelements.default.svgs.homeTechnologyLine, _DOMelements.default.pages.technologyPage, document.getElementById("technology__main-link2"));
+  (0, _pagePosition.default)(_DOMelements.default.svgs.homeContactLine, _DOMelements.default.pages.contactPage, document.getElementById("contact__main-link3"));
+};
+
+exports.default = _default;
+},{"./pagePosition":"../src/scripts/pagePositioning/pagePosition.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3526,7 +3545,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = function _default() {
   function onRouteChanged() {
     var hashLocation = document.getElementById((window.location.hash + '-page').slice(1));
-    (0, _AnimateScreenFollow.default)(hashLocation);
+
+    if (window.location.hash === '#technology') {
+      (0, _AnimateScreenFollow.default)(hashLocation, 3200, {
+        element: _DOMelements.default.svgs.homeTechnologyLine,
+        break: 2
+      });
+    } else if (window.location.hash === '#project') {
+      (0, _AnimateScreenFollow.default)(hashLocation, 3000, {
+        element: _DOMelements.default.svgs.homeProjectLine,
+        break: 1
+      });
+    } else {
+      (0, _AnimateScreenFollow.default)(hashLocation);
+    }
   }
 
   window.addEventListener('hashchange', onRouteChanged);
@@ -3616,7 +3648,7 @@ var _NavLinks = _interopRequireDefault(require("./scripts/Animations/NavLinks/Na
 
 var _CenterView = _interopRequireDefault(require("./scripts/CenterView"));
 
-var _contactPagePosition = _interopRequireDefault(require("./scripts/pagePositioning/contactPagePosition"));
+var _allPagesPosition = _interopRequireDefault(require("./scripts/pagePositioning/allPagesPosition"));
 
 var _AnimationRouter = _interopRequireDefault(require("./scripts/AnimationRouter"));
 
@@ -3628,7 +3660,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = function app() {
   (0, _CenterView.default)();
-  (0, _contactPagePosition.default)();
+  (0, _allPagesPosition.default)();
   (0, _AnimationRouter.default)();
   (0, _LogoAnimations.default)('.logo__underline', '.logo__cover', 0);
   (0, _LogoAnimations.default)('.navigation__underline', '.navigation__cover', 900);
@@ -3637,7 +3669,7 @@ var app = function app() {
 };
 
 app();
-},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/contactPagePosition":"../src/scripts/pagePositioning/contactPagePosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -3665,7 +3697,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44617" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45857" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

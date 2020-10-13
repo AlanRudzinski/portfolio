@@ -1,5 +1,8 @@
 @import 'global';
 @import 'pages/indexPage/indexPage', 'pages/indexPage/logo', 'pages/indexPage/navigation';
 @import 'pages/contactPage/contactPage', 'pages/contactPage/navigation';
-@import 'svgs/indexPageLines';
+@import 'pages/aboutPage/navigation';
+@import 'pages/projectPage/navigation';
+@import 'pages/technologyPage/navigation';
+@import 'svgs/indexPageLines', 'svgs/contactPageLines';
 
