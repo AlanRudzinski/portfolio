@@ -13,6 +13,7 @@ function animateLeadingLine(target) {
     } else if(target[target.length-1] === '1') {
         AnimateLine(DOM.svgs.homeProjectLine, 2400, 4000).play();
     } else if(target[target.length-1] === '2') {
+        AnimateLine(DOM.svgs.homeTechnologyLine, 5300, 4000).play();
     } else if (target[target.length-1] === '3') {
         AnimateLine(DOM.svgs.homeContactLine, 3800, 4000).play();
     }

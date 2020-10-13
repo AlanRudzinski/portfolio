@@ -25,6 +25,10 @@ a {
   color: tomato;
 }
 
+.contact-page__navigation__list__item {
+  position: relative;
+}
+
 .main-page {
   background-color: #1d1d1b;
   height: 100vh;
@@ -281,6 +285,20 @@ a {
   left: 100%;
   bottom: 19%;
   z-index: -1;
+}
+
+#leading-line-contact0 {
+  width: 100%;
+  height: 100%;
+}
+
+.svg-container-contact {
+  width: 4768.5px;
+  height: 537.75px;
+  position: absolute;
+  right: -130px;
+  bottom: 0;
+  z-index: 20;
 }
 
 /*# sourceMappingURL=/app.581aa3f0.css.map */

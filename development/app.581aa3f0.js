@@ -1971,37 +1971,7 @@ var _default = function _default(element, lineOffset, duration) {
     autoplay: false
   });
   return lineAnimation;
-}; // function navLinkHomeContact(scrollElement, directionNormal = true) {
-//     const line = DOM.svgs.homeContactLine[0].getBoundingClientRect()
-//     const lineAnimation = anime({
-//         targets: `#leading-line3 polyline`,
-//         strokeDashoffset: [anime.setDashoffset, 0],
-//         duration: 3000,
-//         easing: 'easeInQuart'
-//     })
-//     const viewAnimation = anime({
-//         targets: scrollElement,
-//         keyframes: [
-//             {scrollLeft: (line.right/1.5 + window.pageXOffset), duration: 2400},
-//             {scrollTop: (line.bottom + window.pageYOffset - 50), duration: 400},
-//             {scrollLeft: (line.right + window.pageXOffset), duration: 200},
-//         ],
-//         easing: 'easeInQuart'
-//     });
-//     if(directionNormal){
-//         lineAnimation.play();
-//         viewAnimation.play();
-//     } else {
-//         lineAnimation.seek(3000);
-//         viewAnimation.seek(3000);
-//         lineAnimation.reverse();
-//         viewAnimation.reverse();
-//         lineAnimation.play();
-//         viewAnimation.play();
-//     }
-// };
-// export default navLinkHomeContact;
-
+};
 
 exports.default = _default;
 },{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/scripts/commons/DOMelements.js":[function(require,module,exports) {
@@ -2042,16 +2012,39 @@ var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default(element) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3000;
+  var breakpoint = arguments.length > 2 ? arguments[2] : undefined;
   var scrollElement = window.document.scrollingElement || window.document.body || window.document.documentElement;
   var top = element.getBoundingClientRect().top;
   var left = element.getBoundingClientRect().left;
-  var viewAnimation = (0, _animeEs.default)({
-    targets: scrollElement,
+  var frames = [];
+
+  if (breakpoint) {
+    var points = breakpoint.element.firstElementChild.points;
+    var scrollDirection = points[breakpoint.break].x - points[breakpoint.break - 1].x === 0 ? 'y' : 'x';
+
+    if (scrollDirection === 'x') {
+      frames.push({
+        scrollLeft: window.scrollX + points[breakpoint.break].x - points[breakpoint.break - 1].x
+      });
+    } else {
+      frames.push({
+        scrollTop: window.scrollY + points[breakpoint.break].y - points[breakpoint.break - 1].y
+      });
+    }
+  }
+
+  frames.push({
     scrollTop: top + window.scrollY,
-    scrollLeft: left + window.scrollX,
+    scrollLeft: left + window.scrollX
+  });
+  viewAnimation = (0, _animeEs.default)({
+    targets: scrollElement,
+    keyframes: frames,
     easing: 'easeInQuart',
-    duration: 3000
-  }); // return viewAnimation
+    duration: duration
+  });
+  return viewAnimation;
 };
 
 exports.default = _default;
@@ -2086,7 +2079,9 @@ function animateLeadingLine(target) {
     (0, _AnimateLine.default)(_DOMelements.default.svgs.homeAboutLine, 4300, 5000).play();
   } else if (target[target.length - 1] === '1') {
     (0, _AnimateLine.default)(_DOMelements.default.svgs.homeProjectLine, 2400, 4000).play();
-  } else if (target[target.length - 1] === '2') {} else if (target[target.length - 1] === '3') {
+  } else if (target[target.length - 1] === '2') {
+    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeTechnologyLine, 5300, 4000).play();
+  } else if (target[target.length - 1] === '3') {
     (0, _AnimateLine.default)(_DOMelements.default.svgs.homeContactLine, 3800, 4000).play();
   }
 }
@@ -3550,7 +3545,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = function _default() {
   function onRouteChanged() {
     var hashLocation = document.getElementById((window.location.hash + '-page').slice(1));
-    (0, _AnimateScreenFollow.default)(hashLocation);
+
+    if (window.location.hash === '#technology') {
+      (0, _AnimateScreenFollow.default)(hashLocation, 3200, {
+        element: _DOMelements.default.svgs.homeTechnologyLine,
+        break: 2
+      });
+    } else if (window.location.hash === '#project') {
+      (0, _AnimateScreenFollow.default)(hashLocation, 3000, {
+        element: _DOMelements.default.svgs.homeProjectLine,
+        break: 1
+      });
+    } else {
+      (0, _AnimateScreenFollow.default)(hashLocation);
+    }
   }
 
   window.addEventListener('hashchange', onRouteChanged);
@@ -3689,7 +3697,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37403" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45857" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
