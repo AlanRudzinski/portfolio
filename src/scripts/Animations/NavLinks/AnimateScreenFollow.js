@@ -10,7 +10,7 @@ export default (element) => {
         scrollTop: (top + window.scrollY),
         scrollLeft: (left + window.scrollX),
         easing: 'easeInQuart',
-        duration: 3800,
+        duration: 3000,
     });
     // return viewAnimation
 }
