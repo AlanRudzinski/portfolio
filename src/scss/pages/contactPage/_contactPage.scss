@@ -1,2 +1,6 @@
-.contact-page {
+#contact-page {
+    top: 0;
+    left: 0;
+    position: absolute;
+    transform: translateY(200vh) translateX(400vw);
 }

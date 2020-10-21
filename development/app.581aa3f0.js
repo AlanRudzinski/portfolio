@@ -1999,56 +1999,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{}],"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = function _default(element) {
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3000;
-  var breakpoint = arguments.length > 2 ? arguments[2] : undefined;
-  var scrollElement = window.document.scrollingElement || window.document.body || window.document.documentElement;
-  var top = element.getBoundingClientRect().top;
-  var left = element.getBoundingClientRect().left;
-  var frames = [];
-
-  if (breakpoint) {
-    var points = breakpoint.element.firstElementChild.points;
-    var scrollDirection = points[breakpoint.break].x - points[breakpoint.break - 1].x === 0 ? 'y' : 'x';
-
-    if (scrollDirection === 'x') {
-      frames.push({
-        scrollLeft: window.scrollX + points[breakpoint.break].x - points[breakpoint.break - 1].x
-      });
-    } else {
-      frames.push({
-        scrollTop: window.scrollY + points[breakpoint.break].y - points[breakpoint.break - 1].y
-      });
-    }
-  }
-
-  frames.push({
-    scrollTop: top + window.scrollY,
-    scrollLeft: left + window.scrollX
-  });
-  viewAnimation = (0, _animeEs.default)({
-    targets: scrollElement,
-    keyframes: frames,
-    easing: 'easeInQuart',
-    duration: duration
-  });
-  return viewAnimation;
-};
-
-exports.default = _default;
-},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/scripts/Animations/NavLinks/NavLinks.js":[function(require,module,exports) {
+},{}],"../src/scripts/Animations/NavLinks/NavLinks.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2059,8 +2010,6 @@ exports.default = void 0;
 var _AnimateLine = _interopRequireDefault(require("./AnimateLine"));
 
 var _DOMelements = _interopRequireDefault(require("../../commons/DOMelements"));
-
-var _AnimateScreenFollow = _interopRequireDefault(require("./AnimateScreenFollow"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2085,7 +2034,7 @@ function animateLeadingLine(target) {
     (0, _AnimateLine.default)(_DOMelements.default.svgs.homeContactLine, 3800, 4000).play();
   }
 }
-},{"./AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js","../../commons/DOMelements":"../src/scripts/commons/DOMelements.js","./AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js"}],"../src/scripts/CenterView.js":[function(require,module,exports) {
+},{"./AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js","../../commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/scripts/CenterView.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2120,7 +2069,10 @@ var _default = function _default(el) {
       scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   return {
     top: rect.top + scrollTop,
-    left: rect.left + scrollLeft
+    left: rect.left + scrollLeft,
+    bot: rect.bottom + scrollTop,
+    right: rect.right + scrollLeft,
+    element: el
   };
 };
 
@@ -3520,15 +3472,63 @@ var _DOMelements = _interopRequireDefault(require("../commons/DOMelements"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = function _default() {
-  (0, _pagePosition.default)(_DOMelements.default.svgs.homeAboutLine, _DOMelements.default.pages.aboutPage, document.getElementById("about__main-link0"), true);
-  (0, _pagePosition.default)(_DOMelements.default.svgs.homeProjectLine, _DOMelements.default.pages.projectPage, document.getElementById("project__main-link1"), true, true);
-  (0, _pagePosition.default)(_DOMelements.default.svgs.homeTechnologyLine, _DOMelements.default.pages.technologyPage, document.getElementById("technology__main-link2"));
-  (0, _pagePosition.default)(_DOMelements.default.svgs.homeContactLine, _DOMelements.default.pages.contactPage, document.getElementById("contact__main-link3"));
+var _default = function _default() {//pagePosition(DOM.svgs.homeAboutLine, DOM.pages.aboutPage, document.getElementById("about__main-link0"), true);
+  //pagePosition(DOM.svgs.homeProjectLine, DOM.pages.projectPage, document.getElementById("project__main-link1"), true, true);
+  //pagePosition(DOM.svgs.homeTechnologyLine, DOM.pages.technologyPage, document.getElementById("technology__main-link2"));
+  //pagePosition(DOM.svgs.homeContactLine, DOM.pages.contactPage, document.getElementById("contact__main-link3"));
 };
 
 exports.default = _default;
-},{"./pagePosition":"../src/scripts/pagePositioning/pagePosition.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
+},{"./pagePosition":"../src/scripts/pagePositioning/pagePosition.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default(element) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3000;
+  var breakpoint = arguments.length > 2 ? arguments[2] : undefined;
+  var scrollElement = window.document.scrollingElement || window.document.body || window.document.documentElement;
+  var top = element.getBoundingClientRect().top;
+  var left = element.getBoundingClientRect().left;
+  var frames = [];
+
+  if (breakpoint) {
+    var points = breakpoint.element.firstElementChild.points;
+    var scrollDirection = points[breakpoint.break].x - points[breakpoint.break - 1].x === 0 ? 'y' : 'x';
+
+    if (scrollDirection === 'x') {
+      frames.push({
+        scrollLeft: window.scrollX + points[breakpoint.break].x - points[breakpoint.break - 1].x
+      });
+    } else {
+      frames.push({
+        scrollTop: window.scrollY + points[breakpoint.break].y - points[breakpoint.break - 1].y
+      });
+    }
+  }
+
+  frames.push({
+    scrollTop: top + window.scrollY,
+    scrollLeft: left + window.scrollX
+  });
+  viewAnimation = (0, _animeEs.default)({
+    targets: scrollElement,
+    keyframes: frames,
+    easing: 'easeInQuart',
+    duration: duration
+  });
+  return viewAnimation;
+};
+
+exports.default = _default;
+},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3565,7 +3565,74 @@ var _default = function _default() {
 };
 
 exports.default = _default;
-},{"./Animations/NavLinks/AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js","./commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./Animations/NavLinks/AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js","./commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/scripts/Lines/drawLine.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _GetAbsolutePosition = _interopRequireDefault(require("../commons/GetAbsolutePosition"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default() {
+  var mainPage = document.getElementById("main-page");
+  var topMainPage = (0, _GetAbsolutePosition.default)(mainPage).top;
+  var mainLink = document.getElementById("main-link0");
+  var aboutLink = document.getElementById("about__main-link0");
+  var mainLinkPos = (0, _GetAbsolutePosition.default)(document.getElementById("main-link0"));
+  var aboutLinkPos = (0, _GetAbsolutePosition.default)(document.getElementById("about__main-link0"));
+
+  var _svgSize = svgSize(mainLink, aboutLink),
+      actualViewPortWidth = _svgSize.width,
+      actualViewPortHeight = _svgSize.height;
+
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("preserveAspectRatio", "none");
+  svg.setAttribute("id", "leading-line0");
+  svg.setAttribute("viewBox", "0 0 ".concat(actualViewPortWidth, " ").concat(actualViewPortHeight)); // console.log(mainLink.top + mainLink.element.getBoundingClientRect().height, actualViewPortHeight)
+
+  var line = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+  line.setAttribute("points", "".concat(mainLinkPos.left, ",").concat(mainLinkPos.bot - topMainPage - 7, " ").concat(aboutLinkPos.right, ",").concat(aboutLinkPos.bot - topMainPage - 7, " ").concat(aboutLinkPos.left, ",").concat(aboutLinkPos.bot - topMainPage - 7));
+  line.setAttribute("stroke-miterlimit", "10");
+  line.setAttribute("stroke-width", "3.2");
+  line.setAttribute("stroke", "#E84E1B");
+  line.setAttribute("fill", "none");
+  svg.appendChild(line);
+  mainPage.appendChild(svg);
+  var link = document.getElementById("main-link0");
+  var link2 = document.getElementById("about__main-link0");
+  console.log(svgSize(link, link2));
+};
+
+exports.default = _default;
+
+function svgSize(link1, link2) {
+  var firstContainer = getClosest(link1, 'section') || getClosest(link1, 'main');
+  var secondContainer = getClosest(link2, 'section') || getClosest(link2, 'main');
+  var posFirstContainer = (0, _GetAbsolutePosition.default)(firstContainer);
+  var posSecondContainer = (0, _GetAbsolutePosition.default)(secondContainer);
+  var width = Math.abs(posFirstContainer.left - posSecondContainer.left + firstContainer.getBoundingClientRect().width);
+  var height = Math.abs(posFirstContainer.top - posSecondContainer.top + firstContainer.getBoundingClientRect().height);
+  return {
+    width: width,
+    height: height
+  };
+}
+
+function getClosest(elem, selector) {
+  for (; elem && elem !== document; elem = elem.parentNode) {
+    if (elem.matches(selector)) return elem;
+  }
+
+  return null;
+}
+
+;
+"    \n<svg preserveAspectRatio=\"none\" id=\"leading-line0\" viewBox=\"0 0 3455 870\" xmlns=\"http://www.w3.org/2000/svg\">\n<polyline points=\"3455,870 1391,870 1391,374 0,374 0,0 \" stroke-miterlimit=\"10\" stroke-width=\"3.2\" stroke=\"#E84E1B\" fill=\"none\"/>\n</svg>";
+},{"../commons/GetAbsolutePosition":"../src/scripts/commons/GetAbsolutePosition.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -3652,7 +3719,7 @@ var _allPagesPosition = _interopRequireDefault(require("./scripts/pagePositionin
 
 var _AnimationRouter = _interopRequireDefault(require("./scripts/AnimationRouter"));
 
-var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
+var _drawLine = _interopRequireDefault(require("./scripts/Lines/drawLine"));
 
 require("./scss/app.scss");
 
@@ -3661,6 +3728,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = function app() {
   (0, _CenterView.default)();
   (0, _allPagesPosition.default)();
+  (0, _drawLine.default)();
   (0, _AnimationRouter.default)();
   (0, _LogoAnimations.default)('.logo__underline', '.logo__cover', 0);
   (0, _LogoAnimations.default)('.navigation__underline', '.navigation__cover', 900);
@@ -3669,7 +3737,7 @@ var app = function app() {
 };
 
 app();
-},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/drawLine":"../src/scripts/Lines/drawLine.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -3697,7 +3765,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45857" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33465" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

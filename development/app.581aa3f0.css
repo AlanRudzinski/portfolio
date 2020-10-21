@@ -13,11 +13,8 @@ body {
 }
 
 section {
-  position: absolute;
   width: 100vw;
   height: 100vh;
-  top: 0;
-  left: 0;
 }
 
 a {
@@ -123,6 +120,13 @@ a {
   z-index: 5;
 }
 
+#contact-page {
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform: translateY(200vh) translateX(400vw);
+}
+
 .contact-page__navigation {
   margin-top: 10vh;
   margin-left: 0;
@@ -167,6 +171,13 @@ a {
   font-size: 2.2rem;
 }
 
+#about-page {
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform: translateY(200vh);
+}
+
 .project-page__navigation {
   margin-top: 10vh;
   margin-left: 0;
@@ -187,6 +198,13 @@ a {
 
 #project__main-link1 {
   font-size: 2.2rem;
+}
+
+#project-page {
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform: translateY(400vh) translateX(100vw);
 }
 
 .technology-page__navigation {
@@ -211,9 +229,21 @@ a {
   font-size: 2.2rem;
 }
 
+#technology-page {
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform: translateX(300vw);
+}
+
 #leading-line0 {
   width: 100%;
   height: 100%;
+  width: 300vw;
+  height: 100vh;
+  right: 0;
+  top: 0;
+  position: absolute;
 }
 
 #leading-line1 {
@@ -231,32 +261,12 @@ a {
   height: 100%;
 }
 
-#leading-line0 polyline {
-  stroke-dasharray: 4300;
-  stroke-dashoffset: 4300;
-}
-
-#leading-line1 polyline {
-  stroke-dasharray: 2400;
-  stroke-dashoffset: 2400;
-}
-
-#leading-line2 polyline {
-  stroke-dasharray: 5300;
-  stroke-dashoffset: 5300;
-}
-
-#leading-line3 polyline {
-  stroke-dasharray: 3800;
-  stroke-dashoffset: 3800;
-}
-
-.svg-container {
-  width: 2591.25px;
-  height: 652.5px;
+#svg-container {
+  width: 300vw;
+  height: 100vh;
   position: absolute;
-  right: 95%;
-  bottom: 18%;
+  right: 100%;
+  bottom: 0;
   z-index: -1;
 }
 
@@ -292,12 +302,26 @@ a {
   height: 100%;
 }
 
+#leading-line-contact1 {
+  width: 100%;
+  height: 100%;
+}
+
 .svg-container-contact {
   width: 4768.5px;
   height: 537.75px;
   position: absolute;
-  right: -130px;
-  bottom: 0;
+  right: 95%;
+  bottom: 18%;
+  z-index: 20;
+}
+
+.svg-container-contact1 {
+  width: 3576.4px;
+  height: 957.75px;
+  position: absolute;
+  right: -200%;
+  top: 100%;
   z-index: 20;
 }
 

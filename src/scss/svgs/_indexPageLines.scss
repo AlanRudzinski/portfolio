@@ -1,6 +1,11 @@
 #leading-line0 {
     width: 100%;
     height: 100%;
+    width: 300vw; //3455
+    height: 100vh; //870
+    right: 0;
+    top: 0;
+    position: absolute;
 }
 
 #leading-line1 {
@@ -19,32 +24,32 @@
 }
 
 #leading-line0 polyline {
-    stroke-dasharray: 4300;
-    stroke-dashoffset: 4300;
+    // stroke-dasharray: 4300;
+    // stroke-dashoffset: 4300;
 }
 
 #leading-line1 polyline {
-    stroke-dasharray: 2400;
-    stroke-dashoffset: 2400;
+    // stroke-dasharray: 2400;
+    // stroke-dashoffset: 2400;
 }
 
 #leading-line2 polyline {
-    stroke-dasharray: 5300;
-    stroke-dashoffset: 5300;
+    // stroke-dasharray: 5300;
+    // stroke-dashoffset: 5300;
 }
 
 #leading-line3 polyline {
-    stroke-dasharray: 3800;
-    stroke-dashoffset: 3800;
+    // stroke-dasharray: 3800;
+    // stroke-dashoffset: 3800;
 }
 
 
-.svg-container {
-    width: 2591.25px; //3455
-    height: 652.5px; //870
+#svg-container {
+    width: 300vw; //3455
+    height: 100vh; //870
     position: absolute;
-    right: 95%;
-    bottom: 18%;
+    right: 100%;
+    bottom: 0;
     z-index: -1;
 }
 
