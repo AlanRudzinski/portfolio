@@ -12,7 +12,7 @@ import './scss/app.scss';
 const app = () => {
     CenterView();
     allPagesPosition();
-    drawLine();
+    // drawLine();
     AnimationRouter();
     LogoAnimations('.logo__underline', '.logo__cover', 0);
     LogoAnimations('.navigation__underline', '.navigation__cover', 900);

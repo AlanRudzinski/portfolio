@@ -3472,10 +3472,11 @@ var _DOMelements = _interopRequireDefault(require("../commons/DOMelements"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = function _default() {//pagePosition(DOM.svgs.homeAboutLine, DOM.pages.aboutPage, document.getElementById("about__main-link0"), true);
-  //pagePosition(DOM.svgs.homeProjectLine, DOM.pages.projectPage, document.getElementById("project__main-link1"), true, true);
-  //pagePosition(DOM.svgs.homeTechnologyLine, DOM.pages.technologyPage, document.getElementById("technology__main-link2"));
-  //pagePosition(DOM.svgs.homeContactLine, DOM.pages.contactPage, document.getElementById("contact__main-link3"));
+var _default = function _default() {
+  (0, _pagePosition.default)(_DOMelements.default.svgs.homeAboutLine, _DOMelements.default.pages.aboutPage, document.getElementById("about__main-link0"), true);
+  (0, _pagePosition.default)(_DOMelements.default.svgs.homeProjectLine, _DOMelements.default.pages.projectPage, document.getElementById("project__main-link1"), true, true);
+  (0, _pagePosition.default)(_DOMelements.default.svgs.homeTechnologyLine, _DOMelements.default.pages.technologyPage, document.getElementById("technology__main-link2"));
+  (0, _pagePosition.default)(_DOMelements.default.svgs.homeContactLine, _DOMelements.default.pages.contactPage, document.getElementById("contact__main-link3"));
 };
 
 exports.default = _default;
@@ -3578,36 +3579,53 @@ var _GetAbsolutePosition = _interopRequireDefault(require("../commons/GetAbsolut
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default() {
-  var mainPage = document.getElementById("main-page");
-  var topMainPage = (0, _GetAbsolutePosition.default)(mainPage).top;
-  var mainLink = document.getElementById("main-link0");
-  var aboutLink = document.getElementById("about__main-link0");
-  var mainLinkPos = (0, _GetAbsolutePosition.default)(document.getElementById("main-link0"));
-  var aboutLinkPos = (0, _GetAbsolutePosition.default)(document.getElementById("about__main-link0"));
+  connectLinks(document.getElementById("main-link0"), document.getElementById("about__main-link0"), "leading-line0");
+  connectLinks(document.getElementById("main-link3"), document.getElementById("contact__main-link3"), "leading-line3"); // const mainPage = document.getElementById("main-page");
+  // const aboutPagePos = getAbsolutePosition(document.getElementById("about-page"))
+  // const topMainPage = getAbsolutePosition(mainPage).top;
+  // const mainLinkPos = getAbsolutePosition(document.getElementById("main-link0"));
+  // const aboutLinkPos = getAbsolutePosition(document.getElementById("about__main-link0"));
+  // const line = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+  // line.setAttribute("points", `${mainLinkPos.left},${mainLinkPos.bot - topMainPage - 7} ${aboutPagePos.right + (0.1*actualViewPortWidth)},${aboutLinkPos.bot - topMainPage - 7} ${aboutLinkPos.left},${aboutLinkPos.bot - topMainPage - 7} ${aboutLinkPos.left},0`);
+  // line.setAttribute("stroke-miterlimit", "10");
+  // line.setAttribute("stroke-width", "3.2");
+  // line.setAttribute("stroke", "#E84E1B");
+  // line.setAttribute("fill", "none");
+  // svg.appendChild(line);
+  // mainPage.appendChild(svg)
+};
 
-  var _svgSize = svgSize(mainLink, aboutLink),
+exports.default = _default;
+
+function connectLinks(linkFrom, linkTo, lineName) {
+  var _svgSize = svgSize(linkFrom, linkTo),
       actualViewPortWidth = _svgSize.width,
       actualViewPortHeight = _svgSize.height;
 
   var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("preserveAspectRatio", "none");
-  svg.setAttribute("id", "leading-line0");
-  svg.setAttribute("viewBox", "0 0 ".concat(actualViewPortWidth, " ").concat(actualViewPortHeight)); // console.log(mainLink.top + mainLink.element.getBoundingClientRect().height, actualViewPortHeight)
-
+  svg.setAttribute("id", lineName);
+  svg.setAttribute("viewBox", "0 0 ".concat(actualViewPortWidth, " ").concat(actualViewPortHeight));
+  var linkFromPos = (0, _GetAbsolutePosition.default)(linkFrom);
+  var linkToPos = (0, _GetAbsolutePosition.default)(linkTo);
+  var fromPage = getClosest(linkFrom, 'section') || getClosest(linkFrom, 'main');
+  var toPage = getClosest(linkTo, 'section') || getClosest(linkTo, 'main');
   var line = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-  line.setAttribute("points", "".concat(mainLinkPos.left, ",").concat(mainLinkPos.bot - topMainPage - 7, " ").concat(aboutLinkPos.right, ",").concat(aboutLinkPos.bot - topMainPage - 7, " ").concat(aboutLinkPos.left, ",").concat(aboutLinkPos.bot - topMainPage - 7));
+
+  if (linkFromPos.left > linkToPos.left) {
+    line.setAttribute("points", "".concat(linkFromPos.left, ",").concat(linkFromPos.bot - (0, _GetAbsolutePosition.default)(fromPage).top - 7, " ").concat(linkToPos.right, ",").concat(linkToPos.bot - (0, _GetAbsolutePosition.default)(toPage).top - 7));
+  } else {
+    line.setAttribute("points", "".concat(linkFromPos.right, ",").concat(linkFromPos.bot - (0, _GetAbsolutePosition.default)(fromPage).top - 7, " ").concat(linkToPos.left, ",").concat(linkToPos.bot - (0, _GetAbsolutePosition.default)(toPage).top - 7));
+  }
+
   line.setAttribute("stroke-miterlimit", "10");
   line.setAttribute("stroke-width", "3.2");
   line.setAttribute("stroke", "#E84E1B");
   line.setAttribute("fill", "none");
   svg.appendChild(line);
-  mainPage.appendChild(svg);
-  var link = document.getElementById("main-link0");
-  var link2 = document.getElementById("about__main-link0");
-  console.log(svgSize(link, link2));
-};
-
-exports.default = _default;
+  fromPage.appendChild(svg);
+  return svg;
+}
 
 function svgSize(link1, link2) {
   var firstContainer = getClosest(link1, 'section') || getClosest(link1, 'main');
@@ -3727,8 +3745,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = function app() {
   (0, _CenterView.default)();
-  (0, _allPagesPosition.default)();
-  (0, _drawLine.default)();
+  (0, _allPagesPosition.default)(); // drawLine();
+
   (0, _AnimationRouter.default)();
   (0, _LogoAnimations.default)('.logo__underline', '.logo__cover', 0);
   (0, _LogoAnimations.default)('.navigation__underline', '.navigation__cover', 900);
@@ -3765,7 +3783,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33465" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42517" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

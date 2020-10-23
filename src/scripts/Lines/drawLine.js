@@ -1,36 +1,56 @@
 import getAbsolutePosition from '../commons/GetAbsolutePosition';
 
 export default () => {
-    const mainPage = document.getElementById("main-page")
-    const topMainPage = getAbsolutePosition(mainPage).top;
+    connectLinks(document.getElementById("main-link0"), document.getElementById("about__main-link0"), "leading-line0");
+    connectLinks(document.getElementById("main-link3"), document.getElementById("contact__main-link3"), "leading-line3");
+    
+    // const mainPage = document.getElementById("main-page");
+    // const aboutPagePos = getAbsolutePosition(document.getElementById("about-page"))
+    // const topMainPage = getAbsolutePosition(mainPage).top;
 
-    const mainLink = document.getElementById("main-link0");
-    const aboutLink = document.getElementById("about__main-link0");
+    // const mainLinkPos = getAbsolutePosition(document.getElementById("main-link0"));
+    // const aboutLinkPos = getAbsolutePosition(document.getElementById("about__main-link0"));
 
-    const mainLinkPos = getAbsolutePosition(document.getElementById("main-link0"))
-    const aboutLinkPos = getAbsolutePosition(document.getElementById("about__main-link0"))
+    // const line = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+    // line.setAttribute("points", `${mainLinkPos.left},${mainLinkPos.bot - topMainPage - 7} ${aboutPagePos.right + (0.1*actualViewPortWidth)},${aboutLinkPos.bot - topMainPage - 7} ${aboutLinkPos.left},${aboutLinkPos.bot - topMainPage - 7} ${aboutLinkPos.left},0`);
+    // line.setAttribute("stroke-miterlimit", "10");
+    // line.setAttribute("stroke-width", "3.2");
+    // line.setAttribute("stroke", "#E84E1B");
+    // line.setAttribute("fill", "none");
 
-    const {width: actualViewPortWidth, height: actualViewPortHeight} = svgSize(mainLink, aboutLink)
+    // svg.appendChild(line);
+    // mainPage.appendChild(svg)
+}
 
+function connectLinks(linkFrom, linkTo, lineName) {
+    const {width: actualViewPortWidth, height: actualViewPortHeight} = svgSize(linkFrom, linkTo);
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("preserveAspectRatio", "none");
-    svg.setAttribute("id", "leading-line0");
+    svg.setAttribute("id", lineName);
     svg.setAttribute("viewBox", `0 0 ${actualViewPortWidth} ${actualViewPortHeight}`);
 
+    const linkFromPos = getAbsolutePosition(linkFrom);
+    const linkToPos = getAbsolutePosition(linkTo);
+
+    const fromPage = getClosest(linkFrom, 'section') || getClosest(linkFrom, 'main');
+    const toPage = getClosest(linkTo, 'section') || getClosest(linkTo, 'main');
+
     const line = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-    line.setAttribute("points", `${mainLinkPos.left},${mainLinkPos.bot - topMainPage - 7} ${aboutLinkPos.right},${aboutLinkPos.bot - topMainPage - 7} ${aboutLinkPos.left},${aboutLinkPos.bot - topMainPage - 7}`);
+
+    if(linkFromPos.left > linkToPos.left){
+        line.setAttribute("points", `${linkFromPos.left},${linkFromPos.bot - getAbsolutePosition(fromPage).top - 7} ${linkToPos.right},${linkToPos.bot - getAbsolutePosition(toPage).top - 7}`);
+    } else {
+        line.setAttribute("points", `${linkFromPos.right},${linkFromPos.bot - getAbsolutePosition(fromPage).top - 7} ${linkToPos.left},${linkToPos.bot - getAbsolutePosition(toPage).top - 7}`);
+    }
+
     line.setAttribute("stroke-miterlimit", "10");
     line.setAttribute("stroke-width", "3.2");
     line.setAttribute("stroke", "#E84E1B");
     line.setAttribute("fill", "none");
 
     svg.appendChild(line);
-    mainPage.appendChild(svg)
-
-    const link = document.getElementById("main-link0")
-    const link2 = document.getElementById("about__main-link0")
-    
-    console.log(svgSize(link, link2))
+    fromPage.appendChild(svg); 
+    return svg   
 }
 
 function svgSize(link1, link2) {
