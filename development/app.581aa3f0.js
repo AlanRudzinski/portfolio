@@ -3652,19 +3652,13 @@ var _GetAbsolutePosition = _interopRequireDefault(require("../commons/GetAbsolut
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default() {
-  // const link1 = document.getElementById("about__main-link0");
-  // const link2 = document.getElementById("contact__main-link0");
-  // const line = document.getElementById("leading-line-contact0");
-  // console.log(line.getBoundingClientRect().width)
-  // console.log(GetAbsolutePosition(link2).left - GetAbsolutePosition(link1).left)
-  // console.log(document.body.getBoundingClientRect().width)
-  // console.log((line.getBoundingClientRect().width * 100) / document.body.getBoundingClientRect().width)
-  // 9093 100%
-  // 6358 x%
   correctHorizontal(_DOMelements.default.svgs.contactAboutLine, _DOMelements.default.links.aboutAboutLink);
   correctHorizontal(_DOMelements.default.svgs.contactProjectLine, _DOMelements.default.links.projectProjectLink);
   correctHorizontal(_DOMelements.default.svgs.contactTechnologiesLine, _DOMelements.default.links.technologiesTechnologiesLink);
   correctHorizontal(_DOMelements.default.svgs.contactHomeLine, _DOMelements.default.links.homeContactLink);
+  correctVertical(_DOMelements.default.svgs.contactProjectLine, _DOMelements.default.links.projectProjectLink);
+  correctVertical(_DOMelements.default.svgs.contactTechnologiesLine, _DOMelements.default.links.technologiesTechnologiesLink);
+  correctVertical(_DOMelements.default.svgs.contactHomeLine, _DOMelements.default.links.homeContactLink);
 };
 
 exports.default = _default;
@@ -3686,6 +3680,31 @@ function correctHorizontal(line, link) {
     var viewBoxArr = line.getAttribute("viewBox").split(" ");
     viewBoxArr[2] = (0, _parseInt2.default)(viewBoxArr[2]) + moveValue;
     viewBoxArr = viewBoxArr.join(" ");
+    line.setAttribute("viewBox", viewBoxArr);
+  }
+}
+
+function correctVertical(line, link) {
+  var lineLastPoints = line.firstElementChild.points;
+  var distancePoint = lineLastPoints[lineLastPoints.length - 2].y;
+  var moveValue = distancePoint + (0, _GetAbsolutePosition.default)(line).top - (0, _GetAbsolutePosition.default)(link).bot;
+  var points = {
+    firstPoint: lineLastPoints[lineLastPoints.length - 2],
+    secondPoint: lineLastPoints[lineLastPoints.length - 3]
+  };
+
+  if (moveValue > 0) {
+    points.firstPoint.y -= moveValue;
+    points.secondPoint.y -= moveValue;
+  } else {
+    moveValue = -moveValue;
+    console.log(moveValue);
+    line.style.height = "".concat(line.getBoundingClientRect().height + moveValue, "px");
+    var viewBoxArr = line.getAttribute("viewBox").split(" ");
+    viewBoxArr[3] = (0, _parseInt2.default)(viewBoxArr[3]) + moveValue;
+    viewBoxArr = viewBoxArr.join(" ");
+    points.firstPoint.y += moveValue;
+    points.secondPoint.y += moveValue;
     line.setAttribute("viewBox", viewBoxArr);
   }
 }
@@ -3822,7 +3841,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37703" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36233" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
