@@ -1988,7 +1988,11 @@ var _default = {
     homeAboutLine: document.getElementById("leading-line0"),
     homeProjectLine: document.getElementById("leading-line1"),
     homeTechnologyLine: document.getElementById("leading-line2"),
-    homeContactLine: document.getElementById("leading-line3")
+    homeContactLine: document.getElementById("leading-line3"),
+    contactAboutLine: document.getElementById("leading-line-contact0"),
+    contactProjectLine: document.getElementById("leading-line-contact1"),
+    contactTechnologiesLine: document.getElementById("leading-line-contact2"),
+    contactHomeLine: document.getElementById("leading-line-contact4")
   },
   pages: {
     contactPage: document.getElementById("contact-page"),
@@ -1996,6 +2000,12 @@ var _default = {
     aboutPage: document.getElementById("about-page"),
     projectPage: document.getElementById("project-page"),
     technologyPage: document.getElementById("technology-page")
+  },
+  links: {
+    aboutAboutLink: document.getElementById("about__main-link0"),
+    projectProjectLink: document.getElementById("project__main-link1"),
+    technologiesTechnologiesLink: document.getElementById("technology__main-link2"),
+    homeContactLink: document.getElementById("main-link3")
   }
 };
 exports.default = _default;
@@ -3566,7 +3576,66 @@ var _default = function _default() {
 };
 
 exports.default = _default;
-},{"./Animations/NavLinks/AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js","./commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/scripts/Lines/drawLine.js":[function(require,module,exports) {
+},{"./Animations/NavLinks/AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js","./commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../node_modules/core-js/library/modules/_string-ws.js":[function(require,module,exports) {
+module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
+  '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
+
+},{}],"../node_modules/core-js/library/modules/_string-trim.js":[function(require,module,exports) {
+var $export = require('./_export');
+var defined = require('./_defined');
+var fails = require('./_fails');
+var spaces = require('./_string-ws');
+var space = '[' + spaces + ']';
+var non = '\u200b\u0085';
+var ltrim = RegExp('^' + space + space + '*');
+var rtrim = RegExp(space + space + '*$');
+
+var exporter = function (KEY, exec, ALIAS) {
+  var exp = {};
+  var FORCE = fails(function () {
+    return !!spaces[KEY]() || non[KEY]() != non;
+  });
+  var fn = exp[KEY] = FORCE ? exec(trim) : spaces[KEY];
+  if (ALIAS) exp[ALIAS] = fn;
+  $export($export.P + $export.F * FORCE, 'String', exp);
+};
+
+// 1 -> String#trimLeft
+// 2 -> String#trimRight
+// 3 -> String#trim
+var trim = exporter.trim = function (string, TYPE) {
+  string = String(defined(string));
+  if (TYPE & 1) string = string.replace(ltrim, '');
+  if (TYPE & 2) string = string.replace(rtrim, '');
+  return string;
+};
+
+module.exports = exporter;
+
+},{"./_export":"../node_modules/core-js/library/modules/_export.js","./_defined":"../node_modules/core-js/library/modules/_defined.js","./_fails":"../node_modules/core-js/library/modules/_fails.js","./_string-ws":"../node_modules/core-js/library/modules/_string-ws.js"}],"../node_modules/core-js/library/modules/_parse-int.js":[function(require,module,exports) {
+var $parseInt = require('./_global').parseInt;
+var $trim = require('./_string-trim').trim;
+var ws = require('./_string-ws');
+var hex = /^[-+]?0[xX]/;
+
+module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? function parseInt(str, radix) {
+  var string = $trim(String(str), 3);
+  return $parseInt(string, (radix >>> 0) || (hex.test(string) ? 16 : 10));
+} : $parseInt;
+
+},{"./_global":"../node_modules/core-js/library/modules/_global.js","./_string-trim":"../node_modules/core-js/library/modules/_string-trim.js","./_string-ws":"../node_modules/core-js/library/modules/_string-ws.js"}],"../node_modules/core-js/library/modules/es6.parse-int.js":[function(require,module,exports) {
+var $export = require('./_export');
+var $parseInt = require('./_parse-int');
+// 18.2.5 parseInt(string, radix)
+$export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt });
+
+},{"./_export":"../node_modules/core-js/library/modules/_export.js","./_parse-int":"../node_modules/core-js/library/modules/_parse-int.js"}],"../node_modules/core-js/library/fn/parse-int.js":[function(require,module,exports) {
+require('../modules/es6.parse-int');
+module.exports = require('../modules/_core').parseInt;
+
+},{"../modules/es6.parse-int":"../node_modules/core-js/library/modules/es6.parse-int.js","../modules/_core":"../node_modules/core-js/library/modules/_core.js"}],"../node_modules/@babel/runtime-corejs2/core-js/parse-int.js":[function(require,module,exports) {
+module.exports = require("core-js/library/fn/parse-int");
+},{"core-js/library/fn/parse-int":"../node_modules/core-js/library/fn/parse-int.js"}],"../src/scripts/Lines/correctPosition.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3574,83 +3643,53 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _parseInt2 = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/parse-int"));
+
+var _DOMelements = _interopRequireDefault(require("../commons/DOMelements"));
+
 var _GetAbsolutePosition = _interopRequireDefault(require("../commons/GetAbsolutePosition"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default() {
-  connectLinks(document.getElementById("main-link0"), document.getElementById("about__main-link0"), "leading-line0");
-  connectLinks(document.getElementById("main-link3"), document.getElementById("contact__main-link3"), "leading-line3"); // const mainPage = document.getElementById("main-page");
-  // const aboutPagePos = getAbsolutePosition(document.getElementById("about-page"))
-  // const topMainPage = getAbsolutePosition(mainPage).top;
-  // const mainLinkPos = getAbsolutePosition(document.getElementById("main-link0"));
-  // const aboutLinkPos = getAbsolutePosition(document.getElementById("about__main-link0"));
-  // const line = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-  // line.setAttribute("points", `${mainLinkPos.left},${mainLinkPos.bot - topMainPage - 7} ${aboutPagePos.right + (0.1*actualViewPortWidth)},${aboutLinkPos.bot - topMainPage - 7} ${aboutLinkPos.left},${aboutLinkPos.bot - topMainPage - 7} ${aboutLinkPos.left},0`);
-  // line.setAttribute("stroke-miterlimit", "10");
-  // line.setAttribute("stroke-width", "3.2");
-  // line.setAttribute("stroke", "#E84E1B");
-  // line.setAttribute("fill", "none");
-  // svg.appendChild(line);
-  // mainPage.appendChild(svg)
+  // const link1 = document.getElementById("about__main-link0");
+  // const link2 = document.getElementById("contact__main-link0");
+  // const line = document.getElementById("leading-line-contact0");
+  // console.log(line.getBoundingClientRect().width)
+  // console.log(GetAbsolutePosition(link2).left - GetAbsolutePosition(link1).left)
+  // console.log(document.body.getBoundingClientRect().width)
+  // console.log((line.getBoundingClientRect().width * 100) / document.body.getBoundingClientRect().width)
+  // 9093 100%
+  // 6358 x%
+  correctHorizontal(_DOMelements.default.svgs.contactAboutLine, _DOMelements.default.links.aboutAboutLink);
+  correctHorizontal(_DOMelements.default.svgs.contactProjectLine, _DOMelements.default.links.projectProjectLink);
+  correctHorizontal(_DOMelements.default.svgs.contactTechnologiesLine, _DOMelements.default.links.technologiesTechnologiesLink);
+  correctHorizontal(_DOMelements.default.svgs.contactHomeLine, _DOMelements.default.links.homeContactLink);
 };
 
 exports.default = _default;
 
-function connectLinks(linkFrom, linkTo, lineName) {
-  var _svgSize = svgSize(linkFrom, linkTo),
-      actualViewPortWidth = _svgSize.width,
-      actualViewPortHeight = _svgSize.height;
-
-  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("preserveAspectRatio", "none");
-  svg.setAttribute("id", lineName);
-  svg.setAttribute("viewBox", "0 0 ".concat(actualViewPortWidth, " ").concat(actualViewPortHeight));
-  var linkFromPos = (0, _GetAbsolutePosition.default)(linkFrom);
-  var linkToPos = (0, _GetAbsolutePosition.default)(linkTo);
-  var fromPage = getClosest(linkFrom, 'section') || getClosest(linkFrom, 'main');
-  var toPage = getClosest(linkTo, 'section') || getClosest(linkTo, 'main');
-  var line = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-
-  if (linkFromPos.left > linkToPos.left) {
-    line.setAttribute("points", "".concat(linkFromPos.left, ",").concat(linkFromPos.bot - (0, _GetAbsolutePosition.default)(fromPage).top - 7, " ").concat(linkToPos.right, ",").concat(linkToPos.bot - (0, _GetAbsolutePosition.default)(toPage).top - 7));
-  } else {
-    line.setAttribute("points", "".concat(linkFromPos.right, ",").concat(linkFromPos.bot - (0, _GetAbsolutePosition.default)(fromPage).top - 7, " ").concat(linkToPos.left, ",").concat(linkToPos.bot - (0, _GetAbsolutePosition.default)(toPage).top - 7));
-  }
-
-  line.setAttribute("stroke-miterlimit", "10");
-  line.setAttribute("stroke-width", "3.2");
-  line.setAttribute("stroke", "#E84E1B");
-  line.setAttribute("fill", "none");
-  svg.appendChild(line);
-  fromPage.appendChild(svg);
-  return svg;
-}
-
-function svgSize(link1, link2) {
-  var firstContainer = getClosest(link1, 'section') || getClosest(link1, 'main');
-  var secondContainer = getClosest(link2, 'section') || getClosest(link2, 'main');
-  var posFirstContainer = (0, _GetAbsolutePosition.default)(firstContainer);
-  var posSecondContainer = (0, _GetAbsolutePosition.default)(secondContainer);
-  var width = Math.abs(posFirstContainer.left - posSecondContainer.left + firstContainer.getBoundingClientRect().width);
-  var height = Math.abs(posFirstContainer.top - posSecondContainer.top + firstContainer.getBoundingClientRect().height);
-  return {
-    width: width,
-    height: height
+function correctHorizontal(line, link) {
+  var moveValue = (0, _GetAbsolutePosition.default)(link).left - (0, _GetAbsolutePosition.default)(line).left;
+  var lineLastPoints = line.firstElementChild.points;
+  var points = {
+    firstPoint: lineLastPoints[lineLastPoints.length - 1],
+    secondPoint: lineLastPoints[lineLastPoints.length - 2]
   };
-}
 
-function getClosest(elem, selector) {
-  for (; elem && elem !== document; elem = elem.parentNode) {
-    if (elem.matches(selector)) return elem;
+  if (moveValue > 0) {
+    points.firstPoint.x += moveValue;
+    points.secondPoint.x += moveValue;
+  } else {
+    moveValue = -moveValue;
+    line.style.width = "".concat(line.getBoundingClientRect().width + moveValue, "px");
+    var viewBoxArr = line.getAttribute("viewBox").split(" ");
+    viewBoxArr[2] = (0, _parseInt2.default)(viewBoxArr[2]) + moveValue;
+    viewBoxArr = viewBoxArr.join(" ");
+    line.setAttribute("viewBox", viewBoxArr);
   }
-
-  return null;
 }
-
-;
-"    \n<svg preserveAspectRatio=\"none\" id=\"leading-line0\" viewBox=\"0 0 3455 870\" xmlns=\"http://www.w3.org/2000/svg\">\n<polyline points=\"3455,870 1391,870 1391,374 0,374 0,0 \" stroke-miterlimit=\"10\" stroke-width=\"3.2\" stroke=\"#E84E1B\" fill=\"none\"/>\n</svg>";
-},{"../commons/GetAbsolutePosition":"../src/scripts/commons/GetAbsolutePosition.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/core-js/parse-int":"../node_modules/@babel/runtime-corejs2/core-js/parse-int.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js","../commons/GetAbsolutePosition":"../src/scripts/commons/GetAbsolutePosition.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -3737,7 +3776,7 @@ var _allPagesPosition = _interopRequireDefault(require("./scripts/pagePositionin
 
 var _AnimationRouter = _interopRequireDefault(require("./scripts/AnimationRouter"));
 
-var _drawLine = _interopRequireDefault(require("./scripts/Lines/drawLine"));
+var _correctPosition = _interopRequireDefault(require("./scripts/Lines/correctPosition"));
 
 require("./scss/app.scss");
 
@@ -3745,17 +3784,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = function app() {
   (0, _CenterView.default)();
-  (0, _allPagesPosition.default)(); // drawLine();
-
+  (0, _allPagesPosition.default)();
   (0, _AnimationRouter.default)();
   (0, _LogoAnimations.default)('.logo__underline', '.logo__cover', 0);
   (0, _LogoAnimations.default)('.navigation__underline', '.navigation__cover', 900);
   (0, _NavItemsAnimations.default)();
   (0, _NavLinks.default)();
+  (0, _correctPosition.default)();
 };
 
 app();
-},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/drawLine":"../src/scripts/Lines/drawLine.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -3783,7 +3822,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42517" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37703" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
