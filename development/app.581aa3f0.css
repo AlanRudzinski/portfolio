@@ -26,6 +26,10 @@ a {
   position: relative;
 }
 
+.technology-page__navigation__list__item {
+  position: relative;
+}
+
 .main-page {
   background-color: #1d1d1b;
   height: 100vh;
@@ -302,6 +306,42 @@ a {
 #leading-line-contact4 {
   width: 3166px;
   height: 1014px;
+  position: absolute;
+  right: 95%;
+  top: 80%;
+  z-index: -1;
+}
+
+#leading-line-technology0 {
+  width: 4449px;
+  height: 1326px;
+  position: absolute;
+  right: 95%;
+  top: 80%;
+  z-index: -1;
+}
+
+#leading-line-technology1 {
+  width: 2852px;
+  height: 2603px;
+  position: absolute;
+  right: 95%;
+  top: 80%;
+  z-index: -1;
+}
+
+#leading-line-technology3 {
+  width: 1856px;
+  height: 1326px;
+  position: absolute;
+  left: 95%;
+  top: 80%;
+  z-index: -1;
+}
+
+#leading-line-technology4 {
+  width: 1737px;
+  height: 2342px;
   position: absolute;
   right: 95%;
   top: 80%;

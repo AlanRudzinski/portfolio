@@ -10,6 +10,10 @@ export default  {
         contactProjectLine: document.getElementById("leading-line-contact1"),
         contactTechnologiesLine: document.getElementById("leading-line-contact2"),
         contactHomeLine: document.getElementById("leading-line-contact4"),
+        technologyAboutLine: document.getElementById("leading-line-technology0"),
+        technologyContactLine: document.getElementById("leading-line-technology3"),
+        technologyProjectLine: document.getElementById("leading-line-technology1"),
+        technologyHomeLine: document.getElementById("leading-line-technology4"),
     },
     pages: {
         contactPage: document.getElementById("contact-page"),
@@ -23,5 +27,7 @@ export default  {
         projectProjectLink: document.getElementById("project__main-link1"),
         technologiesTechnologiesLink: document.getElementById("technology__main-link2"),
         homeContactLink: document.getElementById("main-link3"),
+        contactContactLink: document.getElementById("contact__main-link3"),
+        homeTechnologyLink: document.getElementById("main-link2"),
     }
 }

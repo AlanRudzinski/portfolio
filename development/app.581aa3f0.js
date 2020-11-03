@@ -1992,7 +1992,11 @@ var _default = {
     contactAboutLine: document.getElementById("leading-line-contact0"),
     contactProjectLine: document.getElementById("leading-line-contact1"),
     contactTechnologiesLine: document.getElementById("leading-line-contact2"),
-    contactHomeLine: document.getElementById("leading-line-contact4")
+    contactHomeLine: document.getElementById("leading-line-contact4"),
+    technologyAboutLine: document.getElementById("leading-line-technology0"),
+    technologyContactLine: document.getElementById("leading-line-technology3"),
+    technologyProjectLine: document.getElementById("leading-line-technology1"),
+    technologyHomeLine: document.getElementById("leading-line-technology4")
   },
   pages: {
     contactPage: document.getElementById("contact-page"),
@@ -2005,7 +2009,9 @@ var _default = {
     aboutAboutLink: document.getElementById("about__main-link0"),
     projectProjectLink: document.getElementById("project__main-link1"),
     technologiesTechnologiesLink: document.getElementById("technology__main-link2"),
-    homeContactLink: document.getElementById("main-link3")
+    homeContactLink: document.getElementById("main-link3"),
+    contactContactLink: document.getElementById("contact__main-link3"),
+    homeTechnologyLink: document.getElementById("main-link2")
   }
 };
 exports.default = _default;
@@ -3645,70 +3651,90 @@ exports.default = void 0;
 
 var _parseInt2 = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/parse-int"));
 
-var _DOMelements = _interopRequireDefault(require("../commons/DOMelements"));
-
 var _GetAbsolutePosition = _interopRequireDefault(require("../commons/GetAbsolutePosition"));
+
+var _DOMelements = _interopRequireDefault(require("../commons/DOMelements"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default() {
-  correctHorizontal(_DOMelements.default.svgs.contactAboutLine, _DOMelements.default.links.aboutAboutLink);
-  correctHorizontal(_DOMelements.default.svgs.contactProjectLine, _DOMelements.default.links.projectProjectLink);
-  correctHorizontal(_DOMelements.default.svgs.contactTechnologiesLine, _DOMelements.default.links.technologiesTechnologiesLink);
-  correctHorizontal(_DOMelements.default.svgs.contactHomeLine, _DOMelements.default.links.homeContactLink);
-  correctVertical(_DOMelements.default.svgs.contactProjectLine, _DOMelements.default.links.projectProjectLink);
-  correctVertical(_DOMelements.default.svgs.contactTechnologiesLine, _DOMelements.default.links.technologiesTechnologiesLink);
-  correctVertical(_DOMelements.default.svgs.contactHomeLine, _DOMelements.default.links.homeContactLink);
+  // contact
+  correctPosition(_DOMelements.default.svgs.contactAboutLine, _DOMelements.default.links.aboutAboutLink);
+  correctPosition(_DOMelements.default.svgs.contactProjectLine, _DOMelements.default.links.projectProjectLink);
+  correctPosition(_DOMelements.default.svgs.contactTechnologiesLine, _DOMelements.default.links.technologiesTechnologiesLink);
+  correctPosition(_DOMelements.default.svgs.contactHomeLine, _DOMelements.default.links.homeContactLink); // // tech
+
+  correctPosition(_DOMelements.default.svgs.technologyAboutLine, _DOMelements.default.links.aboutAboutLink);
+  correctPosition(_DOMelements.default.svgs.technologyProjectLine, _DOMelements.default.links.projectProjectLink);
+  correctPosition(_DOMelements.default.svgs.technologyContactLine, _DOMelements.default.links.contactContactLink);
+  correctPosition(_DOMelements.default.svgs.technologyHomeLine, _DOMelements.default.links.homeTechnologyLink); // correctVertical(DOM.svgs.technologyProjectLine, DOM.links.projectProjectLink);
+  // // correctHorizontal(DOM.svgs.technologyProjectLine, DOM.links.projectProjectLink);
 };
 
 exports.default = _default;
 
+function correctPosition(line, link) {
+  correctHorizontal(line, link);
+  correctVertical(line, link);
+}
+
 function correctHorizontal(line, link) {
   var moveValue = (0, _GetAbsolutePosition.default)(link).left - (0, _GetAbsolutePosition.default)(line).left;
-  var lineLastPoints = line.firstElementChild.points;
   var points = {
-    firstPoint: lineLastPoints[lineLastPoints.length - 1],
-    secondPoint: lineLastPoints[lineLastPoints.length - 2]
+    firstPoint: getPoints(line, 1),
+    secondPoint: getPoints(line, 2)
   };
 
   if (moveValue > 0) {
+    moveValue -= points.firstPoint.x;
     points.firstPoint.x += moveValue;
     points.secondPoint.x += moveValue;
+    getPoints(line, line.firstElementChild.points.length).x += moveValue;
   } else {
-    moveValue = -moveValue;
-    line.style.width = "".concat(line.getBoundingClientRect().width + moveValue, "px");
-    var viewBoxArr = line.getAttribute("viewBox").split(" ");
-    viewBoxArr[2] = (0, _parseInt2.default)(viewBoxArr[2]) + moveValue;
-    viewBoxArr = viewBoxArr.join(" ");
-    line.setAttribute("viewBox", viewBoxArr);
+    modifyWidth(line, -moveValue);
+    getPoints(line, line.firstElementChild.points.length).x -= moveValue;
   }
 }
 
 function correctVertical(line, link) {
-  var lineLastPoints = line.firstElementChild.points;
-  var distancePoint = lineLastPoints[lineLastPoints.length - 2].y;
-  var moveValue = distancePoint + (0, _GetAbsolutePosition.default)(line).top - (0, _GetAbsolutePosition.default)(link).bot;
+  var distancePoint = getPoints(line, 2).y;
+  var moveValue = distancePoint + (0, _GetAbsolutePosition.default)(line).top - (0, _GetAbsolutePosition.default)(link).bot + 5;
   var points = {
-    firstPoint: lineLastPoints[lineLastPoints.length - 2],
-    secondPoint: lineLastPoints[lineLastPoints.length - 3]
+    firstPoint: getPoints(line, 2),
+    secondPoint: getPoints(line, 3)
   };
 
   if (moveValue > 0) {
     points.firstPoint.y -= moveValue;
     points.secondPoint.y -= moveValue;
   } else {
-    moveValue = -moveValue;
-    console.log(moveValue);
-    line.style.height = "".concat(line.getBoundingClientRect().height + moveValue, "px");
-    var viewBoxArr = line.getAttribute("viewBox").split(" ");
-    viewBoxArr[3] = (0, _parseInt2.default)(viewBoxArr[3]) + moveValue;
-    viewBoxArr = viewBoxArr.join(" ");
-    points.firstPoint.y += moveValue;
-    points.secondPoint.y += moveValue;
-    line.setAttribute("viewBox", viewBoxArr);
+    modifyHeight(line, -moveValue);
+    points.firstPoint.y += -moveValue;
+    points.secondPoint.y += -moveValue;
   }
 }
-},{"@babel/runtime-corejs2/core-js/parse-int":"../node_modules/@babel/runtime-corejs2/core-js/parse-int.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js","../commons/GetAbsolutePosition":"../src/scripts/commons/GetAbsolutePosition.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+
+function getPoints(line) {
+  var point = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return line.firstElementChild.points[line.firstElementChild.points.length - point];
+}
+
+function modifyHeight(element, value) {
+  element.style.height = "".concat(element.getBoundingClientRect().height + value, "px");
+  var viewBoxArr = element.getAttribute("viewBox").split(" ");
+  viewBoxArr[3] = (0, _parseInt2.default)(viewBoxArr[3]) + value;
+  viewBoxArr = viewBoxArr.join(" ");
+  element.setAttribute("viewBox", viewBoxArr);
+}
+
+function modifyWidth(element, value) {
+  element.style.width = "".concat(element.getBoundingClientRect().width + value, "px");
+  var viewBoxArr = element.getAttribute("viewBox").split(" ");
+  viewBoxArr[2] = (0, _parseInt2.default)(viewBoxArr[2]) + value;
+  viewBoxArr = viewBoxArr.join(" ");
+  element.setAttribute("viewBox", viewBoxArr);
+}
+},{"@babel/runtime-corejs2/core-js/parse-int":"../node_modules/@babel/runtime-corejs2/core-js/parse-int.js","../commons/GetAbsolutePosition":"../src/scripts/commons/GetAbsolutePosition.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -3841,7 +3867,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36233" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34093" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
