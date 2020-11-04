@@ -30,6 +30,14 @@ a {
   position: relative;
 }
 
+.about-page__navigation__list__item {
+  position: relative;
+}
+
+.project-page__navigation__list__item {
+  position: relative;
+}
+
 .main-page {
   background-color: #1d1d1b;
   height: 100vh;
@@ -276,6 +284,26 @@ a {
   z-index: -1;
 }
 
+#leading-line0 polyline {
+  stroke-dasharray: 4300;
+  stroke-dashoffset: 4300;
+}
+
+#leading-line1 polyline {
+  stroke-dasharray: 2400;
+  stroke-dashoffset: 2400;
+}
+
+#leading-line2 polyline {
+  stroke-dasharray: 5300;
+  stroke-dashoffset: 5300;
+}
+
+#leading-line3 polyline {
+  stroke-dasharray: 3800;
+  stroke-dashoffset: 3800;
+}
+
 #leading-line-contact0 {
   width: 6358px;
   height: 717px;
@@ -312,6 +340,26 @@ a {
   z-index: -1;
 }
 
+#leading-line-contact0 polyline {
+  stroke-dasharray: 9000;
+  stroke-dashoffset: 9000;
+}
+
+#leading-line-contact1 polyline {
+  stroke-dasharray: 4300;
+  stroke-dashoffset: 4300;
+}
+
+#leading-line-contact2 polyline {
+  stroke-dasharray: 4300;
+  stroke-dashoffset: 4300;
+}
+
+#leading-line-contact4 polyline {
+  stroke-dasharray: 4300;
+  stroke-dashoffset: 4300;
+}
+
 #leading-line-technology0 {
   width: 4449px;
   height: 1326px;
@@ -345,6 +393,94 @@ a {
   position: absolute;
   right: 95%;
   top: 80%;
+  z-index: -1;
+}
+
+#leading-line-technology0 polyline {
+  stroke-dasharray: 6500;
+  stroke-dashoffset: 6500;
+}
+
+#leading-line-technology1 polyline {
+  stroke-dasharray: 6000;
+  stroke-dashoffset: 6000;
+}
+
+#leading-line-technology2 polyline {
+  stroke-dasharray: 4300;
+  stroke-dashoffset: 4300;
+}
+
+#leading-line-technology3 polyline {
+  stroke-dasharray: 4300;
+  stroke-dashoffset: 4300;
+}
+
+#leading-line-about1 {
+  width: 2226px;
+  height: 1277px;
+  position: absolute;
+  left: 95%;
+  top: 80%;
+  z-index: -1;
+}
+
+#leading-line-about2 {
+  width: 4326px;
+  height: 1791px;
+  position: absolute;
+  left: 95%;
+  bottom: 20%;
+  z-index: -1;
+}
+
+#leading-line-about3 {
+  width: 6479px;
+  height: 717px;
+  position: absolute;
+  left: 95%;
+  bottom: 20%;
+  z-index: -1;
+}
+
+#leading-line-about4 {
+  width: 2214px;
+  height: 1014px;
+  position: absolute;
+  left: 95%;
+  top: 80%;
+  z-index: -1;
+}
+
+#leading-line-about3 polyline {
+  stroke-dasharray: 4300;
+  stroke-dashoffset: 4300;
+}
+
+#leading-line-project0 {
+  width: 2318px;
+  height: 1742px;
+  position: absolute;
+  right: 95%;
+  bottom: 20%;
+  z-index: -1;
+}
+
+#leading-line-project3 {
+  width: 4071px;
+  height: 1774px;
+  position: absolute;
+  left: 95%;
+  bottom: 20%;
+  z-index: -1;
+}
+
+#leading-line-project4 {
+  width: 196px;
+  height: 762px;
+  position: absolute;
+  left: 95%;
+  bottom: 20%;
   z-index: -1;
 }
 

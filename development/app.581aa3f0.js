@@ -1996,7 +1996,14 @@ var _default = {
     technologyAboutLine: document.getElementById("leading-line-technology0"),
     technologyContactLine: document.getElementById("leading-line-technology3"),
     technologyProjectLine: document.getElementById("leading-line-technology1"),
-    technologyHomeLine: document.getElementById("leading-line-technology4")
+    technologyHomeLine: document.getElementById("leading-line-technology4"),
+    aboutContactLine: document.getElementById("leading-line-about3"),
+    aboutHomeLine: document.getElementById("leading-line-about4"),
+    aboutProjectLine: document.getElementById("leading-line-about1"),
+    aboutTechnologiesLine: document.getElementById("leading-line-about2"),
+    projectAboutLine: document.getElementById("leading-line-project0"),
+    projectContactLine: document.getElementById("leading-line-project3"),
+    projectHomeLine: document.getElementById("leading-line-project4")
   },
   pages: {
     contactPage: document.getElementById("contact-page"),
@@ -2011,7 +2018,9 @@ var _default = {
     technologiesTechnologiesLink: document.getElementById("technology__main-link2"),
     homeContactLink: document.getElementById("main-link3"),
     contactContactLink: document.getElementById("contact__main-link3"),
-    homeTechnologyLink: document.getElementById("main-link2")
+    homeTechnologyLink: document.getElementById("main-link2"),
+    homeAboutLink: document.getElementById("main-link0"),
+    homeProjectLink: document.getElementById("main-link1")
   }
 };
 exports.default = _default;
@@ -3667,8 +3676,16 @@ var _default = function _default() {
   correctPosition(_DOMelements.default.svgs.technologyAboutLine, _DOMelements.default.links.aboutAboutLink);
   correctPosition(_DOMelements.default.svgs.technologyProjectLine, _DOMelements.default.links.projectProjectLink);
   correctPosition(_DOMelements.default.svgs.technologyContactLine, _DOMelements.default.links.contactContactLink);
-  correctPosition(_DOMelements.default.svgs.technologyHomeLine, _DOMelements.default.links.homeTechnologyLink); // correctVertical(DOM.svgs.technologyProjectLine, DOM.links.projectProjectLink);
-  // // correctHorizontal(DOM.svgs.technologyProjectLine, DOM.links.projectProjectLink);
+  correctPosition(_DOMelements.default.svgs.technologyHomeLine, _DOMelements.default.links.homeTechnologyLink); // // about
+
+  correctPosition(_DOMelements.default.svgs.aboutContactLine, _DOMelements.default.links.contactContactLink);
+  correctPosition(_DOMelements.default.svgs.aboutHomeLine, _DOMelements.default.links.homeAboutLink);
+  correctPosition(_DOMelements.default.svgs.aboutProjectLine, _DOMelements.default.links.projectProjectLink);
+  correctPosition(_DOMelements.default.svgs.aboutTechnologiesLine, _DOMelements.default.links.technologiesTechnologiesLink); // // project
+
+  correctPosition(_DOMelements.default.svgs.projectAboutLine, _DOMelements.default.links.aboutAboutLink);
+  correctPosition(_DOMelements.default.svgs.projectContactLine, _DOMelements.default.links.contactContactLink);
+  correctPosition(_DOMelements.default.svgs.projectHomeLine, _DOMelements.default.links.homeProjectLink);
 };
 
 exports.default = _default;
@@ -3689,7 +3706,15 @@ function correctHorizontal(line, link) {
     moveValue -= points.firstPoint.x;
     points.firstPoint.x += moveValue;
     points.secondPoint.x += moveValue;
-    getPoints(line, line.firstElementChild.points.length).x += moveValue;
+
+    if (points.firstPoint.x > line.getAttribute("viewBox").split(" ")[2]) {
+      var linkWidth = link.getBoundingClientRect().width;
+      modifyWidth(line, moveValue + linkWidth);
+      points.firstPoint.x += linkWidth;
+      points.secondPoint.x += linkWidth;
+    } else {
+      getPoints(line, line.firstElementChild.points.length).x += moveValue;
+    }
   } else {
     modifyWidth(line, -moveValue);
     getPoints(line, line.firstElementChild.points.length).x -= moveValue;
@@ -3705,6 +3730,7 @@ function correctVertical(line, link) {
   };
 
   if (moveValue > 0) {
+    console.log(points.firstPoint.y > line.getAttribute("viewBox").split(" ")[3], points.secondPoint.y, line.getAttribute("viewBox").split(" ")[3]);
     points.firstPoint.y -= moveValue;
     points.secondPoint.y -= moveValue;
   } else {
@@ -3867,7 +3893,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34093" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43905" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

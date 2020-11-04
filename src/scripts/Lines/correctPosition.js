@@ -13,8 +13,17 @@ export default () => {
     correctPosition(DOM.svgs.technologyProjectLine, DOM.links.projectProjectLink);
     correctPosition(DOM.svgs.technologyContactLine, DOM.links.contactContactLink);
     correctPosition(DOM.svgs.technologyHomeLine, DOM.links.homeTechnologyLink);
-    // correctVertical(DOM.svgs.technologyProjectLine, DOM.links.projectProjectLink);
-    // // correctHorizontal(DOM.svgs.technologyProjectLine, DOM.links.projectProjectLink);
+
+    // // about
+    correctPosition(DOM.svgs.aboutContactLine, DOM.links.contactContactLink);
+    correctPosition(DOM.svgs.aboutHomeLine, DOM.links.homeAboutLink);
+    correctPosition(DOM.svgs.aboutProjectLine, DOM.links.projectProjectLink);
+    correctPosition(DOM.svgs.aboutTechnologiesLine, DOM.links.technologiesTechnologiesLink);
+
+    // // project
+    correctPosition(DOM.svgs.projectAboutLine, DOM.links.aboutAboutLink);
+    correctPosition(DOM.svgs.projectContactLine, DOM.links.contactContactLink);
+    correctPosition(DOM.svgs.projectHomeLine, DOM.links.homeProjectLink);
 }
 
 function correctPosition(line, link) {
@@ -32,7 +41,14 @@ function correctHorizontal(line, link){
         moveValue -= points.firstPoint.x;
         points.firstPoint.x += moveValue;
         points.secondPoint.x += moveValue;
-        getPoints(line, line.firstElementChild.points.length).x += moveValue;
+        if(points.firstPoint.x > line.getAttribute("viewBox").split(" ")[2]) {
+            const linkWidth = link.getBoundingClientRect().width
+            modifyWidth(line, moveValue + linkWidth)
+            points.firstPoint.x += linkWidth;
+            points.secondPoint.x += linkWidth;
+        } else {
+            getPoints(line, line.firstElementChild.points.length).x += moveValue;
+        }
     } else {
         modifyWidth(line, -moveValue);
         getPoints(line, line.firstElementChild.points.length).x -= moveValue;
@@ -48,6 +64,7 @@ function correctVertical(line, link) {
         secondPoint: getPoints(line, 3)
     }
     if(moveValue > 0) {
+        console.log(points.firstPoint.y > line.getAttribute("viewBox").split(" ")[3], points.secondPoint.y, line.getAttribute("viewBox").split(" ")[3])
         points.firstPoint.y -= moveValue;
         points.secondPoint.y -= moveValue;
     } else {

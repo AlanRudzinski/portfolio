@@ -1,0 +1,41 @@
+#leading-line-about1 {
+    width: 2226px;
+    height: 1277px;
+    position: absolute;
+    left: 95%;
+    top: 80%;
+    z-index: -1;
+}
+
+#leading-line-about2 {
+    width: 4326px;
+    height: 1791px;
+    position: absolute;
+    left: 95%;
+    bottom: 20%;
+    z-index: -1;
+}
+
+#leading-line-about3 {
+    width: 6479px;
+    height: 717px;
+    position: absolute;
+    left: 95%;
+    bottom: 20%;
+    z-index: -1;
+}
+
+#leading-line-about4 {
+    width: 2214px;
+    height: 1014px;
+    position: absolute;
+    left: 95%;
+    top: 80%;
+    z-index: -1;
+}
+
+#leading-line-about3 polyline {
+    stroke-dasharray: 4300;
+    stroke-dashoffset: 4300;
+}
+
