@@ -1,0 +1,56 @@
+#leading-line-project0 {
+    width: 2318px;
+    height: 1742px;
+    position: absolute;
+    right: 95%;
+    bottom: 20%;
+    z-index: -1;
+}
+
+#leading-line-project2 {
+    width: 2315px;
+    height: 3113px;
+    position: absolute;
+    left: 95%;
+    bottom: 20%;
+    z-index: -1;
+}
+
+#leading-line-project3 {
+    width: 4071px;
+    height: 1774px;
+    position: absolute;
+    left: 95%;
+    bottom: 20%;
+    z-index: -1;
+}
+
+#leading-line-project4 {
+    width: 196px;
+    height: 1062px;
+    position: absolute;
+    left: 95%;
+    bottom: 20%;
+    z-index: -1;
+}
+
+
+#leading-line-project0 polyline {
+    stroke-dasharray: 4500;
+    stroke-dashoffset: 4500;
+}
+
+#leading-line-project2 polyline {
+    stroke-dasharray: 6500;
+    stroke-dashoffset: 6500;
+}
+
+#leading-line-project3 polyline {
+    stroke-dasharray: 6500;
+    stroke-dashoffset: 6500;
+}
+
+#leading-line-project4 polyline {
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 1500;
+}

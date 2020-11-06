@@ -1,20 +1,58 @@
 #leading-line-contact0 {
-    width: 100%;
-    height: 100%;
+    width: 6358px; //6358
+    height: 717px; //717
+    position: absolute;
+    right: 95%;
+    bottom: 18%;
+    z-index: 20;
+}
+
+#leading-line-contact1 {
+    width: 4051px; //4051
+    height: 1277px; //1277
+    position: absolute;
+    right: 95%;
+    top: 80%;
+    z-index: -1;
+}
+
+
+#leading-line-contact2 {
+    width: 1799px; //4051
+    height: 1723px; //1277
+    position: absolute;
+    right: 95%;
+    bottom: 15%;
+    z-index: -1;
+}
+
+#leading-line-contact4 {
+    width: 3166px; //4051
+    height: 1014px; //1277
+    position: absolute;
+    right: 95%;
+    top: 80%;
+    z-index: -1;
 }
 
 
 #leading-line-contact0 polyline {
-    // stroke-dasharray: 4300;
-    // stroke-dashoffset: 4300;
+    stroke-dasharray: 9000;
+    stroke-dashoffset: 9000;
 }
 
-.svg-container-contact {
-    width: 4768.5px; //6358
-    height: 537.75px; //717
-    position: absolute;
-    right: -130px;
-    bottom: 0;
-    z-index: 20;
+#leading-line-contact1 polyline {
+    stroke-dasharray: 4300;
+    stroke-dashoffset: 4300;
 }
 
+#leading-line-contact2 polyline {
+    stroke-dasharray: 4300;
+    stroke-dashoffset: 4300;
+}
+
+
+#leading-line-contact4 polyline {
+    stroke-dasharray: 4300;
+    stroke-dashoffset: 4300;
+}

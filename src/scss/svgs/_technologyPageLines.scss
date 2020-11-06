@@ -1,0 +1,60 @@
+#leading-line-technology0 {
+    width: 4449px;
+    height: 1326px;
+    position: absolute;
+    right: 95%;
+    top: 80%;
+    z-index: -1;
+}
+
+#leading-line-technology1 {
+    width: 2852px;
+    height: 2603px;
+    position: absolute;
+    right: 95%;
+    top: 80%;
+    z-index: -1;
+}
+
+#leading-line-technology3 {
+    width: 1856px;
+    height: 1326px;
+    position: absolute;
+    left: 95%;
+    top: 80%;
+    z-index: -1;
+}
+
+#leading-line-technology4 {
+    width: 1737px;
+    height: 2342px;
+    position: absolute;
+    right: 95%;
+    top: 80%;
+    z-index: -1;
+}
+
+#leading-line-technology0 polyline {
+    stroke-dasharray: 6500;
+    stroke-dashoffset: 6500;
+}
+
+#leading-line-technology1 polyline {
+    stroke-dasharray: 7000;
+    stroke-dashoffset: 7000;
+}
+
+// #leading-line-technology2 polyline {
+//     // stroke-dasharray: 4300;
+//     // stroke-dashoffset: 4300;
+// }
+
+#leading-line-technology3 polyline {
+    stroke-dasharray: 4300;
+    stroke-dashoffset: 4300;
+}
+
+#leading-line-technology4 polyline {
+    stroke-dasharray: 4300;
+    stroke-dashoffset: 4300;
+}

@@ -1,6 +1,5 @@
 import AnimateLine from './AnimateLine';
 import DOM from '../../commons/DOMelements';
-import AnimateScreenFollow from './AnimateScreenFollow';
 
 export default () => {
     DOM.navItemLinks.forEach(el => el.addEventListener('click', (e) => animateLeadingLine(e.target.id)));
@@ -18,4 +17,3 @@ function animateLeadingLine(target) {
         AnimateLine(DOM.svgs.homeContactLine, 3800, 4000).play();
     }
 }
-

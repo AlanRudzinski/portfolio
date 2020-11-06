@@ -8,11 +8,8 @@
 
 
 $main-grey: #1d1d1b;
-$start-gradient: #f49718;
-$end-gradient:#e20512;
-$gradient-direction: 0.75turn;
-$global-height: 500vh;
-$global-width: 500vw;
+$global-height: 700vh;
+$global-width: 700vw;
 
 body {
     background: $main-grey;
@@ -21,11 +18,8 @@ body {
 }
 
 section {
-    position: absolute;
     width: 100vw;
     height: 100vh;
-    top: 0;
-    left: 0;
 }
 
 a {
@@ -34,5 +28,17 @@ a {
 }
 
 .contact-page__navigation__list__item {
+    position: relative;
+}
+
+.technology-page__navigation__list__item {
+    position: relative;
+}
+
+.about-page__navigation__list__item {
+    position: relative;
+}
+
+.project-page__navigation__list__item {
     position: relative;
 }
