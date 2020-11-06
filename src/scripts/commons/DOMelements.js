@@ -21,6 +21,7 @@ export default  {
         projectAboutLine: document.getElementById("leading-line-project0"),
         projectContactLine: document.getElementById("leading-line-project3"),
         projectHomeLine: document.getElementById("leading-line-project4"),
+        projectTechnologiesLine: document.getElementById("leading-line-project2"),
     },
     pages: {
         contactPage: document.getElementById("contact-page"),

@@ -24,6 +24,7 @@ export default () => {
     correctPosition(DOM.svgs.projectAboutLine, DOM.links.aboutAboutLink);
     correctPosition(DOM.svgs.projectContactLine, DOM.links.contactContactLink);
     correctPosition(DOM.svgs.projectHomeLine, DOM.links.homeProjectLink);
+    correctPosition(DOM.svgs.projectTechnologiesLine, DOM.links.technologiesTechnologiesLink)
 }
 
 function correctPosition(line, link) {
@@ -58,21 +59,20 @@ function correctHorizontal(line, link){
 function correctVertical(line, link) {
     const distancePoint = getPoints(line, 2).y
     let moveValue = distancePoint + GetAbsolutePosition(line).top - GetAbsolutePosition(link).bot + 5;
-
     const points = {
         firstPoint: getPoints(line, 2),
         secondPoint: getPoints(line, 3)
     }
     if(moveValue > 0) {
-        console.log(points.firstPoint.y > line.getAttribute("viewBox").split(" ")[3], points.secondPoint.y, line.getAttribute("viewBox").split(" ")[3])
         points.firstPoint.y -= moveValue;
         points.secondPoint.y -= moveValue;
     } else {
-        modifyHeight(line, -moveValue);
+        if(points.firstPoint.y !== 0 && points.secondPoint.y !== 0) modifyHeight(line, -moveValue);
         points.firstPoint.y += -moveValue;
         points.secondPoint.y += -moveValue;
-    }
+    }   
 }
+
 
 function getPoints(line, point = 1) {
     return line.firstElementChild.points[line.firstElementChild.points.length - point];

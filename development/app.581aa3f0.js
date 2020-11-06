@@ -2003,7 +2003,8 @@ var _default = {
     aboutTechnologiesLine: document.getElementById("leading-line-about2"),
     projectAboutLine: document.getElementById("leading-line-project0"),
     projectContactLine: document.getElementById("leading-line-project3"),
-    projectHomeLine: document.getElementById("leading-line-project4")
+    projectHomeLine: document.getElementById("leading-line-project4"),
+    projectTechnologiesLine: document.getElementById("leading-line-project2")
   },
   pages: {
     contactPage: document.getElementById("contact-page"),
@@ -3686,6 +3687,7 @@ var _default = function _default() {
   correctPosition(_DOMelements.default.svgs.projectAboutLine, _DOMelements.default.links.aboutAboutLink);
   correctPosition(_DOMelements.default.svgs.projectContactLine, _DOMelements.default.links.contactContactLink);
   correctPosition(_DOMelements.default.svgs.projectHomeLine, _DOMelements.default.links.homeProjectLink);
+  correctPosition(_DOMelements.default.svgs.projectTechnologiesLine, _DOMelements.default.links.technologiesTechnologiesLink);
 };
 
 exports.default = _default;
@@ -3730,11 +3732,10 @@ function correctVertical(line, link) {
   };
 
   if (moveValue > 0) {
-    console.log(points.firstPoint.y > line.getAttribute("viewBox").split(" ")[3], points.secondPoint.y, line.getAttribute("viewBox").split(" ")[3]);
     points.firstPoint.y -= moveValue;
     points.secondPoint.y -= moveValue;
   } else {
-    modifyHeight(line, -moveValue);
+    if (points.firstPoint.y !== 0 && points.secondPoint.y !== 0) modifyHeight(line, -moveValue);
     points.firstPoint.y += -moveValue;
     points.secondPoint.y += -moveValue;
   }
@@ -3893,7 +3894,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43905" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "32935" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
