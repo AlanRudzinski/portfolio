@@ -402,16 +402,16 @@ a {
 }
 
 #leading-line-technology1 polyline {
-  stroke-dasharray: 6000;
-  stroke-dashoffset: 6000;
+  stroke-dasharray: 7000;
+  stroke-dashoffset: 7000;
 }
 
-#leading-line-technology2 polyline {
+#leading-line-technology3 polyline {
   stroke-dasharray: 4300;
   stroke-dashoffset: 4300;
 }
 
-#leading-line-technology3 polyline {
+#leading-line-technology4 polyline {
   stroke-dasharray: 4300;
   stroke-dashoffset: 4300;
 }
@@ -452,9 +452,24 @@ a {
   z-index: -1;
 }
 
-#leading-line-about3 polyline {
+#leading-line-about1 polyline {
   stroke-dasharray: 4300;
   stroke-dashoffset: 4300;
+}
+
+#leading-line-about2 polyline {
+  stroke-dasharray: 6300;
+  stroke-dashoffset: 6300;
+}
+
+#leading-line-about3 polyline {
+  stroke-dasharray: 8300;
+  stroke-dashoffset: 8300;
+}
+
+#leading-line-about4 polyline {
+  stroke-dasharray: 3300;
+  stroke-dashoffset: 3300;
 }
 
 #leading-line-project0 {
@@ -491,6 +506,26 @@ a {
   left: 95%;
   bottom: 20%;
   z-index: -1;
+}
+
+#leading-line-project0 polyline {
+  stroke-dasharray: 4500;
+  stroke-dashoffset: 4500;
+}
+
+#leading-line-project2 polyline {
+  stroke-dasharray: 6500;
+  stroke-dashoffset: 6500;
+}
+
+#leading-line-project3 polyline {
+  stroke-dasharray: 6500;
+  stroke-dashoffset: 6500;
+}
+
+#leading-line-project4 polyline {
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
 }
 
 /*# sourceMappingURL=/app.581aa3f0.css.map */

@@ -24,7 +24,7 @@ export default () => {
     correctPosition(DOM.svgs.projectAboutLine, DOM.links.aboutAboutLink);
     correctPosition(DOM.svgs.projectContactLine, DOM.links.contactContactLink);
     correctPosition(DOM.svgs.projectHomeLine, DOM.links.homeProjectLink);
-    correctPosition(DOM.svgs.projectTechnologiesLine, DOM.links.technologiesTechnologiesLink)
+    correctPosition(DOM.svgs.projectTechnologiesLine, DOM.links.technologiesTechnologiesLink);
 }
 
 function correctPosition(line, link) {
@@ -48,7 +48,9 @@ function correctHorizontal(line, link){
             points.firstPoint.x += linkWidth;
             points.secondPoint.x += linkWidth;
         } else {
-            getPoints(line, line.firstElementChild.points.length).x += moveValue;
+          if(getPoints(line, line.firstElementChild.points.length).x + moveValue <= line.getAttribute("viewBox").split(" ")[2]){
+            getPoints(line, line.firstElementChild.points.length).x += moveValue;  
+          } 
         }
     } else {
         modifyWidth(line, -moveValue);

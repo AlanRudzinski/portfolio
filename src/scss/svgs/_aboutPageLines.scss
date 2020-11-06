@@ -34,8 +34,23 @@
     z-index: -1;
 }
 
-#leading-line-about3 polyline {
+#leading-line-about1 polyline {
     stroke-dasharray: 4300;
     stroke-dashoffset: 4300;
+}
+
+#leading-line-about2 polyline {
+    stroke-dasharray: 6300;
+    stroke-dashoffset: 6300;
+}
+
+#leading-line-about3 polyline {
+    stroke-dasharray: 8300;
+    stroke-dashoffset: 8300;
+}
+
+#leading-line-about4 polyline {
+    stroke-dasharray: 3300;
+    stroke-dashoffset: 3300;
 }
 

@@ -3715,7 +3715,9 @@ function correctHorizontal(line, link) {
       points.firstPoint.x += linkWidth;
       points.secondPoint.x += linkWidth;
     } else {
-      getPoints(line, line.firstElementChild.points.length).x += moveValue;
+      if (getPoints(line, line.firstElementChild.points.length).x + moveValue <= line.getAttribute("viewBox").split(" ")[2]) {
+        getPoints(line, line.firstElementChild.points.length).x += moveValue;
+      }
     }
   } else {
     modifyWidth(line, -moveValue);
@@ -3894,7 +3896,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "32935" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44891" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
