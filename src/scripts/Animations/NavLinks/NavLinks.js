@@ -17,3 +17,8 @@ function animateLeadingLine(target) {
         AnimateLine(DOM.svgs.homeContactLine, 3800, 4000).play();
     }
 }
+
+// todo: skrypt ktory bierze svg na podstawie linka
+// eventlisstener do kazdego linka na stronie
+
+// -> screen follow

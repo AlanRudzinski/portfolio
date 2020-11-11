@@ -2059,7 +2059,9 @@ function animateLeadingLine(target) {
   } else if (target[target.length - 1] === '3') {
     (0, _AnimateLine.default)(_DOMelements.default.svgs.homeContactLine, 3800, 4000).play();
   }
-}
+} // todo: skrypt ktory bierze svg na podstawie linka
+// eventlisstener do kazdego linka na stronie
+// -> screen follow
 },{"./AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js","../../commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/scripts/CenterView.js":[function(require,module,exports) {
 "use strict";
 
@@ -3573,19 +3575,10 @@ var _default = function _default() {
   function onRouteChanged() {
     var hashLocation = document.getElementById((window.location.hash + '-page').slice(1));
 
-    if (window.location.hash === '#technology') {
-      (0, _AnimateScreenFollow.default)(hashLocation, 3200, {
-        element: _DOMelements.default.svgs.homeTechnologyLine,
-        break: 2
-      });
-    } else if (window.location.hash === '#project') {
-      (0, _AnimateScreenFollow.default)(hashLocation, 3000, {
-        element: _DOMelements.default.svgs.homeProjectLine,
-        break: 1
-      });
-    } else {
-      (0, _AnimateScreenFollow.default)(hashLocation);
-    }
+    if (window.location.hash === '#technology') {//  AnimateScreenFollow(hashLocation, 3200, {element: DOM.svgs.homeTechnologyLine, break: 2});
+    } else if (window.location.hash === '#project') {// AnimateScreenFollow(hashLocation, 3000, {element: DOM.svgs.homeProjectLine, break: 1})
+    } else {// AnimateScreenFollow(hashLocation)
+      }
   }
 
   window.addEventListener('hashchange', onRouteChanged);
@@ -3896,7 +3889,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44891" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46799" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
