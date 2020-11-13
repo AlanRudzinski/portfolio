@@ -4,7 +4,7 @@
     position: absolute;
     right: 95%;
     bottom: 18%;
-    z-index: 20;
+    z-index: -1;
 }
 
 #leading-line-contact1 {
@@ -42,8 +42,8 @@
 }
 
 #leading-line-contact1 polyline {
-    stroke-dasharray: 4300;
-    stroke-dashoffset: 4300;
+    stroke-dasharray: 5700;
+    stroke-dashoffset: 5700;
 }
 
 #leading-line-contact2 polyline {

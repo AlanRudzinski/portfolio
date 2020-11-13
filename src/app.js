@@ -17,7 +17,6 @@ const app = () => {
     LogoAnimations('.navigation__underline', '.navigation__cover', 900);
     NavItemAnimations();
     NavLinks();
-
     correctPosition();
 }
 

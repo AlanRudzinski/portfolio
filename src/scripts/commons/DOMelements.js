@@ -1,6 +1,7 @@
 export default  {
     body: document.querySelector('body'),
-    navItemLinks: document.querySelectorAll('.navigation__list__item-link'),
+    //navItemLinks: document.querySelectorAll('.navigation__list__item-link'),
+    allNavLinks: document.querySelectorAll('.navLink'),
     svgs: {
         homeAboutLine: document.getElementById("leading-line0"),
         homeProjectLine: document.getElementById("leading-line1"),
