@@ -3530,22 +3530,15 @@ var _default = function _default(element) {
   var scrollElement = window.document.scrollingElement || window.document.body || window.document.documentElement;
   var top = element.getBoundingClientRect().top;
   var left = element.getBoundingClientRect().left;
-  var frames = [];
-
-  if (breakpoint) {
-    var points = breakpoint.element.firstElementChild.points;
-    var scrollDirection = points[breakpoint.break].x - points[breakpoint.break - 1].x === 0 ? 'y' : 'x';
-
-    if (scrollDirection === 'x') {
-      frames.push({
-        scrollLeft: window.scrollX + points[breakpoint.break].x - points[breakpoint.break - 1].x
-      });
-    } else {
-      frames.push({
-        scrollTop: window.scrollY + points[breakpoint.break].y - points[breakpoint.break - 1].y
-      });
-    }
-  }
+  var frames = []; // if(breakpoint) {
+  //     const points = breakpoint.element.firstElementChild.points;
+  //     const scrollDirection = (points[breakpoint.break].x - points[breakpoint.break-1].x) === 0 ? 'y':'x';
+  //     if(scrollDirection === 'x'){
+  //         frames.push({scrollLeft:(window.scrollX + points[breakpoint.break].x - points[breakpoint.break-1].x)})
+  //     } else {
+  //         frames.push({scrollTop:(window.scrollY + points[breakpoint.break].y - points[breakpoint.break-1].y)})
+  //     }
+  // }
 
   frames.push({
     scrollTop: top + window.scrollY,
@@ -3578,20 +3571,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = function _default() {
   function onRouteChanged() {
     var hashLocation = document.getElementById((window.location.hash + '-page').slice(1));
-
-    if (window.location.hash === '#technology') {
-      (0, _AnimateScreenFollow.default)(hashLocation, 3200, {
-        element: _DOMelements.default.svgs.homeTechnologyLine,
-        break: 2
-      });
-    } else if (window.location.hash === '#project') {
-      (0, _AnimateScreenFollow.default)(hashLocation, 3000, {
-        element: _DOMelements.default.svgs.homeProjectLine,
-        break: 1
-      });
-    } else {
-      (0, _AnimateScreenFollow.default)(hashLocation);
-    }
+    (0, _AnimateScreenFollow.default)(hashLocation); // if(window.location.hash === '#technology'){
+    //    AnimateScreenFollow(hashLocation, 3200, {element: DOM.svgs.homeTechnologyLine, break: 2});
+    // }else if(window.location.hash === '#project') {
+    //    AnimateScreenFollow(hashLocation, 3000, {element: DOM.svgs.homeProjectLine, break: 1})
+    // } else {
+    //     AnimateScreenFollow(hashLocation)
+    // }
   }
 
   window.addEventListener('hashchange', onRouteChanged);
@@ -3902,7 +3888,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33055" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39611" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
