@@ -1962,7 +1962,9 @@ var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = function _default(element, lineOffset, duration) {
+var _default = function _default(element, lineOffset) {
+  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 4000;
+  console.log(element, lineOffset, duration);
   var lineAnimation = (0, _animeEs.default)({
     targets: element.firstElementChild,
     strokeDashoffset: [_animeEs.default.setDashoffset, -lineOffset],
@@ -2042,7 +2044,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = function _default() {
   _DOMelements.default.navItemLinks.forEach(function (el) {
     return el.addEventListener('click', function (e) {
-      return animateLeadingLine(e.target.id);
+      return animateLeadingLine(e.target);
     });
   });
 };
@@ -2050,17 +2052,18 @@ var _default = function _default() {
 exports.default = _default;
 
 function animateLeadingLine(target) {
-  if (target[target.length - 1] === '0') {
-    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeAboutLine, 4300, 5000).play();
-  } else if (target[target.length - 1] === '1') {
-    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeProjectLine, 2400, 4000).play();
-  } else if (target[target.length - 1] === '2') {
-    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeTechnologyLine, 5300, 4000).play();
-  } else if (target[target.length - 1] === '3') {
-    (0, _AnimateLine.default)(_DOMelements.default.svgs.homeContactLine, 3800, 4000).play();
+  (0, _AnimateLine.default)(getLinksSVG(target), window.getComputedStyle(getLinksSVG(target).firstElementChild).strokeDashoffset.slice(0, -2)).play();
+}
+
+function getLinksSVG(link) {
+  var siblingElement = link.nextElementSibling;
+
+  while (siblingElement !== null && siblingElement.tagName !== "svg") {
+    siblingElement = siblingElement.nextElementSibling;
   }
-} // todo: skrypt ktory bierze svg na podstawie linka
-// eventlisstener do kazdego linka na stronie
+
+  return siblingElement;
+} // eventlisstener do kazdego linka na stronie
 // -> screen follow
 },{"./AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js","../../commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/scripts/CenterView.js":[function(require,module,exports) {
 "use strict";
@@ -3889,7 +3892,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46799" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43045" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
