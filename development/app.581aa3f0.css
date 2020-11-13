@@ -10,6 +10,7 @@ body {
   background: #1d1d1b;
   height: 700vh;
   width: 700vw;
+  overflow: hidden;
 }
 
 section {
@@ -41,6 +42,13 @@ svg {
 
 .project-page__navigation__list__item {
   position: relative;
+}
+
+.lorem {
+  color: tomato;
+  width: 80%;
+  margin-top: 15vh;
+  margin-left: 10%;
 }
 
 .main-page {
