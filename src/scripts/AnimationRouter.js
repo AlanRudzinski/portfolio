@@ -9,7 +9,7 @@ export default () => {
         }else if(window.location.hash === '#project') {
            AnimateScreenFollow(hashLocation, 3000, {element: DOM.svgs.homeProjectLine, break: 1})
         } else {
-           AnimateScreenFollow(hashLocation)
+            AnimateScreenFollow(hashLocation)
         }
     }
 
