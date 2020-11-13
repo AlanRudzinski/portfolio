@@ -1962,12 +1962,12 @@ var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = function _default(element, lineOffset) {
-  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 4000;
-  console.log(element, lineOffset, duration);
+var _default = function _default(element) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 4000;
+  var strokeDashoffset = window.getComputedStyle(element.firstElementChild).strokeDasharray.slice(0, -2);
   var lineAnimation = (0, _animeEs.default)({
     targets: element.firstElementChild,
-    strokeDashoffset: [_animeEs.default.setDashoffset, -lineOffset],
+    strokeDashoffset: [_animeEs.default.setDashoffset, -strokeDashoffset],
     duration: duration,
     easing: 'easeInQuart',
     autoplay: false
@@ -1985,7 +1985,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _default = {
   body: document.querySelector('body'),
-  navItemLinks: document.querySelectorAll('.navigation__list__item-link'),
+  //navItemLinks: document.querySelectorAll('.navigation__list__item-link'),
+  allNavLinks: document.querySelectorAll('.navLink'),
   svgs: {
     homeAboutLine: document.getElementById("leading-line0"),
     homeProjectLine: document.getElementById("leading-line1"),
@@ -2042,7 +2043,7 @@ var _DOMelements = _interopRequireDefault(require("../../commons/DOMelements"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default() {
-  _DOMelements.default.navItemLinks.forEach(function (el) {
+  _DOMelements.default.allNavLinks.forEach(function (el) {
     return el.addEventListener('click', function (e) {
       return animateLeadingLine(e.target);
     });
@@ -2052,7 +2053,8 @@ var _default = function _default() {
 exports.default = _default;
 
 function animateLeadingLine(target) {
-  (0, _AnimateLine.default)(getLinksSVG(target), window.getComputedStyle(getLinksSVG(target).firstElementChild).strokeDashoffset.slice(0, -2)).play();
+  var animation = (0, _AnimateLine.default)(getLinksSVG(target));
+  animation.play();
 }
 
 function getLinksSVG(link) {
@@ -2063,8 +2065,7 @@ function getLinksSVG(link) {
   }
 
   return siblingElement;
-} // eventlisstener do kazdego linka na stronie
-// -> screen follow
+}
 },{"./AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js","../../commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/scripts/CenterView.js":[function(require,module,exports) {
 "use strict";
 
@@ -3578,10 +3579,19 @@ var _default = function _default() {
   function onRouteChanged() {
     var hashLocation = document.getElementById((window.location.hash + '-page').slice(1));
 
-    if (window.location.hash === '#technology') {//  AnimateScreenFollow(hashLocation, 3200, {element: DOM.svgs.homeTechnologyLine, break: 2});
-    } else if (window.location.hash === '#project') {// AnimateScreenFollow(hashLocation, 3000, {element: DOM.svgs.homeProjectLine, break: 1})
-    } else {// AnimateScreenFollow(hashLocation)
-      }
+    if (window.location.hash === '#technology') {
+      (0, _AnimateScreenFollow.default)(hashLocation, 3200, {
+        element: _DOMelements.default.svgs.homeTechnologyLine,
+        break: 2
+      });
+    } else if (window.location.hash === '#project') {
+      (0, _AnimateScreenFollow.default)(hashLocation, 3000, {
+        element: _DOMelements.default.svgs.homeProjectLine,
+        break: 1
+      });
+    } else {
+      (0, _AnimateScreenFollow.default)(hashLocation);
+    }
   }
 
   window.addEventListener('hashchange', onRouteChanged);
@@ -3892,7 +3902,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43045" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33721" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

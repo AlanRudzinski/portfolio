@@ -2,15 +2,14 @@ import AnimateLine from './AnimateLine';
 import DOM from '../../commons/DOMelements';
 
 export default () => {
-    DOM.navItemLinks.forEach(el => el.addEventListener('click', (e) => animateLeadingLine(e.target)));
+    DOM.allNavLinks.forEach(el => el.addEventListener('click', (e) => animateLeadingLine(e.target)));
 }
 
-
 function animateLeadingLine(target) {
-    AnimateLine(
+    const animation = AnimateLine(
         getLinksSVG(target), 
-        window.getComputedStyle(getLinksSVG(target).firstElementChild).strokeDashoffset.slice(0, -2)
-        ).play()
+        );
+    animation.play()
 }
 
 function getLinksSVG(link) {
@@ -20,7 +19,3 @@ function getLinksSVG(link) {
     }
     return siblingElement
 }
-
-// eventlisstener do kazdego linka na stronie
-
-// -> screen follow

@@ -1,13 +1,14 @@
 import anime from 'animejs/lib/anime.es.js';
 
-export default (element, lineOffset, duration = 4000) => {
-    console.log(element, lineOffset, duration )
+export default (element, duration = 4000) => {
+    const strokeDashoffset = window.getComputedStyle(element.firstElementChild).strokeDasharray.slice(0, -2)
     const lineAnimation = anime({
         targets: element.firstElementChild,
-        strokeDashoffset: [anime.setDashoffset, -lineOffset],
+        strokeDashoffset: [anime.setDashoffset, -strokeDashoffset],
         duration: duration,
         easing: 'easeInQuart',
-        autoplay: false
+        autoplay: false,
    })
+   
    return lineAnimation
 }
