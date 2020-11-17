@@ -12,9 +12,9 @@ import './scss/app.scss';
 const app = () => {
     CenterView();
     allPagesPosition();
-    AnimationRouter();
     LogoAnimations('.logo__underline', '.logo__cover', 0);
     LogoAnimations('.navigation__underline', '.navigation__cover', 900);
+    AnimationRouter();
     NavItemAnimations();
     NavLinks();
     correctPosition();

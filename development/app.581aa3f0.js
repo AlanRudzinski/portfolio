@@ -3524,27 +3524,21 @@ var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = function _default(element) {
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3000;
-  var breakpoint = arguments.length > 2 ? arguments[2] : undefined;
+var _default = function _default(element, currentHash) {
+  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 2900;
   var scrollElement = window.document.scrollingElement || window.document.body || window.document.documentElement;
   var top = element.getBoundingClientRect().top;
   var left = element.getBoundingClientRect().left;
-  var frames = []; // if(breakpoint) {
-  //     const points = breakpoint.element.firstElementChild.points;
-  //     const scrollDirection = (points[breakpoint.break].x - points[breakpoint.break-1].x) === 0 ? 'y':'x';
-  //     if(scrollDirection === 'x'){
-  //         frames.push({scrollLeft:(window.scrollX + points[breakpoint.break].x - points[breakpoint.break-1].x)})
-  //     } else {
-  //         frames.push({scrollTop:(window.scrollY + points[breakpoint.break].y - points[breakpoint.break-1].y)})
-  //     }
-  // }
-
-  frames.push({
+  var frames = [];
+  if (currentHash === '#main' && element.id === "technology-page") frames.push({
+    scrollLeft: left + window.scrollX
+  });
+  if (currentHash === '#about' && element.id === "project-page") console.log(currentHash);
+  if (currentHash === '#about') frames.push({
     scrollTop: top + window.scrollY,
     scrollLeft: left + window.scrollX
   });
-  viewAnimation = (0, _animeEs.default)({
+  var viewAnimation = (0, _animeEs.default)({
     targets: scrollElement,
     keyframes: frames,
     easing: 'easeInQuart',
@@ -3569,9 +3563,10 @@ var _DOMelements = _interopRequireDefault(require("./commons/DOMelements"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default() {
-  function onRouteChanged() {
-    var hashLocation = document.getElementById((window.location.hash + '-page').slice(1));
-    (0, _AnimateScreenFollow.default)(hashLocation); // if(window.location.hash === '#technology'){
+  function onRouteChanged(e) {
+    var currentHash = e.oldURL.slice(e.oldURL.lastIndexOf("#"));
+    var nextHashLocation = document.getElementById((window.location.hash + '-page').slice(1));
+    (0, _AnimateScreenFollow.default)(nextHashLocation, currentHash); // if(window.location.hash === '#technology'){
     //    AnimateScreenFollow(hashLocation, 3200, {element: DOM.svgs.homeTechnologyLine, break: 2});
     // }else if(window.location.hash === '#project') {
     //    AnimateScreenFollow(hashLocation, 3000, {element: DOM.svgs.homeProjectLine, break: 1})
@@ -3580,7 +3575,9 @@ var _default = function _default() {
     // }
   }
 
-  window.addEventListener('hashchange', onRouteChanged);
+  window.addEventListener('hashchange', function (e) {
+    return onRouteChanged(e);
+  });
 };
 
 exports.default = _default;
@@ -3851,9 +3848,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = function app() {
   (0, _CenterView.default)();
   (0, _allPagesPosition.default)();
-  (0, _AnimationRouter.default)();
   (0, _LogoAnimations.default)('.logo__underline', '.logo__cover', 0);
   (0, _LogoAnimations.default)('.navigation__underline', '.navigation__cover', 900);
+  (0, _AnimationRouter.default)();
   (0, _NavItemsAnimations.default)();
   (0, _NavLinks.default)();
   (0, _correctPosition.default)();
@@ -3888,7 +3885,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42245" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35823" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

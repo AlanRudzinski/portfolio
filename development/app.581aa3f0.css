@@ -10,7 +10,6 @@ body {
   background: #1d1d1b;
   height: 700vh;
   width: 700vw;
-  overflow: hidden;
 }
 
 section {
@@ -302,8 +301,8 @@ svg {
 }
 
 #leading-line1 polyline {
-  stroke-dasharray: 2400;
-  stroke-dashoffset: 2400;
+  stroke-dasharray: 2448;
+  stroke-dashoffset: 2448;
 }
 
 #leading-line2 polyline {
@@ -358,8 +357,8 @@ svg {
 }
 
 #leading-line-contact1 polyline {
-  stroke-dasharray: 5700;
-  stroke-dashoffset: 5700;
+  stroke-dasharray: 5718;
+  stroke-dashoffset: 5718;
 }
 
 #leading-line-contact2 polyline {
@@ -414,8 +413,8 @@ svg {
 }
 
 #leading-line-technology1 polyline {
-  stroke-dasharray: 6700;
-  stroke-dashoffset: 6700;
+  stroke-dasharray: 6740;
+  stroke-dashoffset: 6740;
 }
 
 #leading-line-technology3 polyline {
