@@ -8,10 +8,12 @@ export default (element, currentHash, duration = 2900) => {
 
     if(currentHash === '#main' && element.id === "technology-page") frames.push({ scrollLeft: (left + window.scrollX)})
 
-    if(currentHash === '#about' && element.id === "project-page") console.log(currentHash)
+    if(currentHash === '#about') {
+        if(element.id === "project-page") console.log('project')
+        if(element.id === "technology-page") console.log('technology')
+        if(element.id === "contact-page") console.log('contact')
+    }
     
-    if(currentHash === '#about')
-
     frames.push({
             scrollTop: (top + window.scrollY),
             scrollLeft: (left + window.scrollX),})

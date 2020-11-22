@@ -3487,7 +3487,8 @@ var _default = function _default(leadingLine, pageToMove, link, leftPosition, bo
   var moveLeft = leftPosition ? (0, _GetAbsolutePosition.default)(leadingLine).left - (0, _GetAbsolutePosition.default)(link).left : (0, _GetAbsolutePosition.default)(leadingLine).left - (0, _GetAbsolutePosition.default)(link).left + leadingLineRect.width - link.getBoundingClientRect().width;
   pageToMove.style.top = "".concat(moveTop, "px");
   pageToMove.style.left = "".concat(moveLeft, "px");
-};
+}; // todo: za nisko jak wjezdza
+
 
 exports.default = _default;
 },{"../commons/GetAbsolutePosition":"../src/scripts/commons/GetAbsolutePosition.js","../commons/GetLengthLastLine":"../src/scripts/commons/GetLengthLastLine.js"}],"../src/scripts/pagePositioning/allPagesPosition.js":[function(require,module,exports) {
@@ -3533,8 +3534,14 @@ var _default = function _default(element, currentHash) {
   if (currentHash === '#main' && element.id === "technology-page") frames.push({
     scrollLeft: left + window.scrollX
   });
-  if (currentHash === '#about' && element.id === "project-page") console.log(currentHash);
-  if (currentHash === '#about') frames.push({
+
+  if (currentHash === '#about') {
+    if (element.id === "project-page") console.log('project');
+    if (element.id === "technology-page") console.log('technology');
+    if (element.id === "contact-page") console.log('contact');
+  }
+
+  frames.push({
     scrollTop: top + window.scrollY,
     scrollLeft: left + window.scrollX
   });
@@ -3885,7 +3892,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35823" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33005" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

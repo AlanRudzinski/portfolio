@@ -5,11 +5,28 @@
   text-decoration: none;
   list-style: none;
 }
+* {
+  font-size: 16px;
+}
+@media screen and (min-width: 360px) {
+  * {
+    font-size: calc(16px + 8 * ((100vw - 360px) / 1540));
+  }
+}
+@media screen and (min-width: 1900px) {
+  * {
+    font-size: 24px;
+  }
+}
 
 body {
   background: #1d1d1b;
-  height: 700vh;
-  width: 700vw;
+  height: 2000vh;
+  width: 2000vw;
+}
+
+h1 {
+  font-size: 3.5rem;
 }
 
 section {
@@ -54,7 +71,7 @@ svg {
   background-color: #1d1d1b;
   height: 100vh;
   width: 100vw;
-  transform: translateX(300vw) translateY(300vh);
+  transform: translateX(950vw) translateY(950vh);
 }
 .main-page__container {
   height: 100%;
@@ -73,7 +90,6 @@ svg {
   color: tomato;
   background-color: #1d1d1b;
   line-height: 4rem;
-  font-size: 3.5rem;
   z-index: 20;
   position: relative;
 }
@@ -123,7 +139,6 @@ svg {
   width: 50vw;
   justify-content: space-between;
   margin-top: 3rem;
-  font-size: 1.5rem;
   font-family: "Tomorrow", sans-serif;
 }
 .navigation__list__item {
@@ -150,6 +165,102 @@ svg {
   transform: translateY(200vh) translateX(400vw);
 }
 
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-text {
+  color: tomato;
+  width: 100%;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  width: 50%;
+  max-width: 800px;
+  border: 1px solid tomato;
+  border-radius: 1rem;
+}
+.contact-form label {
+  position: absolute;
+  top: calc(50% - .5rem);
+  bottom: 0;
+  left: 5px;
+  width: 100%;
+  transition: 0.2s;
+  z-index: 0;
+  color: tomato;
+  cursor: text;
+}
+.contact-form input, .contact-form textarea {
+  position: relative;
+  font: 1rem sans-serif;
+  width: 300px;
+  height: 64px;
+  background-color: transparent;
+  border: 1px solid tomato;
+  color: tomato;
+  z-index: 1;
+}
+.contact-form input:valid + label, .contact-form textarea:valid + label {
+  top: 0;
+  font-size: 0.7rem;
+  z-index: 2;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  border-bottom: 3px solid tomato;
+}
+.contact-form input:focus + label, .contact-form textarea:focus + label {
+  top: 0;
+  font-size: 0.7rem;
+  z-index: 2;
+}
+.contact-form textarea {
+  vertical-align: top;
+  height: 5rem;
+  padding-top: 1rem;
+}
+
+.form-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form-list li {
+  margin-top: 0.5rem;
+  position: relative;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+}
+.form-button button {
+  background-color: transparent;
+  padding: 0.5rem;
+  color: tomato;
+  border: 1px solid tomato;
+}
+.form-button button:hover {
+  background-color: rgba(255, 99, 71, 0.5);
+  cursor: pointer;
+}
+
+.social-link {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 .contact-page__navigation {
   margin-top: 0;
   margin-left: 0;
@@ -161,7 +272,6 @@ svg {
   justify-content: space-around;
   align-items: flex-end;
   margin-top: 1rem;
-  font-size: 1.5rem;
   font-family: "Tomorrow", sans-serif;
 }
 .contact-page__navigation__list__item-link {
@@ -183,7 +293,6 @@ svg {
   justify-content: space-around;
   align-items: flex-end;
   margin-top: 1rem;
-  font-size: 1.5rem;
   font-family: "Tomorrow", sans-serif;
 }
 .about-page__navigation__list__item-link {
@@ -201,6 +310,24 @@ svg {
   transform: translateY(200vh);
 }
 
+.about-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 40px 150px;
+  line-height: 1.5rem;
+}
+
+.profilePic {
+  height: 75vh;
+  border-radius: 10%;
+}
+
+.about-technologies {
+  display: flex;
+  flex-direction: column;
+}
+
 .project-page__navigation {
   margin-top: 0;
   margin-left: 0;
@@ -212,7 +339,6 @@ svg {
   justify-content: space-around;
   align-items: flex-end;
   margin-top: 1rem;
-  font-size: 1.5rem;
   font-family: "Tomorrow", sans-serif;
 }
 .project-page__navigation__list__item-link {
@@ -241,7 +367,6 @@ svg {
   justify-content: space-around;
   align-items: flex-end;
   margin-top: 1rem;
-  font-size: 1.5rem;
   font-family: "Tomorrow", sans-serif;
 }
 .technology-page__navigation__list__item-link {
@@ -306,13 +431,13 @@ svg {
 }
 
 #leading-line2 polyline {
-  stroke-dasharray: 5200;
-  stroke-dashoffset: 5200;
+  stroke-dasharray: 5236;
+  stroke-dashoffset: 5236;
 }
 
 #leading-line3 polyline {
-  stroke-dasharray: 3800;
-  stroke-dashoffset: 3800;
+  stroke-dasharray: 3832;
+  stroke-dashoffset: 3832;
 }
 
 #leading-line-contact0 {
@@ -352,8 +477,8 @@ svg {
 }
 
 #leading-line-contact0 polyline {
-  stroke-dasharray: 7900;
-  stroke-dashoffset: 7900;
+  stroke-dasharray: 7927;
+  stroke-dashoffset: 7927;
 }
 
 #leading-line-contact1 polyline {
@@ -362,8 +487,8 @@ svg {
 }
 
 #leading-line-contact2 polyline {
-  stroke-dasharray: 3600;
-  stroke-dashoffset: 3600;
+  stroke-dasharray: 3773;
+  stroke-dashoffset: 3773;
 }
 
 #leading-line-contact4 polyline {
@@ -520,13 +645,13 @@ svg {
 }
 
 #leading-line-project0 polyline {
-  stroke-dasharray: 3600;
-  stroke-dashoffset: 3600;
+  stroke-dasharray: 3919;
+  stroke-dashoffset: 3919;
 }
 
 #leading-line-project2 polyline {
-  stroke-dasharray: 6200;
-  stroke-dashoffset: 6200;
+  stroke-dasharray: 6278;
+  stroke-dashoffset: 6278;
 }
 
 #leading-line-project3 polyline {

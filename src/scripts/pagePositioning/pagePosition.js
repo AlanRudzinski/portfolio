@@ -30,3 +30,5 @@ export default (leadingLine, pageToMove, link, leftPosition, bottomPosition) => 
     pageToMove.style.top = `${moveTop}px`;
     pageToMove.style.left = `${moveLeft}px`;
 }
+
+// todo: za nisko jak wjezdza
