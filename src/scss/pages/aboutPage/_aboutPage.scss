@@ -4,3 +4,21 @@
     position: absolute;
     transform: translateY(200vh);
 }
+
+.about-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 40px 150px;
+    line-height: 1.5rem;
+}
+
+.profilePic {
+    height: 75vh;
+    border-radius: 10%;
+}
+
+.about-technologies {
+    display: flex;
+    flex-direction: column;
+}

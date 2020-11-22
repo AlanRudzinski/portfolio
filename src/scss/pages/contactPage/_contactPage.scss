@@ -4,3 +4,101 @@
     position: absolute;
     transform: translateY(200vh) translateX(400vw);
 }
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    width: 100%;
+    height: 100%;
+}
+
+.contact-text {
+    color: tomato;
+    width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    width: 50%;
+    max-width: 800px;
+    border: 1px solid tomato;
+    border-radius: 1rem;
+    & label {
+        position: absolute;
+        top: calc(50% - .5rem);
+        bottom: 0;
+        left: 5px;
+        width: 100%;
+        transition: .2s;
+        z-index: 0;
+        color: tomato;
+        cursor: text;
+    }
+    & input, textarea {
+        position: relative;
+        font: 1rem sans-serif;
+        width: 300px;
+        height: 64px;
+        background-color: transparent;
+        border: 1px solid tomato;
+        color: tomato;
+        z-index: 1;
+        &:valid {
+            & + label {
+                top: 0;
+                font-size: .7rem;
+                z-index: 2;
+            }
+        }
+        &:focus{
+            border-bottom: 3px solid tomato;
+            & + label {
+                top: 0;
+                font-size: .7rem;
+                z-index: 2;
+            }
+        }
+    }
+    & textarea {
+        vertical-align: top;
+        height: 5rem;
+        padding-top: 1rem;
+    }
+}
+
+.form-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.form-list li {
+    margin-top: .5rem;
+    position: relative;
+}
+
+.form-button {
+    display: flex;
+    justify-content: center;
+    & button {
+        background-color: transparent;
+        padding: .5rem;
+        color: tomato;
+        border: 1px solid tomato;
+        &:hover {
+            background-color: rgba(255,99,71 ,.5 );
+            cursor: pointer;
+        }
+    }
+}
+
+.social-link {
+    text-decoration: underline;
+    font-weight: bold;
+}
