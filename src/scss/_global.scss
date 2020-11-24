@@ -1,5 +1,7 @@
 @import 'mixins';
 
+
+$main-line: #ff5217;
 $main-grey: #1d1d1b;
 $global-height: 2000vh;
 $global-width: 2000vw;
@@ -30,6 +32,8 @@ h1 {
     font-size: 3.5rem;
 }
 
+
+
 section {
     width: 100vw;
     height: 100vh;
@@ -37,7 +41,7 @@ section {
 
 a {
     text-decoration: none;
-    color: tomato;
+    color: $main-line;
     position: relative;
 }
 

@@ -4,93 +4,95 @@
     position: absolute;
     transform: translateY(200vh) translateX(400vw);
 }
-
-.contact-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50px;
-    width: 100%;
-    height: 100%;
+.contact-wrapper {
+    width: 80%;
+    margin: 0 auto;
 }
 
-.contact-text {
-    color: tomato;
+.contact-content {
+    font-family: 'Play', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-top: 50px;
+    height: 100%;
     width: 100%;
-    margin-bottom: 50px;
-    text-align: center;
+}
+
+.text-svg-container {
+    width: 100%;
+    color: $main-line;
+    display: flex;
+    &__text {
+        width: 75%;
+    }
+
+    &__svg {
+        width: 25%;
+        border-left: 2px solid $main-line;
+        padding-left: 50px;
+        display: flex;
+        &__linkedin {
+            height: 4rem;
+            fill: $main-line;
+        }
+        &__mail {
+            height: 4.5rem;
+            fill: $main-line;
+            margin-right: 40px;
+        }
+    }
 }
 
 .contact-form {
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-    width: 50%;
-    max-width: 800px;
-    border: 1px solid tomato;
-    border-radius: 1rem;
-    & label {
-        position: absolute;
-        top: calc(50% - .5rem);
-        bottom: 0;
-        left: 5px;
-        width: 100%;
-        transition: .2s;
-        z-index: 0;
-        color: tomato;
-        cursor: text;
-    }
-    & input, textarea {
-        position: relative;
-        font: 1rem sans-serif;
-        width: 300px;
-        height: 64px;
-        background-color: transparent;
-        border: 1px solid tomato;
-        color: tomato;
-        z-index: 1;
-        &:valid {
-            & + label {
-                top: 0;
-                font-size: .7rem;
-                z-index: 2;
-            }
+    margin-top: 4rem;
+    width: 600px;
+    &__list li {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        color: $main-line;
+        & label {
+            width: 150px;
+            padding-top: 5px;
         }
-        &:focus{
-            border-bottom: 3px solid tomato;
-            & + label {
-                top: 0;
-                font-size: .7rem;
-                z-index: 2;
-            }
+        & input, textarea {
+            background-color: transparent;
+            width: 450px;
+            border: none;
+            min-height: 40px;
         }
-    }
-    & textarea {
-        vertical-align: top;
-        height: 5rem;
-        padding-top: 1rem;
+        & textarea {
+            min-height: 125px;
+        }
     }
 }
 
-.form-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+#name {
+    border-left: 2px $main-line solid;
+    border-bottom: 2px $main-line solid;
 }
 
-.form-list li {
-    margin-top: .5rem;
-    position: relative;
+#mail {
+    border-left: 2px $main-line solid;
+}
+
+#msg {
+    border-left: 2px $main-line solid;
+    border-top: 2px $main-line solid;
 }
 
 .form-button {
     display: flex;
-    justify-content: center;
+    justify-content: end;
     & button {
         background-color: transparent;
         padding: .5rem;
-        color: tomato;
-        border: 1px solid tomato;
+        color: $main-line;
+        border: 1px solid $main-line;
+        width: 450px;
+        margin: 0 0 0 auto;
+        text-align: left;
         &:hover {
             background-color: rgba(255,99,71 ,.5 );
             cursor: pointer;

@@ -36,7 +36,7 @@ section {
 
 a {
   text-decoration: none;
-  color: tomato;
+  color: #ff5217;
   position: relative;
 }
 
@@ -165,91 +165,95 @@ svg {
   transform: translateY(200vh) translateX(400vw);
 }
 
-.contact-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-  width: 100%;
-  height: 100%;
+.contact-wrapper {
+  width: 80%;
+  margin: 0 auto;
 }
 
-.contact-text {
-  color: tomato;
+.contact-content {
+  font-family: "Play", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-top: 50px;
+  height: 100%;
   width: 100%;
-  margin-bottom: 50px;
-  text-align: center;
+}
+
+.text-svg-container {
+  width: 100%;
+  color: #ff5217;
+  display: flex;
+}
+.text-svg-container__text {
+  width: 75%;
+}
+.text-svg-container__svg {
+  width: 25%;
+  border-left: 2px solid #ff5217;
+  padding-left: 50px;
+  display: flex;
+}
+.text-svg-container__svg__linkedin {
+  height: 4rem;
+  fill: #ff5217;
+}
+.text-svg-container__svg__mail {
+  height: 4.5rem;
+  fill: #ff5217;
+  margin-right: 40px;
 }
 
 .contact-form {
+  margin-top: 4rem;
+  width: 600px;
+}
+.contact-form__list li {
   display: flex;
-  justify-content: center;
-  padding: 1rem;
-  width: 50%;
-  max-width: 800px;
-  border: 1px solid tomato;
-  border-radius: 1rem;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  color: #ff5217;
 }
-.contact-form label {
-  position: absolute;
-  top: calc(50% - .5rem);
-  bottom: 0;
-  left: 5px;
-  width: 100%;
-  transition: 0.2s;
-  z-index: 0;
-  color: tomato;
-  cursor: text;
+.contact-form__list li label {
+  width: 150px;
+  padding-top: 5px;
 }
-.contact-form input, .contact-form textarea {
-  position: relative;
-  font: 1rem sans-serif;
-  width: 300px;
-  height: 64px;
+.contact-form__list li input, .contact-form__list li textarea {
   background-color: transparent;
-  border: 1px solid tomato;
-  color: tomato;
-  z-index: 1;
+  width: 450px;
+  border: none;
+  min-height: 40px;
 }
-.contact-form input:valid + label, .contact-form textarea:valid + label {
-  top: 0;
-  font-size: 0.7rem;
-  z-index: 2;
-}
-.contact-form input:focus, .contact-form textarea:focus {
-  border-bottom: 3px solid tomato;
-}
-.contact-form input:focus + label, .contact-form textarea:focus + label {
-  top: 0;
-  font-size: 0.7rem;
-  z-index: 2;
-}
-.contact-form textarea {
-  vertical-align: top;
-  height: 5rem;
-  padding-top: 1rem;
+.contact-form__list li textarea {
+  min-height: 125px;
 }
 
-.form-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+#name {
+  border-left: 2px #ff5217 solid;
+  border-bottom: 2px #ff5217 solid;
 }
 
-.form-list li {
-  margin-top: 0.5rem;
-  position: relative;
+#mail {
+  border-left: 2px #ff5217 solid;
+}
+
+#msg {
+  border-left: 2px #ff5217 solid;
+  border-top: 2px #ff5217 solid;
 }
 
 .form-button {
   display: flex;
-  justify-content: center;
+  justify-content: end;
 }
 .form-button button {
   background-color: transparent;
   padding: 0.5rem;
-  color: tomato;
-  border: 1px solid tomato;
+  color: #ff5217;
+  border: 1px solid #ff5217;
+  width: 450px;
+  margin: 0 0 0 auto;
+  text-align: left;
 }
 .form-button button:hover {
   background-color: rgba(255, 99, 71, 0.5);
@@ -269,7 +273,7 @@ svg {
   color: tomato;
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-end;
   margin-top: 1rem;
   font-family: "Tomorrow", sans-serif;
