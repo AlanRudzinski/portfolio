@@ -3,7 +3,7 @@
     &__text {
         font-family: 'Kumar One', cursive;
         text-align: center;
-        color: tomato;
+        color: $main-line;
         background-color: $main-grey;
         line-height: 4rem;
         z-index: 20;
@@ -12,7 +12,7 @@
     &__underline {
         min-height: 2px;
         width: 100vw;
-        background-color: tomato;
+        background-color: $main-line;
         position: absolute;
         top: 2.8rem;
         left: -29vw;
