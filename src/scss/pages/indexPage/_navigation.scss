@@ -3,7 +3,7 @@
     &__underline {
         min-height: 2px;
         width: 100vw;
-        background-color: tomato;
+        background-color: $main-line;
         position: absolute;
         bottom: 5px;
         left: -25vw;
@@ -19,7 +19,7 @@
         z-index: 20;
     }
     &__list {
-        color: tomato;
+        color: $main-line;
         display: flex;
         width: 50vw;
         justify-content: space-between;
@@ -38,7 +38,7 @@
                 bottom: -120vh;
                 width: 2px;
                 height: 0;
-                background-color: tomato;
+                background-color: $main-line;
             }
         }
     }
