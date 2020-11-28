@@ -8,9 +8,11 @@ $global-width: 2000vw;
 
 $min_width: 360px;
 $max_width: 1900px;
-$min_font: 16px;
-$max_font: 24px;
+$min_font_p: 12px;
+$max_font_p: 20px;
 
+$min_font_nav: 16px;
+$max_font_nav: 24px;
 
 * {
     box-sizing: border-box;
@@ -18,8 +20,16 @@ $max_font: 24px;
     margin: 0;
     text-decoration: none;
     list-style: none;
-    @include fluid-type($min_width, $max_width, $min_font, $max_font);
 }
+
+p {
+    @include fluid-type($min_width, $max_width, $min_font_p, $max_font_p);
+}
+
+nav {
+    @include fluid-type($min_width, $max_width, $min_font_nav, $max_font_nav);
+}
+
 
 body {
     background: $main-grey;
@@ -28,7 +38,7 @@ body {
     // overflow: hidden;
 }
 
-p {
+p, button, label, input {
     font-family: 'Play', sans-serif;
 }
 

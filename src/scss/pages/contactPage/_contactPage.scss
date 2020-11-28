@@ -13,12 +13,13 @@
     display: flex;
     flex-direction: column;
     align-items: left;
-    padding-top: 50px;
+    padding-top: 100px;
     height: 100%;
     width: 100%;
 }
 
 .text-svg-container {
+    height: 100px;
     width: 100%;
     color: $main-line;
     display: flex;
@@ -32,11 +33,11 @@
         padding-left: 50px;
         display: flex;
         &__linkedin {
-            height: 4rem;
+            height: 2.5rem;
             fill: $main-line;
         }
         &__mail {
-            height: 4.5rem;
+            height: 3rem;
             fill: $main-line;
             margin-right: 40px;
         }
@@ -56,13 +57,15 @@
             padding-top: 5px;
         }
         & input, textarea {
+            color: $main-line;
             background-color: transparent;
             width: 450px;
             border: none;
-            min-height: 40px;
+            height: 40px;
         }
         & textarea {
-            min-height: 125px;
+            height: 100px;
+            resize: none;
         }
     }
 }
@@ -93,7 +96,8 @@
         margin: 0 0 0 auto;
         text-align: left;
         &:hover {
-            background-color: rgba(255,99,71 ,.5 );
+            background-color: $main-line;
+            color: $main-grey;
             cursor: pointer;
         }
     }

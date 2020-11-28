@@ -5,16 +5,31 @@
   text-decoration: none;
   list-style: none;
 }
-* {
+
+p {
+  font-size: 12px;
+}
+@media screen and (min-width: 360px) {
+  p {
+    font-size: calc(12px + 8 * ((100vw - 360px) / 1540));
+  }
+}
+@media screen and (min-width: 1900px) {
+  p {
+    font-size: 20px;
+  }
+}
+
+nav {
   font-size: 16px;
 }
 @media screen and (min-width: 360px) {
-  * {
+  nav {
     font-size: calc(16px + 8 * ((100vw - 360px) / 1540));
   }
 }
 @media screen and (min-width: 1900px) {
-  * {
+  nav {
     font-size: 24px;
   }
 }
@@ -25,7 +40,7 @@ body {
   width: 2000vw;
 }
 
-p {
+p, button, label, input {
   font-family: "Play", sans-serif;
 }
 
@@ -178,12 +193,13 @@ svg {
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding-top: 50px;
+  padding-top: 100px;
   height: 100%;
   width: 100%;
 }
 
 .text-svg-container {
+  height: 100px;
   width: 100%;
   color: #ff5217;
   display: flex;
@@ -198,11 +214,11 @@ svg {
   display: flex;
 }
 .text-svg-container__svg__linkedin {
-  height: 4rem;
+  height: 2.5rem;
   fill: #ff5217;
 }
 .text-svg-container__svg__mail {
-  height: 4.5rem;
+  height: 3rem;
   fill: #ff5217;
   margin-right: 40px;
 }
@@ -222,13 +238,15 @@ svg {
   padding-top: 5px;
 }
 .contact-form__list li input, .contact-form__list li textarea {
+  color: #ff5217;
   background-color: transparent;
   width: 450px;
   border: none;
-  min-height: 40px;
+  height: 40px;
 }
 .contact-form__list li textarea {
-  min-height: 125px;
+  height: 100px;
+  resize: none;
 }
 
 #name {
@@ -259,7 +277,8 @@ svg {
   text-align: left;
 }
 .form-button button:hover {
-  background-color: rgba(255, 99, 71, 0.5);
+  background-color: #ff5217;
+  color: #1d1d1b;
   cursor: pointer;
 }
 
@@ -273,7 +292,7 @@ svg {
   margin-left: 0;
 }
 .contact-page__navigation__list {
-  color: tomato;
+  color: #ff5217;
   display: flex;
   width: 100%;
   justify-content: space-between;
