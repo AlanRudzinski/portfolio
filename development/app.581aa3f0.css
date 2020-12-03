@@ -79,13 +79,6 @@ svg {
   position: relative;
 }
 
-.lorem {
-  color: #ff5217;
-  width: 80%;
-  margin-top: 15vh;
-  margin-left: 10%;
-}
-
 .main-page {
   background-color: #1d1d1b;
   height: 100vh;
@@ -316,7 +309,7 @@ svg {
   color: #ff5217;
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-end;
   margin-top: 1rem;
   font-family: "Tomorrow", sans-serif;
@@ -336,11 +329,19 @@ svg {
   transform: translateY(200vh);
 }
 
+.about-wrapper {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
+
 .about-content {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  padding: 40px 150px;
+  height: calc(100% - 2.2rem);
   line-height: 1.5rem;
 }
 
@@ -349,9 +350,18 @@ svg {
   border-radius: 10%;
 }
 
-.about-technologies {
-  display: flex;
-  flex-direction: column;
+.portrait-container {
+  width: 45%;
+}
+
+.about-description {
+  color: #ff5217;
+  width: 55%;
+}
+
+#portrait {
+  height: 100%;
+  width: 100%;
 }
 
 .project-page__navigation {

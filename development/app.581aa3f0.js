@@ -1964,11 +1964,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _default = function _default(element) {
   var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 4000;
-  var strokeDashoffset = window.getComputedStyle(element.firstElementChild).strokeDasharray.slice(0, -2);
+  var delay = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  var reset = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+  if (element.tagName === 'svg') element = element.firstElementChild;
+  var strokeDashoffset = window.getComputedStyle(element).strokeDasharray.slice(0, -2);
   var lineAnimation = (0, _animeEs.default)({
-    targets: element.firstElementChild,
-    strokeDashoffset: [_animeEs.default.setDashoffset, -strokeDashoffset],
+    targets: element,
+    strokeDashoffset: [_animeEs.default.setDashoffset, reset ? -strokeDashoffset : 0],
     duration: duration,
+    delay: delay,
     easing: 'easeInQuart',
     autoplay: false
   });
@@ -2025,7 +2029,8 @@ var _default = {
     homeTechnologyLink: document.getElementById("main-link2"),
     homeAboutLink: document.getElementById("main-link0"),
     homeProjectLink: document.getElementById("main-link1")
-  }
+  },
+  portrait: document.getElementById("portrait")
 };
 exports.default = _default;
 },{}],"../src/scripts/Animations/NavLinks/NavLinks.js":[function(require,module,exports) {
@@ -3555,7 +3560,55 @@ var _default = function _default(element, currentHash) {
 };
 
 exports.default = _default;
-},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
+},{"animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js"}],"../src/scripts/Animations/PortraitAnimations.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _DOMelements = _interopRequireDefault(require("../commons/DOMelements"));
+
+var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
+
+var _AnimateLine = _interopRequireDefault(require("./NavLinks/AnimateLine"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function PortraitAnimations() {
+  //reset lines inside
+  var allChilds = _DOMelements.default.portrait.childNodes[1].childNodes;
+  var lines = resetDasharrayAndOffset(allChilds); //animate
+
+  lines.forEach(function (el) {
+    var animation = (0, _AnimateLine.default)(el, 1300, 3900, false);
+    console.log(animation);
+    animation.play();
+  }); // function AnimateInsideLines() {
+  //     anime({
+  //         target: DOM.portrait,
+  //     })
+  // }
+}
+
+function resetDasharrayAndOffset(arr) {
+  var lines = [];
+
+  for (var index = 0; index < arr.length; index++) {
+    if (arr[index] instanceof Element) lines.push(arr[index]);
+  }
+
+  lines.forEach(function (el) {
+    el.style.strokeDasharray = el.getTotalLength();
+    el.style.strokeDashoffset = el.getTotalLength();
+  });
+  return lines;
+}
+
+var _default = PortraitAnimations;
+exports.default = _default;
+},{"../commons/DOMelements":"../src/scripts/commons/DOMelements.js","animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js","./NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3567,19 +3620,16 @@ var _AnimateScreenFollow = _interopRequireDefault(require("./Animations/NavLinks
 
 var _DOMelements = _interopRequireDefault(require("./commons/DOMelements"));
 
+var _PortraitAnimations = _interopRequireDefault(require("./Animations/PortraitAnimations"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default() {
   function onRouteChanged(e) {
     var currentHash = e.oldURL.slice(e.oldURL.lastIndexOf("#"));
     var nextHashLocation = document.getElementById((window.location.hash + '-page').slice(1));
-    (0, _AnimateScreenFollow.default)(nextHashLocation, currentHash); // if(window.location.hash === '#technology'){
-    //    AnimateScreenFollow(hashLocation, 3200, {element: DOM.svgs.homeTechnologyLine, break: 2});
-    // }else if(window.location.hash === '#project') {
-    //    AnimateScreenFollow(hashLocation, 3000, {element: DOM.svgs.homeProjectLine, break: 1})
-    // } else {
-    //     AnimateScreenFollow(hashLocation)
-    // }
+    if (nextHashLocation === _DOMelements.default.pages.aboutPage) (0, _PortraitAnimations.default)();
+    (0, _AnimateScreenFollow.default)(nextHashLocation, currentHash);
   }
 
   window.addEventListener('hashchange', function (e) {
@@ -3588,7 +3638,7 @@ var _default = function _default() {
 };
 
 exports.default = _default;
-},{"./Animations/NavLinks/AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js","./commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../node_modules/core-js/library/modules/_string-ws.js":[function(require,module,exports) {
+},{"./Animations/NavLinks/AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js","./commons/DOMelements":"../src/scripts/commons/DOMelements.js","./Animations/PortraitAnimations":"../src/scripts/Animations/PortraitAnimations.js"}],"../node_modules/core-js/library/modules/_string-ws.js":[function(require,module,exports) {
 module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
   '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
@@ -3892,7 +3942,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43027" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44975" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

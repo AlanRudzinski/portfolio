@@ -40,5 +40,6 @@ export default  {
         homeTechnologyLink: document.getElementById("main-link2"),
         homeAboutLink: document.getElementById("main-link0"),
         homeProjectLink: document.getElementById("main-link1"),
-    }
+    },
+    portrait: document.getElementById("portrait"),
 }

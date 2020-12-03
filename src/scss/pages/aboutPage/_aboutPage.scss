@@ -5,11 +5,19 @@
     transform: translateY(200vh);
 }
 
+.about-wrapper {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+}
+
 .about-content {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding: 40px 150px;
+    height: calc(100% - 2.2rem);
     line-height: 1.5rem;
 }
 
@@ -18,7 +26,17 @@
     border-radius: 10%;
 }
 
-.about-technologies {
-    display: flex;
-    flex-direction: column;
+.portrait-container {
+    width: 45%;
 }
+
+.about-description {
+    color: $main-line;
+    width: 55%;
+}
+
+#portrait {
+    height: 100%;
+    width: 100%;
+}
+
