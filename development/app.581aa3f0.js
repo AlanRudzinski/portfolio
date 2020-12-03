@@ -3570,8 +3570,6 @@ exports.default = void 0;
 
 var _DOMelements = _interopRequireDefault(require("../commons/DOMelements"));
 
-var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
-
 var _AnimateLine = _interopRequireDefault(require("./NavLinks/AnimateLine"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -3608,7 +3606,7 @@ function resetDasharrayAndOffset(arr) {
 
 var _default = PortraitAnimations;
 exports.default = _default;
-},{"../commons/DOMelements":"../src/scripts/commons/DOMelements.js","animejs/lib/anime.es.js":"../node_modules/animejs/lib/anime.es.js","./NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
+},{"../commons/DOMelements":"../src/scripts/commons/DOMelements.js","./NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3942,7 +3940,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44975" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33229" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

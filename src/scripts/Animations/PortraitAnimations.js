@@ -1,6 +1,5 @@
 import DOM from '../commons/DOMelements'
 
-import anime from 'animejs/lib/anime.es.js';
 import AnimateLine from './NavLinks/AnimateLine';
 
 function PortraitAnimations() {
