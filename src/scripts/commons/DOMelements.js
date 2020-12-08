@@ -44,6 +44,7 @@ export default  {
     portrait: {
         portrait: document.getElementById("portrait"),
         leadingLines: {
+            leftLine: document.getElementById("portrait__line-left"),
             downLine: document.getElementById("portrait__line-down"),
             leftDownLine: document.getElementById("portrait__line-down-left"),
             leftTopLine: document.getElementById("portrait__line-top-left"),
@@ -51,6 +52,7 @@ export default  {
             rightDownLine: document.getElementById("portrait__line-down-right"),
         },
         description: document.getElementsByClassName("about-description")[0],
+        descriptionCover: document.getElementsByClassName("description-cover")[0],
     }
 
 }

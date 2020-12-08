@@ -28,8 +28,23 @@
 }
 
 .about-description {
+    width: 100%;
+    height: 100%;
+}
+
+.description-container {
     color: $main-line;
     max-width: 60%;
+    position: relative;
+}
+
+.description-cover {
+    top: 0;
+    right: 0;
+    background-color: $main-grey;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 #portrait {
@@ -65,4 +80,10 @@
     position: absolute;
     top: 87.5%;
     left: 273px;
+}
+
+#portrait__line-left {
+    position: absolute;
+    top: 39%;
+    right: 192px;
 }

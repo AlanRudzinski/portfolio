@@ -2033,13 +2033,15 @@ var _default = {
   portrait: {
     portrait: document.getElementById("portrait"),
     leadingLines: {
+      leftLine: document.getElementById("portrait__line-left"),
       downLine: document.getElementById("portrait__line-down"),
       leftDownLine: document.getElementById("portrait__line-down-left"),
       leftTopLine: document.getElementById("portrait__line-top-left"),
       rightTopLine: document.getElementById("portrait__line-top-right"),
       rightDownLine: document.getElementById("portrait__line-down-right")
     },
-    description: document.getElementsByClassName("about-description")[0]
+    description: document.getElementsByClassName("about-description")[0],
+    descriptionCover: document.getElementsByClassName("description-cover")[0]
   }
 };
 exports.default = _default;
@@ -5060,6 +5062,8 @@ var _DOMelements = _interopRequireDefault(require("../commons/DOMelements"));
 
 var _AnimateLine = _interopRequireDefault(require("./NavLinks/AnimateLine"));
 
+var _animejs = _interopRequireDefault(require("animejs"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function PortraitAnimations() {
@@ -5068,12 +5072,14 @@ function PortraitAnimations() {
 
 function _PortraitAnimations() {
   _PortraitAnimations = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-    var lines, leadingLines, entryLine;
+    var lines, leadingLines, entryLine, exitLines;
     return _regenerator.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            //reset lines inside
+            // reset cover
+            _DOMelements.default.portrait.descriptionCover.style.width = '100%'; //reset lines inside
+
             lines = resetDasharrayAndOffset(_DOMelements.default.portrait.portrait.childNodes); // reset leading lines
 
             leadingLines = (0, _values.default)(_DOMelements.default.portrait.leadingLines).map(function (el) {
@@ -5081,14 +5087,22 @@ function _PortraitAnimations() {
             });
             resetDasharrayAndOffset(leadingLines); //animate
 
+            entryLine = (0, _AnimateLine.default)(_DOMelements.default.portrait.leadingLines.leftLine, 2200, 2500);
+            entryLine.play();
             lines.forEach(function (el) {
-              var animation = (0, _AnimateLine.default)(el, 1300, 5900, false);
+              var animation = (0, _AnimateLine.default)(el, 600, 4250, false);
               animation.play();
             });
-            entryLine = (0, _AnimateLine.default)(_DOMelements.default.portrait.leadingLines.leftTopLine, 3000, 3400, false);
-            entryLine.play();
+            exitLines = (0, _values.default)(_DOMelements.default.portrait.leadingLines).filter(function (el) {
+              return el.id !== 'portrait__line-left';
+            });
+            exitLines.forEach(function (el) {
+              var animation = (0, _AnimateLine.default)(el, 500, 4900, false);
+              animation.play();
+            });
+            animateDescriptionCover(300, 4000);
 
-          case 6:
+          case 10:
           case "end":
             return _context.stop();
         }
@@ -5112,9 +5126,20 @@ function resetDasharrayAndOffset(arr) {
   return lines;
 }
 
+function animateDescriptionCover(duration, delay) {
+  (0, _animejs.default)({
+    targets: _DOMelements.default.portrait.descriptionCover,
+    width: 0,
+    delay: delay,
+    autoplay: true,
+    duration: duration,
+    easing: 'linear'
+  });
+}
+
 var _default = PortraitAnimations;
 exports.default = _default;
-},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js","./NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js","./NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js","animejs":"../node_modules/animejs/lib/anime.es.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5451,7 +5476,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33895" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38843" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
