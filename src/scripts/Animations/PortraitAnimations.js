@@ -2,24 +2,23 @@ import DOM from '../commons/DOMelements'
 
 import AnimateLine from './NavLinks/AnimateLine';
 
-function PortraitAnimations() {
+async function PortraitAnimations() {
     //reset lines inside
-    const allChilds = DOM.portrait.childNodes[1].childNodes;
-    const lines = resetDasharrayAndOffset(allChilds);
+    const lines = resetDasharrayAndOffset(DOM.portrait.portrait.childNodes);
+
+    // reset leading lines
+    const leadingLines = Object.values(DOM.portrait.leadingLines).map(el => el.childNodes[1]);
+    resetDasharrayAndOffset(leadingLines)
+
 
     //animate
     lines.forEach(el => {
-        const animation = AnimateLine(el, 1300, 3900, false);
-        console.log(animation)
+        const animation = AnimateLine(el, 1300, 5900, false);
         animation.play();
     })
 
-    // function AnimateInsideLines() {
-    //     anime({
-    //         target: DOM.portrait,
-
-    //     })
-    // }
+    const entryLine = AnimateLine(DOM.portrait.leadingLines.leftTopLine, 3000, 3400, false)
+    entryLine.play();
 
 }
 

@@ -345,23 +345,50 @@ svg {
   line-height: 1.5rem;
 }
 
-.profilePic {
-  height: 75vh;
-  border-radius: 10%;
-}
-
 .portrait-container {
-  width: 45%;
+  width: 300px;
+  margin-top: -80px;
+  position: relative;
 }
 
 .about-description {
   color: #ff5217;
-  width: 55%;
+  max-width: 60%;
 }
 
 #portrait {
   height: 100%;
   width: 100%;
+}
+
+#portrait__line-down {
+  position: absolute;
+  top: 98%;
+  left: -212px;
+}
+
+#portrait__line-down-left {
+  position: absolute;
+  top: 81%;
+  right: 299px;
+}
+
+#portrait__line-top-left {
+  position: absolute;
+  top: 0;
+  right: 207px;
+}
+
+#portrait__line-top-right {
+  position: absolute;
+  top: 27%;
+  left: 259px;
+}
+
+#portrait__line-down-right {
+  position: absolute;
+  top: 87.5%;
+  left: 273px;
 }
 
 .project-page__navigation {

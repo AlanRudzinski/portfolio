@@ -41,5 +41,16 @@ export default  {
         homeAboutLink: document.getElementById("main-link0"),
         homeProjectLink: document.getElementById("main-link1"),
     },
-    portrait: document.getElementById("portrait"),
+    portrait: {
+        portrait: document.getElementById("portrait"),
+        leadingLines: {
+            downLine: document.getElementById("portrait__line-down"),
+            leftDownLine: document.getElementById("portrait__line-down-left"),
+            leftTopLine: document.getElementById("portrait__line-top-left"),
+            rightTopLine: document.getElementById("portrait__line-top-right"),
+            rightDownLine: document.getElementById("portrait__line-down-right"),
+        },
+        description: document.getElementsByClassName("about-description")[0],
+    }
+
 }
