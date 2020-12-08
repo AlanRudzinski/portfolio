@@ -1,11 +1,14 @@
 import anime from 'animejs/lib/anime.es.js';
 
-export default (element, duration = 4000) => {
-    const strokeDashoffset = window.getComputedStyle(element.firstElementChild).strokeDasharray.slice(0, -2)
+export default (element, duration = 4000, delay = 0, reset = true) => {
+    if(element.tagName === 'svg') element = element.firstElementChild;
+    const strokeDashoffset = window.getComputedStyle(element).strokeDasharray.slice(0, -2)
+    
     const lineAnimation = anime({
-        targets: element.firstElementChild,
-        strokeDashoffset: [anime.setDashoffset, -strokeDashoffset],
+        targets: element,
+        strokeDashoffset: [anime.setDashoffset, (reset ? -strokeDashoffset : 0)],
         duration: duration,
+        delay: delay,
         easing: 'easeInQuart',
         autoplay: false,
    })

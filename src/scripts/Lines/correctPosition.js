@@ -20,6 +20,10 @@ export default () => {
     correctPosition(DOM.svgs.aboutProjectLine, DOM.links.projectProjectLink);
     correctPosition(DOM.svgs.aboutTechnologiesLine, DOM.links.technologiesTechnologiesLink);
 
+        // portrait
+    correctHorizontal(DOM.portrait.leadingLines.leftDownLine, DOM.portrait.description)
+
+
     // // project
     correctPosition(DOM.svgs.projectAboutLine, DOM.links.aboutAboutLink);
     correctPosition(DOM.svgs.projectContactLine, DOM.links.contactContactLink);
@@ -32,7 +36,7 @@ function correctPosition(line, link) {
     correctVertical(line, link);
 }
 
-function correctHorizontal(line, link){
+export function correctHorizontal(line, link){
     let moveValue = GetAbsolutePosition(link).left - GetAbsolutePosition(line).left;
     const points = {
         firstPoint: getPoints(line, 1),
