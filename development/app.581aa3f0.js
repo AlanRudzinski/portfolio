@@ -5343,7 +5343,31 @@ function modifyWidth(element, value) {
   viewBoxArr = viewBoxArr.join(" ");
   element.setAttribute("viewBox", viewBoxArr);
 }
-},{"@babel/runtime-corejs2/core-js/parse-int":"../node_modules/@babel/runtime-corejs2/core-js/parse-int.js","../commons/GetAbsolutePosition":"../src/scripts/commons/GetAbsolutePosition.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/core-js/parse-int":"../node_modules/@babel/runtime-corejs2/core-js/parse-int.js","../commons/GetAbsolutePosition":"../src/scripts/commons/GetAbsolutePosition.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/scripts/Lines/setDashArrayAndDashOffset.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _values = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/object/values"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function setDashArrayAndDashOffset(lines) {
+  var linesArr = (0, _values.default)(lines);
+  linesArr.forEach(function (el) {
+    var lng = el.firstElementChild.getTotalLength();
+    console.log(lng, el.firstElementChild);
+    el.style.strokeDasharray = lng;
+    el.style.strokeDashoffset = lng;
+  });
+}
+
+var _default = setDashArrayAndDashOffset;
+exports.default = _default;
+},{"@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -5432,11 +5456,17 @@ var _AnimationRouter = _interopRequireDefault(require("./scripts/AnimationRouter
 
 var _correctPosition = _interopRequireDefault(require("./scripts/Lines/correctPosition"));
 
+var _DOMelements = _interopRequireDefault(require("./scripts/commons/DOMelements"));
+
+var _setDashArrayAndDashOffset = _interopRequireDefault(require("./scripts/Lines/setDashArrayAndDashOffset"));
+
 require("./scss/app.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = function app() {
+  (0, _correctPosition.default)();
+  (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.svgs);
   (0, _CenterView.default)();
   (0, _allPagesPosition.default)();
   (0, _LogoAnimations.default)('.logo__underline', '.logo__cover', 0);
@@ -5444,11 +5474,10 @@ var app = function app() {
   (0, _AnimationRouter.default)();
   (0, _NavItemsAnimations.default)();
   (0, _NavLinks.default)();
-  (0, _correctPosition.default)();
 };
 
 app();
-},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -5476,7 +5505,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38843" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43273" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

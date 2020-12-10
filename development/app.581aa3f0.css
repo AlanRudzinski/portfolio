@@ -236,6 +236,7 @@ svg {
   width: 450px;
   border: none;
   height: 40px;
+  outline: none;
 }
 .contact-form__list li textarea {
   height: 100px;
@@ -504,26 +505,6 @@ svg {
   z-index: -1;
 }
 
-#leading-line0 polyline {
-  stroke-dasharray: 4300;
-  stroke-dashoffset: 4300;
-}
-
-#leading-line1 polyline {
-  stroke-dasharray: 2448;
-  stroke-dashoffset: 2448;
-}
-
-#leading-line2 polyline {
-  stroke-dasharray: 5236;
-  stroke-dashoffset: 5236;
-}
-
-#leading-line3 polyline {
-  stroke-dasharray: 3832;
-  stroke-dashoffset: 3832;
-}
-
 #leading-line-contact0 {
   width: 6358px;
   height: 717px;
@@ -558,26 +539,6 @@ svg {
   right: 95%;
   top: 80%;
   z-index: -1;
-}
-
-#leading-line-contact0 polyline {
-  stroke-dasharray: 7927;
-  stroke-dashoffset: 7927;
-}
-
-#leading-line-contact1 polyline {
-  stroke-dasharray: 5718;
-  stroke-dashoffset: 5718;
-}
-
-#leading-line-contact2 polyline {
-  stroke-dasharray: 3773;
-  stroke-dashoffset: 3773;
-}
-
-#leading-line-contact4 polyline {
-  stroke-dasharray: 4216;
-  stroke-dashoffset: 4216;
 }
 
 #leading-line-technology0 {
@@ -616,26 +577,6 @@ svg {
   z-index: -1;
 }
 
-#leading-line-technology0 polyline {
-  stroke-dasharray: 5900;
-  stroke-dashoffset: 5900;
-}
-
-#leading-line-technology1 polyline {
-  stroke-dasharray: 6740;
-  stroke-dashoffset: 6740;
-}
-
-#leading-line-technology3 polyline {
-  stroke-dasharray: 3800;
-  stroke-dashoffset: 3800;
-}
-
-#leading-line-technology4 polyline {
-  stroke-dasharray: 4055;
-  stroke-dashoffset: 4055;
-}
-
 #leading-line-about1 {
   width: 2226px;
   height: 1277px;
@@ -672,26 +613,6 @@ svg {
   z-index: -1;
 }
 
-#leading-line-about1 polyline {
-  stroke-dasharray: 4150;
-  stroke-dashoffset: 4150;
-}
-
-#leading-line-about2 polyline {
-  stroke-dasharray: 6350;
-  stroke-dashoffset: 6350;
-}
-
-#leading-line-about3 polyline {
-  stroke-dasharray: 8500;
-  stroke-dashoffset: 8500;
-}
-
-#leading-line-about4 polyline {
-  stroke-dasharray: 3432;
-  stroke-dashoffset: 3432;
-}
-
 #leading-line-project0 {
   width: 2318px;
   height: 1742px;
@@ -726,26 +647,6 @@ svg {
   left: 95%;
   bottom: 20%;
   z-index: -1;
-}
-
-#leading-line-project0 polyline {
-  stroke-dasharray: 3919;
-  stroke-dashoffset: 3919;
-}
-
-#leading-line-project2 polyline {
-  stroke-dasharray: 6278;
-  stroke-dashoffset: 6278;
-}
-
-#leading-line-project3 polyline {
-  stroke-dasharray: 6000;
-  stroke-dashoffset: 6000;
-}
-
-#leading-line-project4 polyline {
-  stroke-dasharray: 1430;
-  stroke-dashoffset: 1430;
 }
 
 /*# sourceMappingURL=/app.581aa3f0.css.map */
