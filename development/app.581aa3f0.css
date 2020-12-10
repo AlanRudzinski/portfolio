@@ -6,16 +6,16 @@
   list-style: none;
 }
 
-p {
+p, button {
   font-size: 12px;
 }
 @media screen and (min-width: 360px) {
-  p {
+  p, button {
     font-size: calc(12px + 8 * ((100vw - 360px) / 1540));
   }
 }
 @media screen and (min-width: 1900px) {
-  p {
+  p, button {
     font-size: 20px;
   }
 }
@@ -347,9 +347,19 @@ svg {
 }
 
 .portrait-container {
-  width: 300px;
+  width: 200px;
   margin-top: -80px;
   position: relative;
+}
+@media (min-width: 1000px) {
+  .portrait-container {
+    width: 300px;
+  }
+}
+@media (min-width: 1500px) {
+  .portrait-container {
+    width: 450px;
+  }
 }
 
 .about-description {
@@ -358,9 +368,15 @@ svg {
 }
 
 .description-container {
+  width: 70%;
+  margin-top: -40px;
   color: #ff5217;
-  max-width: 60%;
   position: relative;
+}
+@media (min-width: 1000px) {
+  .description-container {
+    max-width: 60%;
+  }
 }
 
 .description-cover {
@@ -378,39 +394,105 @@ svg {
 }
 
 #portrait__line-down {
+  top: 97%;
+  left: -273px;
   position: absolute;
-  top: 98%;
-  left: -212px;
+}
+@media (min-width: 1000px) {
+  #portrait__line-down {
+    top: 98%;
+    left: -212px;
+  }
+}
+@media (min-width: 1500px) {
+  #portrait__line-down {
+    top: 98.5%;
+    left: -121px;
+  }
 }
 
 #portrait__line-down-left {
+  right: 197px;
+  top: 80%;
   position: absolute;
-  top: 81%;
-  right: 299px;
+}
+@media (min-width: 1000px) {
+  #portrait__line-down-left {
+    top: 81%;
+    right: 299px;
+  }
+}
+@media (min-width: 1500px) {
+  #portrait__line-down-left {
+    top: 82%;
+    right: 449px;
+  }
 }
 
 #portrait__line-top-left {
+  top: -15px;
+  right: 137px;
   position: absolute;
-  top: 0;
-  right: 207px;
+}
+@media (min-width: 1000px) {
+  #portrait__line-top-left {
+    top: 0;
+    right: 207px;
+  }
+}
+@media (min-width: 1500px) {
+  #portrait__line-top-left {
+    top: 25px;
+    right: 311px;
+  }
 }
 
 #portrait__line-top-right {
+  top: 25%;
+  left: 170px;
   position: absolute;
-  top: 27%;
-  left: 259px;
+}
+@media (min-width: 1000px) {
+  #portrait__line-top-right {
+    top: 27%;
+    left: 259px;
+  }
+}
+@media (min-width: 1500px) {
+  #portrait__line-top-right {
+    top: 28%;
+    left: 388px;
+  }
 }
 
 #portrait__line-down-right {
+  top: 85%;
+  left: 182px;
   position: absolute;
-  top: 87.5%;
-  left: 273px;
+}
+@media (min-width: 1000px) {
+  #portrait__line-down-right {
+    top: 87.5%;
+    left: 273px;
+  }
+}
+@media (min-width: 1500px) {
+  #portrait__line-down-right {
+    top: 88.5%;
+    left: 411px;
+  }
 }
 
 #portrait__line-left {
+  top: 34%;
+  right: 130px;
   position: absolute;
-  top: 39%;
-  right: 192px;
+}
+@media (min-width: 1000px) {
+  #portrait__line-left {
+    top: 39%;
+    right: 192px;
+  }
 }
 
 .project-page__navigation {

@@ -22,7 +22,7 @@ $max_font_nav: 24px;
     list-style: none;
 }
 
-p {
+p, button {
     @include fluid-type($min_width, $max_width, $min_font_p, $max_font_p);
 }
 
