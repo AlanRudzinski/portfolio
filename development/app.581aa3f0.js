@@ -1991,6 +1991,7 @@ var _default = {
   body: document.querySelector('body'),
   //navItemLinks: document.querySelectorAll('.navigation__list__item-link'),
   allNavLinks: document.querySelectorAll('.navLink'),
+  technologiesList: document.querySelector('.technology-content'),
   svgs: {
     homeAboutLine: document.getElementById("leading-line0"),
     homeProjectLine: document.getElementById("leading-line1"),
@@ -5139,7 +5140,201 @@ function animateDescriptionCover(duration, delay) {
 
 var _default = PortraitAnimations;
 exports.default = _default;
-},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js","./NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js","animejs":"../node_modules/animejs/lib/anime.es.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js","./NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js","animejs":"../node_modules/animejs/lib/anime.es.js"}],"../node_modules/@babel/runtime-corejs2/helpers/classCallCheck.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+},{}],"../node_modules/core-js/library/modules/es6.object.define-property.js":[function(require,module,exports) {
+var $export = require('./_export');
+// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
+$export($export.S + $export.F * !require('./_descriptors'), 'Object', { defineProperty: require('./_object-dp').f });
+
+},{"./_export":"../node_modules/core-js/library/modules/_export.js","./_descriptors":"../node_modules/core-js/library/modules/_descriptors.js","./_object-dp":"../node_modules/core-js/library/modules/_object-dp.js"}],"../node_modules/core-js/library/fn/object/define-property.js":[function(require,module,exports) {
+require('../../modules/es6.object.define-property');
+var $Object = require('../../modules/_core').Object;
+module.exports = function defineProperty(it, key, desc) {
+  return $Object.defineProperty(it, key, desc);
+};
+
+},{"../../modules/es6.object.define-property":"../node_modules/core-js/library/modules/es6.object.define-property.js","../../modules/_core":"../node_modules/core-js/library/modules/_core.js"}],"../node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":[function(require,module,exports) {
+module.exports = require("core-js/library/fn/object/define-property");
+},{"core-js/library/fn/object/define-property":"../node_modules/core-js/library/fn/object/define-property.js"}],"../node_modules/@babel/runtime-corejs2/helpers/createClass.js":[function(require,module,exports) {
+var _Object$defineProperty = require("../core-js/object/define-property");
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+
+    _Object$defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
+},{"../core-js/object/define-property":"../node_modules/@babel/runtime-corejs2/core-js/object/define-property.js"}],"../src/scripts/textScramble.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.scrambleRandomElement = scrambleRandomElement;
+
+var _promise = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/promise"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime-corejs2/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime-corejs2/helpers/createClass"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function scrambleRandomElement(el) {
+  var arr = el.children;
+  var randomEl = arr[Math.floor(Math.random() * arr.length)];
+  var fx = new TextScramble(randomEl);
+  fx.setText(randomEl.innerHTML); // const next = () => {
+  //   fx.setText(text).then(() => {
+  //     setTimeout(next, 800)
+  //   })
+  // }
+  // next()
+}
+
+var TextScramble = /*#__PURE__*/function () {
+  function TextScramble(el) {
+    (0, _classCallCheck2.default)(this, TextScramble);
+    this.el = el;
+    this.chars = '!<>-_\\/[]{}—=+*^?#________';
+    this.update = this.update.bind(this);
+  }
+
+  (0, _createClass2.default)(TextScramble, [{
+    key: "setText",
+    value: function setText(newText) {
+      var _this = this;
+
+      var oldText = this.el.innerText;
+      var length = Math.max(oldText.length, newText.length);
+      var promise = new _promise.default(function (resolve) {
+        return _this.resolve = resolve;
+      });
+      this.queue = [];
+
+      for (var i = 0; i < length; i++) {
+        var from = oldText[i] || '';
+        var to = newText[i] || '';
+        var start = Math.floor(Math.random() * 40);
+        var end = start + Math.floor(Math.random() * 40);
+        this.queue.push({
+          from: from,
+          to: to,
+          start: start,
+          end: end
+        });
+      }
+
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      var output = '';
+      var complete = 0;
+
+      for (var i = 0, n = this.queue.length; i < n; i++) {
+        var _this$queue$i = this.queue[i],
+            from = _this$queue$i.from,
+            to = _this$queue$i.to,
+            start = _this$queue$i.start,
+            end = _this$queue$i.end,
+            char = _this$queue$i.char;
+
+        if (this.frame >= end) {
+          complete++;
+          output += to;
+        } else if (this.frame >= start) {
+          if (!char || Math.random() < 0.28) {
+            char = this.randomChar();
+            this.queue[i].char = char;
+          }
+
+          output += "<span class=\"dud\">".concat(char, "</span>");
+        } else {
+          output += from;
+        }
+      }
+
+      this.el.innerHTML = output;
+
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
+    }
+  }, {
+    key: "randomChar",
+    value: function randomChar() {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+  }]);
+  return TextScramble;
+}(); // export function textScramble(text, el) { 
+//   const q = makeQueue(text) 
+//   requestAnimationFrame(() => getScrambledOutputIntoElement(q, el));
+// }
+// function getScrambledOutputIntoElement(queue, el, frame) {
+//   let output = '';
+//   let complete = 0;
+//   for (let index = 0, length = queue.length; index < length; index++) {
+//     const { letter, start, end, char } = queue[index];
+//     if(frame > end) {
+//       complete++;
+//       output += letter
+//     } else {        
+//       if (!char || Math.random() < 0.28) {
+//         char = getRandomChar();
+//         queue[index].char = char
+//     }
+//     output += `<span>${char}</span>`
+//     }
+//     el.innerHTML = output;
+//   }
+//   frame++
+//   console.log({ output, frame, complete})
+//   return {output, frame, complete}
+// }
+//   function makeQueue(text) {
+//   const length = text.length;
+//   let queue = [];
+//   for (let index = 0; index < length; index++) {
+//     const letter = text[index];
+//     const start = Math.floor(Math.random() * 40)
+//     const end = start + Math.floor(Math.random() * 40)
+//     queue.push({ letter, start, end })
+//   }
+//   return queue;
+// }
+// function getRandomChar() {
+//   const chars = '!<>-_\\/[]{}—=+*^?#________'
+//   return chars[Math.floor(Math.random() * chars.length)]
+// }
+},{"@babel/runtime-corejs2/core-js/promise":"../node_modules/@babel/runtime-corejs2/core-js/promise.js","@babel/runtime-corejs2/helpers/classCallCheck":"../node_modules/@babel/runtime-corejs2/helpers/classCallCheck.js","@babel/runtime-corejs2/helpers/createClass":"../node_modules/@babel/runtime-corejs2/helpers/createClass.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5153,13 +5348,22 @@ var _DOMelements = _interopRequireDefault(require("./commons/DOMelements"));
 
 var _PortraitAnimations = _interopRequireDefault(require("./Animations/PortraitAnimations"));
 
+var _textScramble = require("./textScramble");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default() {
   function onRouteChanged(e) {
     var currentHash = e.oldURL.slice(e.oldURL.lastIndexOf("#"));
     var nextHashLocation = document.getElementById((window.location.hash + '-page').slice(1));
-    if (nextHashLocation === _DOMelements.default.pages.aboutPage) (0, _PortraitAnimations.default)();
+
+    if (nextHashLocation === _DOMelements.default.pages.aboutPage) {
+      (0, _PortraitAnimations.default)();
+    } // if(nextHashLocation === DOM.pages.technologyPage) {
+    //     next();
+    // }
+
+
     (0, _AnimateScreenFollow.default)(nextHashLocation, currentHash);
   }
 
@@ -5169,7 +5373,7 @@ var _default = function _default() {
 };
 
 exports.default = _default;
-},{"./Animations/NavLinks/AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js","./commons/DOMelements":"../src/scripts/commons/DOMelements.js","./Animations/PortraitAnimations":"../src/scripts/Animations/PortraitAnimations.js"}],"../node_modules/core-js/library/modules/_string-ws.js":[function(require,module,exports) {
+},{"./Animations/NavLinks/AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js","./commons/DOMelements":"../src/scripts/commons/DOMelements.js","./Animations/PortraitAnimations":"../src/scripts/Animations/PortraitAnimations.js","./textScramble":"../src/scripts/textScramble.js"}],"../node_modules/core-js/library/modules/_string-ws.js":[function(require,module,exports) {
 module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
   '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
@@ -5359,7 +5563,6 @@ function setDashArrayAndDashOffset(lines) {
   var linesArr = (0, _values.default)(lines);
   linesArr.forEach(function (el) {
     var lng = el.firstElementChild.getTotalLength();
-    console.log(lng, el.firstElementChild);
     el.style.strokeDasharray = lng;
     el.style.strokeDashoffset = lng;
   });
@@ -5462,9 +5665,14 @@ var _setDashArrayAndDashOffset = _interopRequireDefault(require("./scripts/Lines
 
 require("./scss/app.scss");
 
+var _textScramble = require("./scripts/textScramble");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = function app() {
+  setInterval(function () {
+    return (0, _textScramble.scrambleRandomElement)(_DOMelements.default.technologiesList, "HTML");
+  }, 2000);
   (0, _correctPosition.default)();
   (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.svgs);
   (0, _CenterView.default)();
@@ -5477,7 +5685,7 @@ var app = function app() {
 };
 
 app();
-},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","./scss/app.scss":"../src/scss/app.scss","./scripts/textScramble":"../src/scripts/textScramble.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -5505,7 +5713,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44521" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41601" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -4,3 +4,44 @@
     position: absolute;
     transform: translateX(300vw);
 }
+
+.technology-wrapper {
+    width: 88%;
+    height: calc(100% - 20%);
+    margin: 60px auto 0;
+    // border: red solid 1px;
+}
+
+.technology-content {
+    color: $main-line;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-flow: column;
+    justify-items: center;
+    justify-content: space-between;
+
+    span {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        
+    }
+}
+.left {
+    justify-content: start;
+}
+
+.right {
+    justify-content: end;
+}
+
+
+.title {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    justify-content: start;
+}
