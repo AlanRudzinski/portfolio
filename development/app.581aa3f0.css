@@ -574,25 +574,52 @@ svg {
   justify-items: center;
   justify-content: space-between;
 }
-.technology-content span {
+
+.technology-content > div {
+  border: red 1px solid;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
 }
 
+.technologyName {
+  cursor: pointer;
+}
+
+.technologyEntry__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.technologyEntry__wrapper:nth-child(2) {
+  display: none;
+}
+.technologyEntry span {
+  font-size: 14px;
+}
+.technologyEntry ul {
+  font-size: 10px;
+}
+
 .left {
   justify-content: start;
+  text-align: left;
 }
 
 .right {
   justify-content: end;
+  text-align: right;
 }
 
 .title {
   font-size: 1.3rem;
   text-transform: uppercase;
   justify-content: start;
+}
+
+.technologyClicked ~ span {
+  display: inline;
 }
 
 #leading-line0 {

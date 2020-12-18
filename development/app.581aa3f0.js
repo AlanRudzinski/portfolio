@@ -5642,7 +5642,32 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/app.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/scripts/technologyAnimations.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _from = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/array/from"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default() {
+  var entries = document.querySelectorAll('.technologyName');
+  var entriesArr = (0, _from.default)(entries);
+  entriesArr.forEach(function (el) {
+    el.addEventListener('click', handleClick);
+  });
+};
+
+exports.default = _default;
+
+function handleClick(e) {
+  e.target.classList.toggle('technologyClicked');
+}
+},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js"}],"../src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _LogoAnimations = _interopRequireDefault(require("./scripts/Animations/LogoAnimations"));
@@ -5667,12 +5692,13 @@ require("./scss/app.scss");
 
 var _textScramble = require("./scripts/textScramble");
 
+var _technologyAnimations = _interopRequireDefault(require("./scripts/technologyAnimations"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = function app() {
-  setInterval(function () {
-    return (0, _textScramble.scrambleRandomElement)(_DOMelements.default.technologiesList, "HTML");
-  }, 2000);
+  //  setInterval(() => scrambleRandomElement(DOM.technologiesList), 2000);
+  (0, _technologyAnimations.default)();
   (0, _correctPosition.default)();
   (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.svgs);
   (0, _CenterView.default)();
@@ -5685,7 +5711,7 @@ var app = function app() {
 };
 
 app();
-},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","./scss/app.scss":"../src/scss/app.scss","./scripts/textScramble":"../src/scripts/textScramble.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","./scss/app.scss":"../src/scss/app.scss","./scripts/textScramble":"../src/scripts/textScramble.js","./scripts/technologyAnimations":"../src/scripts/technologyAnimations.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -5713,7 +5739,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41601" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39035" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
