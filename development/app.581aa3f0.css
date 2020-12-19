@@ -575,33 +575,6 @@ svg {
   justify-content: space-between;
 }
 
-.technology-content > div {
-  border: red 1px solid;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.technologyName {
-  cursor: pointer;
-}
-
-.technologyEntry__wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.technologyEntry__wrapper:nth-child(2) {
-  display: none;
-}
-.technologyEntry span {
-  font-size: 14px;
-}
-.technologyEntry ul {
-  font-size: 10px;
-}
-
 .left {
   justify-content: start;
   text-align: left;
@@ -612,14 +585,42 @@ svg {
   text-align: right;
 }
 
+.technology-content > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+}
+
+.technologyEntry__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.technologyName {
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.technologyDescription {
+  display: none;
+  font-size: 14px;
+}
+.technologyDescription ul {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.technologyClicked + span {
+  display: inline;
+}
+
 .title {
   font-size: 1.3rem;
   text-transform: uppercase;
   justify-content: start;
-}
-
-.technologyClicked ~ span {
-  display: inline;
+  font-family: "Play", sans-serif;
 }
 
 #leading-line0 {
