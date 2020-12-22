@@ -5189,6 +5189,7 @@ module.exports = _createClass;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.scrambleElement = scrambleElement;
 exports.scrambleRandomElement = scrambleRandomElement;
 
 var _promise = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/promise"));
@@ -5198,6 +5199,12 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime-corejs2/he
 var _createClass2 = _interopRequireDefault(require("@babel/runtime-corejs2/helpers/createClass"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function scrambleElement(el, text) {
+  console.log(el, text);
+  var fx = new TextScramble(el);
+  fx.setText(text);
+}
 
 function scrambleRandomElement(el) {
   var arr = el.children;
@@ -5234,8 +5241,8 @@ var TextScramble = /*#__PURE__*/function () {
       for (var i = 0; i < length; i++) {
         var from = oldText[i] || '';
         var to = newText[i] || '';
-        var start = Math.floor(Math.random() * 40);
-        var end = start + Math.floor(Math.random() * 40);
+        var start = Math.floor(Math.random() * 50);
+        var end = start + Math.floor(Math.random() * 50);
         this.queue.push({
           from: from,
           to: to,
@@ -5267,12 +5274,12 @@ var TextScramble = /*#__PURE__*/function () {
           complete++;
           output += to;
         } else if (this.frame >= start) {
-          if (!char || Math.random() < 0.28) {
+          if (!char || Math.random() < 0.18) {
             char = this.randomChar();
             this.queue[i].char = char;
           }
 
-          output += "<span class=\"dud\">".concat(char, "</span>");
+          output += "<span style=\"font-size:12px;\">".concat(char, "</span>");
         } else {
           output += from;
         }
@@ -5652,6 +5659,8 @@ exports.default = void 0;
 
 var _from = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/array/from"));
 
+var _textScramble = require("./textScramble");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default() {
@@ -5666,8 +5675,12 @@ exports.default = _default;
 
 function handleClick(e) {
   e.target.classList.toggle('technologyClicked');
+  var text = e.target.parentElement.children[1].innerText;
+  console.log(text); // e.target.parentElement.children[1].innerHTML = ''
+
+  (0, _textScramble.scrambleElement)(e.target.parentElement.children[1], text);
 }
-},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js"}],"../src/app.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","./textScramble":"../src/scripts/textScramble.js"}],"../src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _LogoAnimations = _interopRequireDefault(require("./scripts/Animations/LogoAnimations"));
@@ -5739,7 +5752,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43419" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44191" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,3 +1,9 @@
+export function scrambleElement(el, text) {
+  console.log(el, text)
+  const fx = new TextScramble(el);
+  fx.setText(text);
+}
+
 export function scrambleRandomElement(el){
   const arr = el.children;
   const randomEl = arr[Math.floor(Math.random() * arr.length)]
@@ -27,8 +33,8 @@ class TextScramble {
     for (let i = 0; i < length; i++) {
       const from = oldText[i] || ''
       const to = newText[i] || ''
-      const start = Math.floor(Math.random() * 40)
-      const end = start + Math.floor(Math.random() * 40)
+      const start = Math.floor(Math.random() * 50)
+      const end = start + Math.floor(Math.random() * 50)
       this.queue.push({ from, to, start, end })
     }
     cancelAnimationFrame(this.frameRequest)
@@ -45,11 +51,11 @@ class TextScramble {
         complete++
         output += to
       } else if (this.frame >= start) {
-        if (!char || Math.random() < 0.28) {
+        if (!char || Math.random() < 0.18) {
           char = this.randomChar()
           this.queue[i].char = char
         }
-        output += `<span class="dud">${char}</span>`
+        output += `<span style="font-size:12px;">${char}</span>`
       } else {
         output += from
       }
