@@ -1992,6 +1992,7 @@ var _default = {
   //navItemLinks: document.querySelectorAll('.navigation__list__item-link'),
   allNavLinks: document.querySelectorAll('.navLink'),
   technologiesList: document.querySelector('.technology-content'),
+  technologiesEntries: document.querySelectorAll('.technologyEntry'),
   svgs: {
     homeAboutLine: document.getElementById("leading-line0"),
     homeProjectLine: document.getElementById("leading-line1"),
@@ -5201,7 +5202,6 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime-corejs2/helpe
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function scrambleElement(el, text) {
-  console.log(el, text);
   var fx = new TextScramble(el);
   fx.setText(text);
 }
@@ -5241,8 +5241,8 @@ var TextScramble = /*#__PURE__*/function () {
       for (var i = 0; i < length; i++) {
         var from = oldText[i] || '';
         var to = newText[i] || '';
-        var start = Math.floor(Math.random() * 50);
-        var end = start + Math.floor(Math.random() * 50);
+        var start = Math.floor(Math.random() * 30);
+        var end = start + Math.floor(Math.random() * 30);
         this.queue.push({
           from: from,
           to: to,
@@ -5274,12 +5274,12 @@ var TextScramble = /*#__PURE__*/function () {
           complete++;
           output += to;
         } else if (this.frame >= start) {
-          if (!char || Math.random() < 0.18) {
+          if (!char || Math.random() < 0.15) {
             char = this.randomChar();
             this.queue[i].char = char;
           }
 
-          output += "<span style=\"font-size:12px;\">".concat(char, "</span>");
+          output += "<span style=\"font-size:10px;opacity:.7;\">".concat(char, "</span>");
         } else {
           output += from;
         }
@@ -5649,7 +5649,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/scripts/technologyAnimations.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/scripts/checkIfClicked.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5658,6 +5658,31 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _from = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/array/from"));
+
+var _DOMelements = _interopRequireDefault(require("../scripts/commons/DOMelements"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default() {
+  var technologyEntries = _DOMelements.default.technologiesEntries;
+  var technologiesEntriesArr = (0, _from.default)(technologyEntries);
+  technologiesEntriesArr.forEach(function (el) {
+    return console.log(el.children[0].children[0].classList.contains('technologyClicked'));
+  });
+};
+
+exports.default = _default;
+},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/scripts/technologyAnimations.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _from = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/array/from"));
+
+var _checkIfClicked = _interopRequireDefault(require("./checkIfClicked"));
 
 var _textScramble = require("./textScramble");
 
@@ -5675,12 +5700,24 @@ exports.default = _default;
 
 function handleClick(e) {
   e.target.classList.toggle('technologyClicked');
-  var text = e.target.parentElement.children[1].innerText;
-  console.log(text); // e.target.parentElement.children[1].innerHTML = ''
-
-  (0, _textScramble.scrambleElement)(e.target.parentElement.children[1], text);
+  var tech = e.target.parentElement.children[0].innerText;
+  (0, _checkIfClicked.default)();
+  (0, _textScramble.scrambleElement)(e.target.parentElement.children[1], technologySet[tech]);
 }
-},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","./textScramble":"../src/scripts/textScramble.js"}],"../src/app.js":[function(require,module,exports) {
+
+var technologySet = {
+  HTML: "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li><li><a href='http://alanrudzinski.pl'>www.alanrudzinski.pl</a></li></ul>",
+  CSS: "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li><li><a href='http://alanrudzinski.pl'>www.alanrudzinski.pl</a></li></ul>",
+  Javascript: "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li><li><a href='http://alanrudzinski.pl' >www.alanrudzinski.pl</a></li></ul>",
+  ReactJS: "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li></ul>",
+  Redux: "No projects are ready with this technology yet",
+  Styled: "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li></ul>",
+  GatsbyJS: "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl'>www.akademiapromyk.pl</a></li></ul>",
+  Python: "No projects made with this technology yet",
+  Django: "No projects made with this technology yet",
+  GraphQL: "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li></ul>"
+};
+},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","./checkIfClicked":"../src/scripts/checkIfClicked.js","./textScramble":"../src/scripts/textScramble.js"}],"../src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _LogoAnimations = _interopRequireDefault(require("./scripts/Animations/LogoAnimations"));
@@ -5752,7 +5789,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44191" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33727" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
