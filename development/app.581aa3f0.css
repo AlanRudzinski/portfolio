@@ -20,16 +20,16 @@ p, button {
   }
 }
 
-nav {
+nav, span {
   font-size: 16px;
 }
 @media screen and (min-width: 360px) {
-  nav {
+  nav, span {
     font-size: calc(16px + 8 * ((100vw - 360px) / 1540));
   }
 }
 @media screen and (min-width: 1900px) {
-  nav {
+  nav, span {
     font-size: 24px;
   }
 }
@@ -40,7 +40,7 @@ body {
   width: 2000vw;
 }
 
-p, button, label, input {
+p, button, label, input, span {
   font-family: "Play", sans-serif;
 }
 
@@ -365,6 +365,12 @@ svg {
 .about-description {
   width: 100%;
   height: 100%;
+  line-height: 1.2rem;
+}
+@media (min-width: 1000px) {
+  .about-description {
+    line-height: 1.5rem;
+  }
 }
 
 .description-container {
@@ -549,6 +555,76 @@ svg {
   left: 0;
   position: absolute;
   transform: translateX(300vw);
+}
+
+.technology-wrapper {
+  width: 88%;
+  height: calc(100% - 20%);
+  margin: 60px auto 0;
+}
+
+.technology-content {
+  color: #ff5217;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 250px 250px 250px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  justify-items: center;
+  justify-content: space-between;
+}
+
+.left {
+  justify-content: start;
+  text-align: left;
+}
+.left div {
+  align-items: flex-start;
+}
+
+.right {
+  justify-content: end;
+  text-align: right;
+}
+.right div {
+  align-items: flex-end;
+}
+
+.technology-content > div {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+}
+
+.technologyEntry {
+  max-height: 200px;
+}
+.technologyEntry__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.technologyName {
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.technologyDescription {
+  font-size: 13px;
+}
+.technologyDescription ul {
+  margin-top: 10px;
+  font-size: 9px;
+}
+
+.title {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  justify-content: start;
+  font-family: "Play", sans-serif;
 }
 
 #leading-line0 {

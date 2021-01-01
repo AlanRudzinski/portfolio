@@ -1991,6 +1991,8 @@ var _default = {
   body: document.querySelector('body'),
   //navItemLinks: document.querySelectorAll('.navigation__list__item-link'),
   allNavLinks: document.querySelectorAll('.navLink'),
+  technologiesList: document.querySelector('.technology-content'),
+  technologiesEntries: document.querySelectorAll('.technologyEntry'),
   svgs: {
     homeAboutLine: document.getElementById("leading-line0"),
     homeProjectLine: document.getElementById("leading-line1"),
@@ -5139,7 +5141,287 @@ function animateDescriptionCover(duration, delay) {
 
 var _default = PortraitAnimations;
 exports.default = _default;
-},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js","./NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js","animejs":"../node_modules/animejs/lib/anime.es.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","../commons/DOMelements":"../src/scripts/commons/DOMelements.js","./NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js","animejs":"../node_modules/animejs/lib/anime.es.js"}],"../node_modules/@babel/runtime-corejs2/helpers/classCallCheck.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+},{}],"../node_modules/core-js/library/modules/es6.object.define-property.js":[function(require,module,exports) {
+var $export = require('./_export');
+// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
+$export($export.S + $export.F * !require('./_descriptors'), 'Object', { defineProperty: require('./_object-dp').f });
+
+},{"./_export":"../node_modules/core-js/library/modules/_export.js","./_descriptors":"../node_modules/core-js/library/modules/_descriptors.js","./_object-dp":"../node_modules/core-js/library/modules/_object-dp.js"}],"../node_modules/core-js/library/fn/object/define-property.js":[function(require,module,exports) {
+require('../../modules/es6.object.define-property');
+var $Object = require('../../modules/_core').Object;
+module.exports = function defineProperty(it, key, desc) {
+  return $Object.defineProperty(it, key, desc);
+};
+
+},{"../../modules/es6.object.define-property":"../node_modules/core-js/library/modules/es6.object.define-property.js","../../modules/_core":"../node_modules/core-js/library/modules/_core.js"}],"../node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":[function(require,module,exports) {
+module.exports = require("core-js/library/fn/object/define-property");
+},{"core-js/library/fn/object/define-property":"../node_modules/core-js/library/fn/object/define-property.js"}],"../node_modules/@babel/runtime-corejs2/helpers/createClass.js":[function(require,module,exports) {
+var _Object$defineProperty = require("../core-js/object/define-property");
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+
+    _Object$defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
+},{"../core-js/object/define-property":"../node_modules/@babel/runtime-corejs2/core-js/object/define-property.js"}],"../node_modules/core-js/library/modules/_object-sap.js":[function(require,module,exports) {
+// most Object methods by ES6 should accept primitives
+var $export = require('./_export');
+var core = require('./_core');
+var fails = require('./_fails');
+module.exports = function (KEY, exec) {
+  var fn = (core.Object || {})[KEY] || Object[KEY];
+  var exp = {};
+  exp[KEY] = exec(fn);
+  $export($export.S + $export.F * fails(function () { fn(1); }), 'Object', exp);
+};
+
+},{"./_export":"../node_modules/core-js/library/modules/_export.js","./_core":"../node_modules/core-js/library/modules/_core.js","./_fails":"../node_modules/core-js/library/modules/_fails.js"}],"../node_modules/core-js/library/modules/es6.object.keys.js":[function(require,module,exports) {
+// 19.1.2.14 Object.keys(O)
+var toObject = require('./_to-object');
+var $keys = require('./_object-keys');
+
+require('./_object-sap')('keys', function () {
+  return function keys(it) {
+    return $keys(toObject(it));
+  };
+});
+
+},{"./_to-object":"../node_modules/core-js/library/modules/_to-object.js","./_object-keys":"../node_modules/core-js/library/modules/_object-keys.js","./_object-sap":"../node_modules/core-js/library/modules/_object-sap.js"}],"../node_modules/core-js/library/fn/object/keys.js":[function(require,module,exports) {
+require('../../modules/es6.object.keys');
+module.exports = require('../../modules/_core').Object.keys;
+
+},{"../../modules/es6.object.keys":"../node_modules/core-js/library/modules/es6.object.keys.js","../../modules/_core":"../node_modules/core-js/library/modules/_core.js"}],"../node_modules/@babel/runtime-corejs2/core-js/object/keys.js":[function(require,module,exports) {
+module.exports = require("core-js/library/fn/object/keys");
+},{"core-js/library/fn/object/keys":"../node_modules/core-js/library/fn/object/keys.js"}],"../src/scripts/checkIfClicked.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _default = function _default(arr) {
+  for (var index = 0; index < arr.length; index++) {
+    var el = arr[index];
+
+    if (el.children[0].children[0].classList.contains('technologyClicked') === true) {
+      return true;
+    }
+  }
+
+  ;
+  return false;
+};
+
+exports.default = _default;
+},{}],"../src/scripts/commons/technologyConst.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.technologySet = void 0;
+var technologySet = {
+  "HTML": "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li><li><a href='http://alanrudzinski.pl'>www.alanrudzinski.pl</a></li></ul>",
+  "CSS": "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li><li><a href='http://alanrudzinski.pl'>www.alanrudzinski.pl</a></li></ul>",
+  "Javascript": "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li><li><a href='http://alanrudzinski.pl' >www.alanrudzinski.pl</a></li></ul>",
+  "ReactJS": "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li></ul>",
+  "React-redux": "No projects are ready with this technology yet",
+  "Styled Components": "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li></ul>",
+  "GatsbyJS": "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl'>www.akademiapromyk.pl</a></li></ul>",
+  "Python": "No projects made with this technology yet",
+  "Django": "No projects made with this technology yet",
+  "GraphQL": "Projects made with this technology:<ul><li><a href='http://akademiapromyk.pl' >www.akademiapromyk.pl</a></li></ul>"
+};
+exports.technologySet = technologySet;
+},{}],"../src/scripts/textScramble.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.scrambleElement = scrambleElement;
+exports.scrambleRandomElement = scrambleRandomElement;
+
+var _promise = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/promise"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime-corejs2/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime-corejs2/helpers/createClass"));
+
+var _keys = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/object/keys"));
+
+var _from = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/array/from"));
+
+var _checkIfClicked = _interopRequireDefault(require("./checkIfClicked"));
+
+var _DOMelements = _interopRequireDefault(require("./commons/DOMelements"));
+
+var _technologyConst = require("./commons/technologyConst");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function scrambleElement(el, text) {
+  var fx = new TextScramble(el);
+  fx.setText(text);
+}
+
+function scrambleRandomElement(el) {
+  if ((0, _checkIfClicked.default)((0, _from.default)(_DOMelements.default.technologiesEntries))) return;
+  var arr = (0, _from.default)(el.children).filter(function (el) {
+    return el.classList.contains('technologyEntry');
+  });
+  var randomElIdx = Math.floor(Math.random() * arr.length);
+  var randomEl = arr[randomElIdx];
+  var fx = new TextScramble(randomEl.children[0].children[0]);
+  fx.setText((0, _keys.default)(_technologyConst.technologySet)[randomElIdx]);
+}
+
+var TextScramble = /*#__PURE__*/function () {
+  function TextScramble(el) {
+    (0, _classCallCheck2.default)(this, TextScramble);
+    this.el = el;
+    this.chars = '!<>-_\\/[]{}—=+*^?#________';
+    this.update = this.update.bind(this);
+  }
+
+  (0, _createClass2.default)(TextScramble, [{
+    key: "setText",
+    value: function setText(newText) {
+      var _this = this;
+
+      var oldText = this.el.innerText;
+      var length = Math.max(oldText.length, newText.length);
+      var promise = new _promise.default(function (resolve) {
+        return _this.resolve = resolve;
+      });
+      this.queue = [];
+
+      for (var i = 0; i < length; i++) {
+        var from = oldText[i] || '';
+        var to = newText[i] || '';
+        var start = Math.floor(Math.random() * 40);
+        var end = start + Math.floor(Math.random() * 40);
+        this.queue.push({
+          from: from,
+          to: to,
+          start: start,
+          end: end
+        });
+      }
+
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      var output = '';
+      var complete = 0;
+
+      for (var i = 0, n = this.queue.length; i < n; i++) {
+        var _this$queue$i = this.queue[i],
+            from = _this$queue$i.from,
+            to = _this$queue$i.to,
+            start = _this$queue$i.start,
+            end = _this$queue$i.end,
+            char = _this$queue$i.char;
+
+        if (this.frame >= end) {
+          complete++;
+          output += to;
+        } else if (this.frame >= start) {
+          if (!char || Math.random() < 0.15) {
+            char = this.randomChar();
+            this.queue[i].char = char;
+          }
+
+          output += "<span style=\"font-size:10px;opacity:.7;\">".concat(char, "</span>");
+        } else {
+          output += from;
+        }
+      }
+
+      this.el.innerHTML = output;
+
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
+    }
+  }, {
+    key: "randomChar",
+    value: function randomChar() {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+  }]);
+  return TextScramble;
+}(); // export function textScramble(text, el) { 
+//   const q = makeQueue(text) 
+//   requestAnimationFrame(() => getScrambledOutputIntoElement(q, el));
+// }
+// function getScrambledOutputIntoElement(queue, el, frame) {
+//   let output = '';
+//   let complete = 0;
+//   for (let index = 0, length = queue.length; index < length; index++) {
+//     const { letter, start, end, char } = queue[index];
+//     if(frame > end) {
+//       complete++;
+//       output += letter
+//     } else {        
+//       if (!char || Math.random() < 0.28) {
+//         char = getRandomChar();
+//         queue[index].char = char
+//     }
+//     output += `<span>${char}</span>`
+//     }
+//     el.innerHTML = output;
+//   }
+//   frame++
+//   console.log({ output, frame, complete})
+//   return {output, frame, complete}
+// }
+//   function makeQueue(text) {
+//   const length = text.length;
+//   let queue = [];
+//   for (let index = 0; index < length; index++) {
+//     const letter = text[index];
+//     const start = Math.floor(Math.random() * 40)
+//     const end = start + Math.floor(Math.random() * 40)
+//     queue.push({ letter, start, end })
+//   }
+//   return queue;
+// }
+// function getRandomChar() {
+//   const chars = '!<>-_\\/[]{}—=+*^?#________'
+//   return chars[Math.floor(Math.random() * chars.length)]
+// }
+},{"@babel/runtime-corejs2/core-js/promise":"../node_modules/@babel/runtime-corejs2/core-js/promise.js","@babel/runtime-corejs2/helpers/classCallCheck":"../node_modules/@babel/runtime-corejs2/helpers/classCallCheck.js","@babel/runtime-corejs2/helpers/createClass":"../node_modules/@babel/runtime-corejs2/helpers/createClass.js","@babel/runtime-corejs2/core-js/object/keys":"../node_modules/@babel/runtime-corejs2/core-js/object/keys.js","@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","./checkIfClicked":"../src/scripts/checkIfClicked.js","./commons/DOMelements":"../src/scripts/commons/DOMelements.js","./commons/technologyConst":"../src/scripts/commons/technologyConst.js"}],"../src/scripts/AnimationRouter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5153,13 +5435,31 @@ var _DOMelements = _interopRequireDefault(require("./commons/DOMelements"));
 
 var _PortraitAnimations = _interopRequireDefault(require("./Animations/PortraitAnimations"));
 
+var _textScramble = require("./textScramble");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default() {
   function onRouteChanged(e) {
     var currentHash = e.oldURL.slice(e.oldURL.lastIndexOf("#"));
     var nextHashLocation = document.getElementById((window.location.hash + '-page').slice(1));
-    if (nextHashLocation === _DOMelements.default.pages.aboutPage) (0, _PortraitAnimations.default)();
+
+    if (nextHashLocation === _DOMelements.default.pages.aboutPage) {
+      (0, _PortraitAnimations.default)();
+    }
+
+    if (nextHashLocation === _DOMelements.default.pages.technologyPage) {
+      var glitch = function glitch() {
+        (0, _textScramble.scrambleRandomElement)(_DOMelements.default.technologiesList);
+
+        if (window.location.hash === '#technology') {
+          setTimeout(glitch, 3000);
+        }
+      };
+
+      glitch(nextHashLocation);
+    }
+
     (0, _AnimateScreenFollow.default)(nextHashLocation, currentHash);
   }
 
@@ -5169,7 +5469,7 @@ var _default = function _default() {
 };
 
 exports.default = _default;
-},{"./Animations/NavLinks/AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js","./commons/DOMelements":"../src/scripts/commons/DOMelements.js","./Animations/PortraitAnimations":"../src/scripts/Animations/PortraitAnimations.js"}],"../node_modules/core-js/library/modules/_string-ws.js":[function(require,module,exports) {
+},{"./Animations/NavLinks/AnimateScreenFollow":"../src/scripts/Animations/NavLinks/AnimateScreenFollow.js","./commons/DOMelements":"../src/scripts/commons/DOMelements.js","./Animations/PortraitAnimations":"../src/scripts/Animations/PortraitAnimations.js","./textScramble":"../src/scripts/textScramble.js"}],"../node_modules/core-js/library/modules/_string-ws.js":[function(require,module,exports) {
 module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
   '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
@@ -5359,7 +5659,6 @@ function setDashArrayAndDashOffset(lines) {
   var linesArr = (0, _values.default)(lines);
   linesArr.forEach(function (el) {
     var lng = el.firstElementChild.getTotalLength();
-    console.log(lng, el.firstElementChild);
     el.style.strokeDasharray = lng;
     el.style.strokeDashoffset = lng;
   });
@@ -5439,7 +5738,44 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/app.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/scripts/technologyAnimations.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _from = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/array/from"));
+
+var _textScramble = require("./textScramble");
+
+var _technologyConst = require("./commons/technologyConst");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default() {
+  var entries = document.querySelectorAll('.technologyName');
+  var entriesArr = (0, _from.default)(entries);
+  entriesArr.forEach(function (el) {
+    el.addEventListener('click', handleClick);
+  });
+};
+
+exports.default = _default;
+
+function handleClick(e) {
+  var tech = e.target.parentElement.children[0].innerText;
+
+  if (e.target.classList.contains('technologyClicked')) {
+    (0, _textScramble.scrambleElement)(e.target.parentElement.children[1], '');
+  } else {
+    (0, _textScramble.scrambleElement)(e.target.parentElement.children[1], _technologyConst.technologySet[tech]);
+  }
+
+  e.target.classList.toggle('technologyClicked');
+}
+},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","./textScramble":"../src/scripts/textScramble.js","./commons/technologyConst":"../src/scripts/commons/technologyConst.js"}],"../src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _LogoAnimations = _interopRequireDefault(require("./scripts/Animations/LogoAnimations"));
@@ -5462,9 +5798,12 @@ var _setDashArrayAndDashOffset = _interopRequireDefault(require("./scripts/Lines
 
 require("./scss/app.scss");
 
+var _technologyAnimations = _interopRequireDefault(require("./scripts/technologyAnimations"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = function app() {
+  (0, _technologyAnimations.default)();
   (0, _correctPosition.default)();
   (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.svgs);
   (0, _CenterView.default)();
@@ -5477,7 +5816,7 @@ var app = function app() {
 };
 
 app();
-},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","./scss/app.scss":"../src/scss/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/CenterView":"../src/scripts/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","./scss/app.scss":"../src/scss/app.scss","./scripts/technologyAnimations":"../src/scripts/technologyAnimations.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -5505,7 +5844,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40261" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38023" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

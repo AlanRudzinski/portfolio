@@ -5,14 +5,17 @@ import CenterView from './scripts/CenterView';
 import allPagesPosition from './scripts/pagePositioning/allPagesPosition';
 import AnimationRouter from './scripts/AnimationRouter';
 import correctPosition from './scripts/Lines/correctPosition';
-import DOM from './scripts/commons/DOMelements'
+import DOM from './scripts/commons/DOMelements';
 
-import setDashArrayAndDashOffset from './scripts/Lines/setDashArrayAndDashOffset'
+import setDashArrayAndDashOffset from './scripts/Lines/setDashArrayAndDashOffset';
+
 
 
 import './scss/app.scss';
+import technologyAnimations from './scripts/technologyAnimations';
 
 const app = () => {
+    technologyAnimations();
     correctPosition();
     setDashArrayAndDashOffset(DOM.svgs);
     CenterView();

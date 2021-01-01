@@ -26,7 +26,7 @@ p, button {
     @include fluid-type($min_width, $max_width, $min_font_p, $max_font_p);
 }
 
-nav {
+nav, span {
     @include fluid-type($min_width, $max_width, $min_font_nav, $max_font_nav);
 }
 
@@ -38,7 +38,7 @@ body {
     // overflow: hidden;
 }
 
-p, button, label, input {
+p, button, label, input, span {
     font-family: 'Play', sans-serif;
 }
 
