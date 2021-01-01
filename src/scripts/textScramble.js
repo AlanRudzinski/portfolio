@@ -1,21 +1,20 @@
+import checkIfClicked from "./checkIfClicked";
+import DOM from './commons/DOMelements';
+import { technologySet } from "./commons/technologyConst";
+
 export function scrambleElement(el, text) {
   const fx = new TextScramble(el);
   fx.setText(text);
 }
 
 export function scrambleRandomElement(el){
-  const arr = el.children;
-  const randomEl = arr[Math.floor(Math.random() * arr.length)]
-  const fx = new TextScramble(randomEl)
-
-  fx.setText(randomEl.innerHTML);
-  // const next = () => {
-  //   fx.setText(text).then(() => {
-  //     setTimeout(next, 800)
-  //   })
-  // }
+  if(checkIfClicked(Array.from(DOM.technologiesEntries))) return;
   
-  // next()
+  const arr = Array.from(el.children).filter(el => el.classList.contains('technologyEntry'));
+  const randomElIdx = Math.floor(Math.random() * arr.length)
+  const randomEl = arr[randomElIdx]
+  const fx = new TextScramble(randomEl.children[0].children[0])
+  fx.setText(Object.keys(technologySet)[randomElIdx]);
 }
 
 class TextScramble {
@@ -32,8 +31,8 @@ class TextScramble {
     for (let i = 0; i < length; i++) {
       const from = oldText[i] || ''
       const to = newText[i] || ''
-      const start = Math.floor(Math.random() * 30)
-      const end = start + Math.floor(Math.random() * 30)
+      const start = Math.floor(Math.random() * 40)
+      const end = start + Math.floor(Math.random() * 40)
       this.queue.push({ from, to, start, end })
     }
     cancelAnimationFrame(this.frameRequest)

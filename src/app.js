@@ -12,11 +12,9 @@ import setDashArrayAndDashOffset from './scripts/Lines/setDashArrayAndDashOffset
 
 
 import './scss/app.scss';
-import { scrambleRandomElement } from './scripts/textScramble';
 import technologyAnimations from './scripts/technologyAnimations';
 
 const app = () => {
-  //  setInterval(() => scrambleRandomElement(DOM.technologiesList), 2000);
     technologyAnimations();
     correctPosition();
     setDashArrayAndDashOffset(DOM.svgs);

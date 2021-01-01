@@ -613,16 +613,11 @@ svg {
 }
 
 .technologyDescription {
-  display: none;
   font-size: 13px;
 }
 .technologyDescription ul {
   margin-top: 10px;
   font-size: 9px;
-}
-
-.technologyClicked + span {
-  display: inline;
 }
 
 .title {

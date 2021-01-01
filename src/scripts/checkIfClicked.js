@@ -1,7 +1,9 @@
-import DOM from '../scripts/commons/DOMelements';
-
-export default () => {
-    const technologyEntries = DOM.technologiesEntries;
-    const technologiesEntriesArr = Array.from(technologyEntries);
-    technologiesEntriesArr.forEach(el => console.log(el.children[0].children[0].classList.contains('technologyClicked')))
-}
+export default (arr) => {
+    for (let index = 0; index < arr.length; index++) {
+        const el = arr[index];
+        if(el.children[0].children[0].classList.contains('technologyClicked') === true) {
+            return true;
+        }
+    };
+    return false;
+};
