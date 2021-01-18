@@ -2,7 +2,9 @@ import AnimateScreenFollow from './Animations/NavLinks/AnimateScreenFollow'
 import DOM from './commons/DOMelements'
 
 import PortraitAnimations from './Animations/PortraitAnimations'
-import { scrambleRandomElement } from './textScramble'
+import { scrambleAllElements, scrambleRandomElement } from './textScramble'
+import { delay } from './commons/delay'
+
 
 export default () => {
     function onRouteChanged(e) {
@@ -12,13 +14,9 @@ export default () => {
             PortraitAnimations();
         }
         if(nextHashLocation === DOM.pages.technologyPage) {
-            const glitch = () => {
-                scrambleRandomElement(DOM.technologiesList)
-                if(window.location.hash === '#technology') {
-                    setTimeout(glitch, 3000)
-                }
-            }
-            glitch(nextHashLocation);
+            delay(5500).then(scrambleAllElements)
+            // setTimeout(scrambleAllElements, 5500).then(glitch(nextHashLocation))
+
         }
         AnimateScreenFollow(nextHashLocation, currentHash)
     }

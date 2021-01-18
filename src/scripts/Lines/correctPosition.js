@@ -14,17 +14,17 @@ export default () => {
     correctPosition(DOM.svgs.technologyContactLine, DOM.links.contactContactLink);
     correctPosition(DOM.svgs.technologyHomeLine, DOM.links.homeTechnologyLink);
 
-    // // about
+    // // // about
     correctPosition(DOM.svgs.aboutContactLine, DOM.links.contactContactLink);
     correctPosition(DOM.svgs.aboutHomeLine, DOM.links.homeAboutLink);
     correctPosition(DOM.svgs.aboutProjectLine, DOM.links.projectProjectLink);
     correctPosition(DOM.svgs.aboutTechnologiesLine, DOM.links.technologiesTechnologiesLink);
 
-        // portrait
+    //     // portrait
     correctHorizontal(DOM.portrait.leadingLines.leftDownLine, DOM.portrait.description)
 
 
-    // // project
+    // // // project
     correctPosition(DOM.svgs.projectAboutLine, DOM.links.aboutAboutLink);
     correctPosition(DOM.svgs.projectContactLine, DOM.links.contactContactLink);
     correctPosition(DOM.svgs.projectHomeLine, DOM.links.homeProjectLink);
@@ -33,11 +33,12 @@ export default () => {
 
 function correctPosition(line, link) {
     correctHorizontal(line, link);
-    correctVertical(line, link);
+    // correctVertical(line, link); 
 }
 
 export function correctHorizontal(line, link){
     let moveValue = GetAbsolutePosition(link).left - GetAbsolutePosition(line).left;
+    console.log(link.id, moveValue)
     const points = {
         firstPoint: getPoints(line, 1),
         secondPoint: getPoints(line, 2)
@@ -65,10 +66,13 @@ export function correctHorizontal(line, link){
 function correctVertical(line, link) {
     const distancePoint = getPoints(line, 2).y
     let moveValue = distancePoint + GetAbsolutePosition(line).top - GetAbsolutePosition(link).bot + 5;
+    // let moveValue = distancePoint + GetAbsolutePosition(link).bot - GetAbsolutePosition(line).top  + 5;
+    
     const points = {
         firstPoint: getPoints(line, 2),
         secondPoint: getPoints(line, 3)
-    }
+        }
+        console.log(link.id, moveValue, GetAbsolutePosition(line).top, GetAbsolutePosition(link).bot, distancePoint)
     if(moveValue > 0) {
         points.firstPoint.y -= moveValue;
         points.secondPoint.y -= moveValue;

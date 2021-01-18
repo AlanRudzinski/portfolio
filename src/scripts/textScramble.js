@@ -1,6 +1,24 @@
-import checkIfClicked from "./checkIfClicked";
+import checkIfClicked from "./commons/checkIfClicked";
+import { delay } from "./commons/delay";
 import DOM from './commons/DOMelements';
 import { technologySet } from "./commons/technologyConst";
+
+export function scrambleAllElements() {
+  const arr = Array.from(DOM.technologiesEntries)
+  const titles = Object.keys(technologySet);
+  arr.forEach((element, idx) => {
+    const scrambleElement = new TextScramble(element.children[0].children[0])
+    scrambleElement.setText(titles[idx])
+  });
+  delay(1000).then(glitch())
+}
+
+function glitch() {
+  scrambleRandomElement(DOM.technologiesList)
+  if(window.location.hash === '#technology') {
+      setTimeout(glitch, 1500)
+  }
+}
 
 export function scrambleElement(el, text) {
   const fx = new TextScramble(el);

@@ -1,5 +1,5 @@
-import { scrambleElement } from './textScramble'
-import { technologySet } from './commons/technologyConst'
+import { scrambleElement } from '../textScramble'
+import { technologySet } from '../commons/technologyConst'
 
 export default () => {
     const entries = document.querySelectorAll('.technologyName')
