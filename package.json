@@ -18,6 +18,8 @@
     "sass": "^1.26.10"
   },
   "dependencies": {
-    "animejs": "^3.2.0"
+    "@glidejs/glide": "^3.4.1",
+    "animejs": "^3.2.0",
+    "emailjs-com": "^2.6.4"
   }
 }

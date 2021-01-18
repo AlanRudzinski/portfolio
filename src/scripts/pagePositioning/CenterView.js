@@ -1,4 +1,4 @@
-import DOM from './commons/DOMelements'
+import DOM from '../commons/DOMelements'
 
 export default () => {
     window.onload = () => {
