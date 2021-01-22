@@ -2123,6 +2123,7 @@ var _default = function _default(el) {
     left: rect.left + scrollLeft,
     bot: rect.bottom + scrollTop,
     right: rect.right + scrollLeft,
+    width: rect.width,
     element: el
   };
 };
@@ -5605,12 +5606,12 @@ var _default = function _default() {
 exports.default = _default;
 
 function correctPosition(line, link) {
-  correctHorizontal(line, link); // correctVertical(line, link); 
+  correctHorizontal(line, link);
+  correctVertical(line, link);
 }
 
 function correctHorizontal(line, link) {
   var moveValue = (0, _GetAbsolutePosition.default)(link).left - (0, _GetAbsolutePosition.default)(line).left;
-  console.log(link.id, moveValue);
   var points = {
     firstPoint: getPoints(line, 1),
     secondPoint: getPoints(line, 2)
@@ -5645,7 +5646,6 @@ function correctVertical(line, link) {
     firstPoint: getPoints(line, 2),
     secondPoint: getPoints(line, 3)
   };
-  console.log(link.id, moveValue, (0, _GetAbsolutePosition.default)(line).top, (0, _GetAbsolutePosition.default)(link).bot, distancePoint);
 
   if (moveValue > 0) {
     points.firstPoint.y -= moveValue;
@@ -5879,8 +5879,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function setDashArrayAndDashOffset(lines) {
   var linesArr = (0, _values.default)(lines);
   linesArr.forEach(function (el) {
-    var lng = el.firstElementChild.getTotalLength(); // el.style.strokeDasharray = lng;
-    // el.style.strokeDashoffset = lng;
+    var lng = el.firstElementChild.getTotalLength();
+    el.style.strokeDasharray = lng;
+    el.style.strokeDashoffset = lng;
   });
 }
 
@@ -9508,14 +9509,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = function app() {
   (0, _technologyAnimations.default)();
-  (0, _correctPosition.default)();
-  (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.svgs);
   (0, _allPagesPosition.default)();
   (0, _LogoAnimations.default)('.logo__underline', '.logo__cover', 0);
   (0, _LogoAnimations.default)('.navigation__underline', '.navigation__cover', 900);
   (0, _AnimationRouter.default)();
   (0, _NavItemsAnimations.default)();
   (0, _NavLinks.default)();
+  (0, _correctPosition.default)(); // set dasharray after correct posittion because length can change
+
+  (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.svgs);
   (0, _emailJsInit.default)();
   new _glide.default('.glide', {
     dragThreshold: false
@@ -9552,7 +9554,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33479" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44841" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

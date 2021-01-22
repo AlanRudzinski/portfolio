@@ -689,6 +689,7 @@ svg {
 }
 
 .project__slide {
+  cursor: default;
   width: 100%;
   height: 90vh;
   position: relative;
@@ -705,7 +706,7 @@ svg {
   left: -160px;
 }
 .project__slide .alan_svg {
-  font-family: "Tomorrow", sans-serif;
+  font-family: "Kumar One", cursive;
   text-align: center;
   left: -125px;
   bottom: -7.5em;
@@ -737,6 +738,15 @@ svg {
 }
 .alan-text h2 {
   margin-bottom: 20px;
+  font-family: "Tomorrow", sans-serif;
+}
+
+#sloneczko_project {
+  position: absolute;
+  top: 14vh;
+  left: 10vw;
+  width: 359.8px;
+  height: 268.3px;
 }
 
 .technology-page__navigation {
@@ -780,6 +790,7 @@ svg {
   display: grid;
   grid-template-columns: 250px 250px 250px;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
   grid-auto-flow: column;
   justify-items: center;
   justify-content: space-between;
@@ -819,22 +830,69 @@ svg {
 
 .technologyName {
   cursor: pointer;
-  font-size: 22px;
+}
+.technologyName {
+  font-size: 14px;
+}
+@media screen and (min-width: 10px) {
+  .technologyName {
+    font-size: calc(14px + 14 * ((100vw - 10px) / 2490));
+  }
+}
+@media screen and (min-width: 2500px) {
+  .technologyName {
+    font-size: 28px;
+  }
 }
 
 .technologyDescription {
-  font-size: 13px;
+  font-size: 10px;
+}
+@media screen and (min-width: 10px) {
+  .technologyDescription {
+    font-size: calc(10px + 10 * ((100vw - 10px) / 2490));
+  }
+}
+@media screen and (min-width: 2500px) {
+  .technologyDescription {
+    font-size: 20px;
+  }
 }
 .technologyDescription ul {
   margin-top: 10px;
-  font-size: 9px;
+  font-size: 12px;
+}
+.technologyDescription ul {
+  font-size: 8px;
+}
+@media screen and (min-width: 10px) {
+  .technologyDescription ul {
+    font-size: calc(8px + 8 * ((100vw - 10px) / 2490));
+  }
+}
+@media screen and (min-width: 2500px) {
+  .technologyDescription ul {
+    font-size: 16px;
+  }
 }
 
 .title {
-  font-size: 1.3rem;
   text-transform: uppercase;
   justify-content: start;
   font-family: "Play", sans-serif;
+}
+.title {
+  font-size: 16px;
+}
+@media screen and (min-width: 10px) {
+  .title {
+    font-size: calc(16px + 16 * ((100vw - 10px) / 2490));
+  }
+}
+@media screen and (min-width: 2500px) {
+  .title {
+    font-size: 32px;
+  }
 }
 
 #leading-line0 {

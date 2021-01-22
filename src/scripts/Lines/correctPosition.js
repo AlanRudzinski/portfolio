@@ -33,12 +33,12 @@ export default () => {
 
 function correctPosition(line, link) {
     correctHorizontal(line, link);
-    // correctVertical(line, link); 
+    correctVertical(line, link); 
 }
 
 export function correctHorizontal(line, link){
     let moveValue = GetAbsolutePosition(link).left - GetAbsolutePosition(line).left;
-    console.log(link.id, moveValue)
+    
     const points = {
         firstPoint: getPoints(line, 1),
         secondPoint: getPoints(line, 2)
@@ -72,7 +72,6 @@ function correctVertical(line, link) {
         firstPoint: getPoints(line, 2),
         secondPoint: getPoints(line, 3)
         }
-        console.log(link.id, moveValue, GetAbsolutePosition(line).top, GetAbsolutePosition(link).bot, distancePoint)
     if(moveValue > 0) {
         points.firstPoint.y -= moveValue;
         points.secondPoint.y -= moveValue;

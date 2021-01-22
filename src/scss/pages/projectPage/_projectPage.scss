@@ -35,6 +35,7 @@
 }
 
 .project__slide {
+    cursor: default;
     width: 100%;
     height: 90vh;
     // border: green 1px solid;
@@ -52,7 +53,7 @@
         left: -160px
     }
     .alan_svg {
-        font-family: 'Tomorrow', sans-serif;
+        font-family: 'Kumar One', cursive;
         text-align: center;
         left: -125px;
         bottom: -7.5em;
@@ -86,5 +87,14 @@
     text-align: right;
     & h2 {
         margin-bottom: 20px;
+        font-family: 'Tomorrow', sans-serif;
     }
+}
+
+#sloneczko_project {
+    position: absolute;
+    top: 14vh;
+    left: 10vw;
+    width: 359.8px;
+    height: 268.3px;
 }
