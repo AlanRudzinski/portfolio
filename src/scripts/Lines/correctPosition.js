@@ -21,7 +21,7 @@ export default () => {
     correctPosition(DOM.svgs.aboutTechnologiesLine, DOM.links.technologiesTechnologiesLink);
 
     //     // portrait
-    correctHorizontal(DOM.portrait.leadingLines.leftDownLine, DOM.portrait.description)
+    correctPosition(DOM.portrait.leadingLines.leftDownLine, DOM.portrait.description)
 
 
     // // // project

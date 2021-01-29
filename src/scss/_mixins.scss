@@ -20,3 +20,39 @@
       }
     }
   }
+
+$sm-phone_width: 360px;
+$phone_width: 600px;
+$tablet_width: 950px;
+$desktop_width: 1600px;
+
+
+@mixin sm-phone {
+  @media (max-width: #{$sm-phone_width - 1px}) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (min-width: #{$sm-phone_width}) and (max-width: #{$phone_width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$phone_width}) and (max-width: #{$tablet_width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$tablet_width}) and (max-width: #{$desktop_width - 1px}) {
+    @content;
+  }
+}
+
+@mixin lg-desktop {
+  @media (min-width: #{$desktop_width}) {
+    @content;
+  }
+}

@@ -5595,7 +5595,7 @@ var _default = function _default() {
   correctPosition(_DOMelements.default.svgs.aboutProjectLine, _DOMelements.default.links.projectProjectLink);
   correctPosition(_DOMelements.default.svgs.aboutTechnologiesLine, _DOMelements.default.links.technologiesTechnologiesLink); //     // portrait
 
-  correctHorizontal(_DOMelements.default.portrait.leadingLines.leftDownLine, _DOMelements.default.portrait.description); // // // project
+  correctPosition(_DOMelements.default.portrait.leadingLines.leftDownLine, _DOMelements.default.portrait.description); // // // project
 
   correctPosition(_DOMelements.default.svgs.projectAboutLine, _DOMelements.default.links.aboutAboutLink);
   correctPosition(_DOMelements.default.svgs.projectContactLine, _DOMelements.default.links.contactContactLink);
@@ -9554,7 +9554,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44841" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45779" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
