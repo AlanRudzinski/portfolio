@@ -916,8 +916,19 @@ svg {
 }
 
 .project-page__navigation {
+  display: inline-block;
   margin-top: 0;
   margin-left: 0;
+}
+@media (max-width: 359px) {
+  .project-page__navigation {
+    display: none;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  .project-page__navigation {
+    display: none;
+  }
 }
 .project-page__navigation__list {
   color: #ff5217;
@@ -1467,6 +1478,112 @@ svg {
   left: 95%;
   bottom: 20%;
   z-index: -1;
+}
+
+.hamburger_navigation {
+  display: none;
+}
+@media (max-width: 359px) {
+  .hamburger_navigation {
+    display: inline-block;
+    position: fixed;
+    left: 80vw;
+    top: 50;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  .hamburger_navigation {
+    display: inline-block;
+    position: fixed;
+    left: 80vw;
+    top: 50;
+  }
+}
+
+.btn-menu {
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.btn-menu:focus {
+  border: 1px #ff5217 solid;
+}
+
+.btn-menu__label {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.btn-menu__burger {
+  position: relative;
+  transition-timing-function: ease-in;
+}
+
+.btn-menu__burger,
+.btn-menu__burger::before,
+.btn-menu__burger::after {
+  display: inline-block;
+  width: 50px;
+  height: 12px;
+  background-color: #1d1d1b;
+  border: 2px #ff5217 solid;
+  box-sizing: border-box;
+  transition: 500ms;
+}
+
+.btn-menu__burger::before,
+.btn-menu__burger::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+}
+
+.btn-menu__burger::before {
+  transform: translateY(-18px);
+}
+
+.btn-menu__burger::after {
+  transform: translateY(14px);
+}
+
+.btn-menu_open .btn-menu__burger {
+  transform: translateX(-100px);
+  background-color: transparent;
+}
+
+.btn-menu_open .btn-menu__burger::before {
+  transform: rotate(45deg) translate(72px, -72px);
+}
+
+.btn-menu_open .btn-menu__burger::after {
+  transform: rotate(-45deg) translate(72px, 72px);
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  background: #ccc;
+}
+
+.navigation__menu {
+  visibility: hidden;
+}
+
+.navigation__menu_open {
+  visibility: visible;
 }
 
 /*# sourceMappingURL=/app.581aa3f0.css.map */
