@@ -1,5 +1,11 @@
 .logo {
     position: relative;
+    @include sm-phone {
+        margin-top: 20vh;
+    }
+    @include phone {
+        margin-top: 20vh;
+    }
     &__text {
         font-family: 'Kumar One', cursive;
         text-align: center;
@@ -8,6 +14,15 @@
         line-height: 4rem;
         z-index: 20;
         position: relative;
+        @include sm-phone {
+            font-size: 2.8rem;
+            line-height: 2.8rem;
+        }
+
+        @include phone {
+            font-size: 2.8rem;
+            line-height: 2.8rem;
+        }
     }
     &__underline {
         min-height: 2px;

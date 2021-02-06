@@ -1,4 +1,11 @@
 .technology-page__navigation {
+    @include sm-phone {
+        display: none;
+    }
+    @include phone {
+        display: none;
+    }
+    display: block;
     margin-top: 0;
     margin-left: 0;
     &__list {

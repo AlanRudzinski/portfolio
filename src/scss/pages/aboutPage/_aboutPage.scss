@@ -5,6 +5,21 @@
     left: 0;
     position: absolute;
     transform: translateY(200vh);
+    @include sm-phone {
+        transform: translateY(100vh);
+    }
+    @include phone {
+        transform: translateY(100vh);
+    }
+    @include tablet {
+        transform: translateY(200vh)
+    }
+    @include desktop {
+        transform: translateY(200vh)
+    }
+    @include lg-desktop {
+        transform: translateY(200vh)
+    }
 }
 
 .about-wrapper {

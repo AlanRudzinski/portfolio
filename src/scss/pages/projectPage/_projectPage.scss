@@ -2,7 +2,21 @@
     top: 0;
     left: 0;
     position: absolute;
+    @include sm-phone {
+        transform: translateY(200vh);
+    }
+    @include phone {
+        transform: translateY(200vh);
+    }
+    @include tablet {
+        transform: translateY(400vh) translateX(100vw);
+    }
+    @include desktop {
+        transform: translateY(400vh) translateX(100vw);
+    }
+    @include lg-desktop {
     transform: translateY(400vh) translateX(100vw);
+    }
 }
 
 .glide__bullet {

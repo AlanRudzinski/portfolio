@@ -1,6 +1,13 @@
 .contact-page__navigation {
     margin-top: 0;
     margin-left: 0;
+    @include sm-phone {
+        display: none;
+    }
+
+    @include phone {
+        display: none;
+    }
     &__list {
         color: $main-line;
         display: flex;

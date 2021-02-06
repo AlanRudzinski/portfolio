@@ -2,10 +2,24 @@
     background-color: $main-grey;
     height: 100vh;
     width: 100vw;
-    transform: translateX(($global-width/2) - 50vw) translateY(($global-height/2) - 50vh);
     // overflow-x: hidden;
     // overflow-y: hidden;
+    @include tablet {
+        transform: translateX(($global-width/2) - 50vw) translateY(($global-height/2) - 50vh);
+    }
+    @include desktop {
+        transform: translateX(($global-width/2) - 50vw) translateY(($global-height/2) - 50vh);
+    }
+    @include lg-desktop {
+        transform: translateX(($global-width/2) - 50vw) translateY(($global-height/2) - 50vh);
+    }
     &__container {
+        @include sm-phone {
+            justify-content: start;
+        }
+        @include phone {
+            justify-content: start;
+        }
         height: 100%;
         display: flex;
         flex-direction: column;

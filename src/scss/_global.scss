@@ -35,6 +35,12 @@ body {
     background: $main-grey;
     height: $global-height;
     width: $global-width;
+    @include sm-phone {
+        width: 100vw;
+    }
+    @include phone {
+        width: 100vw;
+    }
     // overflow: hidden;
 }
 

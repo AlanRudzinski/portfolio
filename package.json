@@ -20,6 +20,7 @@
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
     "animejs": "^3.2.0",
-    "emailjs-com": "^2.6.4"
+    "emailjs-com": "^2.6.4",
+    "simplestatemanager": "^4.1.1"
   }
 }

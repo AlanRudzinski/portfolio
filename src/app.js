@@ -33,7 +33,13 @@ const app = () => {
     new Glide('.glide', {
         dragThreshold: false,
     }).mount();
+    if(window.innerWidth < 600) {
+        new Glide('.glide_tech', {
+            dragThreshold: false,
+        }).mount();
+    }
     CenterView();
+
 
 }
 
