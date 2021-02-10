@@ -166,18 +166,18 @@ nav, span {
   }
 }
 
-body {
+body, html {
   background: #1d1d1b;
   height: 2000vh;
   width: 2000vw;
 }
 @media (max-width: 359px) {
-  body {
+  body, html {
     width: 100vw;
   }
 }
 @media (min-width: 360px) and (max-width: 599px) {
-  body {
+  body, html {
     width: 100vw;
   }
 }
@@ -1481,6 +1481,7 @@ svg {
 }
 
 .hamburger_navigation {
+  z-index: 999;
   display: none;
 }
 @media (max-width: 359px) {
@@ -1501,6 +1502,7 @@ svg {
 }
 
 .btn-menu {
+  cursor: pointer;
   width: 100px;
   height: 100px;
   background-color: transparent;
@@ -1529,47 +1531,53 @@ svg {
 
 .btn-menu__burger {
   position: relative;
-  transition-timing-function: ease-in;
 }
 
-.btn-menu__burger,
-.btn-menu__burger::before,
-.btn-menu__burger::after {
+.lineBurger {
+  transition-timing-function: ease-in;
   display: inline-block;
   width: 50px;
   height: 12px;
   background-color: #1d1d1b;
-  border: 2px #ff5217 solid;
+  border: solid 2px #ff5217;
   box-sizing: border-box;
   transition: 500ms;
 }
 
-.btn-menu__burger::before,
-.btn-menu__burger::after {
+.firstLine {
+  transform: translateY(4px);
+}
+
+.thirdLine {
+  transform: translateY(-4px);
+}
+
+.btn-menu_open .secondLine {
+  transform: translateX(100px);
+}
+
+.btn-menu_open .firstLine {
+  transform: translate(0, 19px) rotate(-45deg);
+}
+
+.btn-menu_open .thirdLine {
+  transform: translate(0, -19px) rotate(45deg);
+}
+
+.thirdLine::after {
   content: "";
-  position: absolute;
-  left: -2px;
+  display: block;
+  height: 14px;
+  width: 8px;
+  transform: translate(19px, -3px);
+  background-color: #1d1d1b;
+  opacity: 0;
+  transition: 200ms;
+  transition-timing-function: ease-in;
 }
 
-.btn-menu__burger::before {
-  transform: translateY(-18px);
-}
-
-.btn-menu__burger::after {
-  transform: translateY(14px);
-}
-
-.btn-menu_open .btn-menu__burger {
-  transform: translateX(-100px);
-  background-color: transparent;
-}
-
-.btn-menu_open .btn-menu__burger::before {
-  transform: rotate(45deg) translate(72px, -72px);
-}
-
-.btn-menu_open .btn-menu__burger::after {
-  transform: rotate(-45deg) translate(72px, 72px);
+.btn-menu_open .thirdLine::after {
+  opacity: 1;
 }
 
 .menu {
@@ -1580,6 +1588,34 @@ svg {
 
 .navigation__menu {
   visibility: hidden;
+  width: 100vw;
+  position: absolute;
+  background-color: #1d1d1b;
+  right: -6px;
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+}
+.navigation__menu li:nth-child(1) {
+  padding-left: 10%;
+}
+.navigation__menu li:nth-child(2) {
+  padding-left: 25%;
+}
+.navigation__menu li:nth-child(3) {
+  padding-left: 40%;
+}
+.navigation__menu li:nth-child(4) {
+  padding-left: 60%;
+}
+.navigation__menu li:nth-child(5) {
+  padding-left: 70%;
+}
+.navigation__menu li {
+  margin-top: 13%;
+  width: 100%;
+  font-size: 2rem;
+  font-family: "Tomorrow", sans-serif;
 }
 
 .navigation__menu_open {

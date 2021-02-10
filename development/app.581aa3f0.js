@@ -9478,7 +9478,28 @@ function handleClick(e) {
 
   e.target.classList.toggle('technologyClicked');
 }
-},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../textScramble":"../src/scripts/textScramble.js","../commons/technologyConst":"../src/scripts/commons/technologyConst.js"}],"../src/app.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../textScramble":"../src/scripts/textScramble.js","../commons/technologyConst":"../src/scripts/commons/technologyConst.js"}],"../src/scripts/handleBurger.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var btn = document.querySelector('.btn-menu');
+var menu = document.querySelector('.navigation__menu');
+
+var hmbListener = function hmbListener() {
+  btn.addEventListener('click', function () {
+    var isOpened = btn.getAttribute('aria-expanded') === 'true';
+    btn.classList.toggle('btn-menu_open', !isOpened);
+    btn.setAttribute('aria-expanded', String(!isOpened));
+    menu.classList.toggle('navigation__menu_open', !isOpened);
+  });
+};
+
+var _default = hmbListener;
+exports.default = _default;
+},{}],"../src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _LogoAnimations = _interopRequireDefault(require("./scripts/Animations/LogoAnimations"));
@@ -9507,6 +9528,8 @@ require("./scss/app.scss");
 
 var _technologyAnimations = _interopRequireDefault(require("./scripts/Animations/technologyAnimations"));
 
+var _handleBurger = _interopRequireDefault(require("./scripts/handleBurger"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = function app() {
@@ -9529,13 +9552,14 @@ var app = function app() {
     new _glide.default('.glide_tech', {
       dragThreshold: false
     }).mount();
+    (0, _handleBurger.default)();
   }
 
   (0, _CenterView.default)();
 };
 
 app();
-},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/pagePositioning/CenterView":"../src/scripts/pagePositioning/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/emailJsInit":"../src/scripts/emailJsInit.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","@glidejs/glide":"../node_modules/@glidejs/glide/dist/glide.esm.js","./scss/app.scss":"../src/scss/app.scss","./scripts/Animations/technologyAnimations":"../src/scripts/Animations/technologyAnimations.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/pagePositioning/CenterView":"../src/scripts/pagePositioning/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/emailJsInit":"../src/scripts/emailJsInit.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","@glidejs/glide":"../node_modules/@glidejs/glide/dist/glide.esm.js","./scss/app.scss":"../src/scss/app.scss","./scripts/Animations/technologyAnimations":"../src/scripts/Animations/technologyAnimations.js","./scripts/handleBurger":"../src/scripts/handleBurger.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -9563,7 +9587,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40943" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45189" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

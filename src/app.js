@@ -14,6 +14,7 @@ import Glide from '@glidejs/glide'
 
 import './scss/app.scss';
 import technologyAnimations from './scripts/Animations/technologyAnimations';
+import hmbListener from './scripts/handleBurger';
 
 const app = () => {
     technologyAnimations();
@@ -37,6 +38,7 @@ const app = () => {
         new Glide('.glide_tech', {
             dragThreshold: false,
         }).mount();
+        hmbListener();
     }
     CenterView();
 

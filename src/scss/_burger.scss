@@ -1,4 +1,5 @@
 .hamburger_navigation {
+    z-index: 999;
     display: none;
     @include sm-phone {
         display: inline-block;
@@ -15,6 +16,7 @@
 }
 
 .btn-menu {
+    cursor: pointer;
     width: 100px;
     height: 100px;
     background-color: transparent;
@@ -43,48 +45,70 @@
   
   .btn-menu__burger {
     position: relative;
-    transition-timing-function: ease-in;
   }
   
-  .btn-menu__burger,
-  .btn-menu__burger::before,
-  .btn-menu__burger::after {
-    display: inline-block;
-    width: 50px;
-    height: 12px;
-    background-color: $main-grey;
-    border: 2px $main-line solid;  
-    box-sizing: border-box;
-    transition: 500ms;
-  }
-  
-  .btn-menu__burger::before,
-  .btn-menu__burger::after {
-    content: '';
-    position: absolute;
-    left: -2px;
+.lineBurger {
+  transition-timing-function: ease-in;
+  display: inline-block;
+  width: 50px;
+  height: 12px;
+  background-color: $main-grey;
+  border: solid 2px $main-line;
+  box-sizing: border-box;
+  transition: 500ms;
+}
+
+.firstLine {
+  transform: translateY(4px);
+}
+
+.thirdLine {
+  transform: translateY(-4px);
+}
+
+.btn-menu_open .secondLine {
+  transform: translateX(100px);
+}
+
+.btn-menu_open .firstLine {
+  transform: translate(0, 19px) rotate(-45deg) ;
+}
+
+.btn-menu_open .thirdLine {
+  transform: translate(0, -19px) rotate(45deg);
+}
+
+.thirdLine::after {
+  content: '';
+  display: block;
+  height: 14px;
+  width: 8px;
+  transform: translate(19px, -3px);
+  background-color: $main-grey;
+  opacity: 0;
+  transition: 200ms;
+  transition-timing-function: ease-in;
+
+}
+
+.btn-menu_open .thirdLine::after {
+  opacity: 1;
 }
   
-  .btn-menu__burger::before {
-    transform: translateY(-18px);
-  }
+//   .btn-menu__burger::before,
+//   .btn-menu__burger::after {
+//     content: '';
+//     position: absolute;
+//     left: -2px;
+// }
   
-  .btn-menu__burger::after {
-    transform: translateY(14px);
-  }
+//   .btn-menu_open .btn-menu__burger::before {
+//     transform: rotate(45deg) translate(72px, -72px);
+//   }
   
-  .btn-menu_open .btn-menu__burger {
-    transform: translateX(-100px);
-    background-color: transparent;
-  }
-  
-  .btn-menu_open .btn-menu__burger::before {
-    transform: rotate(45deg) translate(72px, -72px);
-  }
-  
-  .btn-menu_open .btn-menu__burger::after {
-    transform: rotate(-45deg) translate(72px, 72px);
-  }
+//   .btn-menu_open .btn-menu__burger::after {
+//     transform: rotate(-45deg) translate(72px, 72px);
+//   }
   
   .menu {
     list-style: none;
@@ -94,8 +118,37 @@
   
   .navigation__menu {
     visibility: hidden;
+    width: 100vw;
+    position: absolute;
+    background-color: $main-grey;
+    right: -6px;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    li:nth-child(1) {
+      padding-left: 10%;
+    }
+    li:nth-child(2) {
+      padding-left: 25%;
+    }
+    li:nth-child(3) {
+      padding-left: 40%;
+    }
+    li:nth-child(4) {
+      padding-left: 60%;
+    }
+    li:nth-child(5) {
+      padding-left: 70%;
+    }
+    & li {
+      margin-top: 13%;
+      width: 100%;
+      font-size: 2rem;
+      font-family: 'Tomorrow', sans-serif;
+    }
   }
   
   .navigation__menu_open {
     visibility: visible;
+
   }
