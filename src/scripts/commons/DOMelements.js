@@ -4,6 +4,12 @@ export default  {
     allNavLinks: document.querySelectorAll('.navLink'),
     technologiesList: document.querySelector('.technology-content'),
     technologiesEntries: document.querySelectorAll('.technologyEntry'),
+    mobileLines: {
+        firstLine: document.getElementById('mobileLine_1'),
+        secondLine: document.getElementById('mobileLine_2'),
+        thirdLine: document.getElementById('mobileLine_3'),
+        fourthLine: document.getElementById('mobileLine_4'),
+    },
     svgs: {
         homeAboutLine: document.getElementById("leading-line0"),
         homeProjectLine: document.getElementById("leading-line1"),
