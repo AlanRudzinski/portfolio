@@ -15,6 +15,7 @@ import Glide from '@glidejs/glide'
 import './scss/app.scss';
 import technologyAnimations from './scripts/Animations/technologyAnimations';
 import hmbListener from './scripts/handleBurger';
+import animateMobileLines from './scripts/Animations/animateMobileLines';
 
 const app = () => {
     technologyAnimations();
@@ -38,7 +39,9 @@ const app = () => {
         new Glide('.glide_tech', {
             dragThreshold: false,
         }).mount();
+        setDashArrayAndDashOffset(DOM.mobileLines);
         hmbListener();
+        animateMobileLines([...Object.values(DOM.mobileLines)]);
     }
     CenterView();
 

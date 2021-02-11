@@ -1,6 +1,6 @@
 import anime from 'animejs/lib/anime.es.js';
 
-export default (element, duration = 4000, delay = 0, reset = true) => {
+export default (element ,duration = 4000, delay = 0, reset = true, autoplay = false) => {
     if(element.tagName === 'svg') element = element.firstElementChild;
     const strokeDashoffset = window.getComputedStyle(element).strokeDasharray.slice(0, -2)
     
@@ -10,7 +10,7 @@ export default (element, duration = 4000, delay = 0, reset = true) => {
         duration: duration,
         delay: delay,
         easing: 'easeInQuart',
-        autoplay: false,
+        autoplay: autoplay,
    })
    
    return lineAnimation
