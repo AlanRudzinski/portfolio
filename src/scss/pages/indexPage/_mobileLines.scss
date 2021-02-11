@@ -1,20 +1,32 @@
 .mobileLine {
     position: absolute;
-    bottom: -3px;
+    bottom: -5px;
+    @media (min-width: 390px) {
+        bottom: -3px; 
+    }
+    @include tablet {
+        display: none;
+    }
+    @include desktop {
+        display: none;
+    }
+    @include lg-desktop {
+        display: none;
+    }
 }
 
 #mobileLine_1 {
-    left: 3px;
+    left: 4px;
 }
 
 #mobileLine_2 {
-    left: calc(3px + 25%);
+    left: calc(4px + 25%);
 }
 
 #mobileLine_3 {
-    left: calc(3px + 50%);
+    left: calc(4px + 50%);
 }
 
 #mobileLine_4 {
-    left: calc(3px + 75%);
+    left: calc(4px + 75%);
 }

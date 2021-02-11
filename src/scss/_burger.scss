@@ -4,14 +4,12 @@
     @include sm-phone {
         display: inline-block;
         position: fixed;
-        left: 80vw;
-        top: 50;
+        right: calc(10% - 25px);
     }
     @include phone {
         display: inline-block;
         position: fixed;
-        left: 80vw;
-        top: 50;
+        right: calc(10% - 25px);
     }
 }
 

@@ -27,3 +27,15 @@
         justify-content: center;
     }
 }
+
+.main-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    @include sm-phone {
+        width: 80%;
+    }
+    @include phone {
+        width: 80%;
+    }
+}
