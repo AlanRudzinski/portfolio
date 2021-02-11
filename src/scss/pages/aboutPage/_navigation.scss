@@ -1,3 +1,6 @@
+@import '../../mixins';
+
+
 .about-page__navigation {
     margin-top: 0;
     margin-left: 0;
@@ -14,6 +17,12 @@
                 cursor: pointer;
             }
         }
+    }
+    @include sm-phone {
+        display: none;
+    }
+    @include phone {
+        display: none;
     }
 }
 

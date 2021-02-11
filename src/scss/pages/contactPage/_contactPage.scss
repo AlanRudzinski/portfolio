@@ -1,8 +1,25 @@
+@import '../../mixins';
+
 #contact-page {
     top: 0;
     left: 0;
     position: absolute;
-    transform: translateY(200vh) translateX(400vw);
+    @include sm-phone {
+        transform: translateY(400vh);
+    }
+    @include phone {
+        transform: translateY(400vh);
+    }
+    @include tablet {
+        transform: translateY(200vh) translateX(400vw);
+    }
+    @include desktop {
+        transform: translateY(200vh) translateX(400vw);
+    }
+    @include lg-desktop {
+        transform: translateY(200vh) translateX(400vw);
+    }
+
 }
 .contact-wrapper {
     width: 80%;
@@ -16,6 +33,15 @@
     padding-top: 100px;
     height: 100%;
     width: 100%;
+    @include sm-phone {
+        align-items: center;
+    }
+    @include phone {
+        align-items: center;
+    }
+    @include tablet {
+        align-items: center;
+    }
 }
 
 .text-svg-container {
@@ -25,6 +51,15 @@
     display: flex;
     &__text {
         width: 75%;
+        @include sm-phone {
+            width: 100%;
+        }
+        @include phone {
+            width: 100%;
+        }
+        @include tablet {
+            width: 100%;
+        }
     }
 
     &__svg {
@@ -32,6 +67,15 @@
         border-left: 2px solid $main-line;
         padding-left: 50px;
         display: flex;
+        @include sm-phone {
+            display: none;
+        }
+        @include phone {
+            display: none;
+        }
+        @include tablet {
+            display: none;
+        }
         &__linkedin {
             height: 2.5rem;
             fill: $main-line;
@@ -47,6 +91,16 @@
 .contact-form {
     margin-top: 4rem;
     width: 600px;
+    @include sm-phone {
+        width: 280px;
+    }
+    @include phone {
+        width: 350px;
+    }
+    @include tablet {
+        width: 500px;
+    }
+
     &__list li {
         display: flex;
         justify-content: space-between;

@@ -14,23 +14,34 @@ import Glide from '@glidejs/glide'
 
 import './scss/app.scss';
 import technologyAnimations from './scripts/Animations/technologyAnimations';
+import hmbListener from './scripts/handleBurger';
 
 const app = () => {
     technologyAnimations();
-    correctPosition();
-    setDashArrayAndDashOffset(DOM.svgs);
     allPagesPosition();
     LogoAnimations('.logo__underline', '.logo__cover', 0);
     LogoAnimations('.navigation__underline', '.navigation__cover', 900);
     AnimationRouter();
     NavItemAnimations();
     NavLinks();
+
+    correctPosition();
+    // set dasharray after correct posittion because length can change
+    setDashArrayAndDashOffset(DOM.svgs);
+
     emailJsInit();
 
     new Glide('.glide', {
         dragThreshold: false,
     }).mount();
+    if(window.innerWidth < 600) {
+        new Glide('.glide_tech', {
+            dragThreshold: false,
+        }).mount();
+        hmbListener();
+    }
     CenterView();
+
 
 }
 

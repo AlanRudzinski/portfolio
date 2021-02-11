@@ -7,9 +7,10 @@
 
 
 @import 'global';
-@import 'pages/indexPage/indexPage', 'pages/indexPage/logo', 'pages/indexPage/navigation';
+@import 'pages/indexPage/indexPage', 'pages/indexPage/logo', 'pages/indexPage/navigation', 'pages/indexPage/mobileLines';
 @import 'pages/contactPage/contactPage', 'pages/contactPage/navigation';
 @import 'pages/aboutPage/navigation', 'pages/aboutPage/aboutPage';
 @import 'pages/projectPage/navigation', 'pages/projectPage/projectPage';
 @import 'pages/technologyPage/navigation', 'pages/technologyPage/technologyPage';
 @import 'svgs/indexPageLines', 'svgs/contactPageLines', 'svgs/technologyPageLines', 'svgs/aboutPageLines', 'svgs/projectPageLines';
+@import './burger';

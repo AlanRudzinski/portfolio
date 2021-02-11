@@ -2,7 +2,21 @@
     top: 0;
     left: 0;
     position: absolute;
+    @include sm-phone {
+        transform: translateY(200vh);
+    }
+    @include phone {
+        transform: translateY(200vh);
+    }
+    @include tablet {
+        transform: translateY(400vh) translateX(100vw);
+    }
+    @include desktop {
+        transform: translateY(400vh) translateX(100vw);
+    }
+    @include lg-desktop {
     transform: translateY(400vh) translateX(100vw);
+    }
 }
 
 .glide__bullet {
@@ -35,6 +49,7 @@
 }
 
 .project__slide {
+    cursor: default;
     width: 100%;
     height: 90vh;
     // border: green 1px solid;
@@ -52,7 +67,7 @@
         left: -160px
     }
     .alan_svg {
-        font-family: 'Tomorrow', sans-serif;
+        font-family: 'Kumar One', cursive;
         text-align: center;
         left: -125px;
         bottom: -7.5em;
@@ -86,5 +101,14 @@
     text-align: right;
     & h2 {
         margin-bottom: 20px;
+        font-family: 'Tomorrow', sans-serif;
     }
+}
+
+#sloneczko_project {
+    position: absolute;
+    top: 14vh;
+    left: 10vw;
+    width: 359.8px;
+    height: 268.3px;
 }

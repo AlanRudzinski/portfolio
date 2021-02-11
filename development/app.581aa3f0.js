@@ -2123,6 +2123,7 @@ var _default = function _default(el) {
     left: rect.left + scrollLeft,
     bot: rect.bottom + scrollTop,
     right: rect.right + scrollLeft,
+    width: rect.width,
     element: el
   };
 };
@@ -3525,10 +3526,12 @@ var _DOMelements = _interopRequireDefault(require("../commons/DOMelements"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default() {
-  (0, _pagePosition.default)(_DOMelements.default.svgs.homeAboutLine, _DOMelements.default.pages.aboutPage, document.getElementById("about__main-link0"), true);
-  (0, _pagePosition.default)(_DOMelements.default.svgs.homeProjectLine, _DOMelements.default.pages.projectPage, document.getElementById("project__main-link1"), true, true);
-  (0, _pagePosition.default)(_DOMelements.default.svgs.homeTechnologyLine, _DOMelements.default.pages.technologyPage, document.getElementById("technology__main-link2"));
-  (0, _pagePosition.default)(_DOMelements.default.svgs.homeContactLine, _DOMelements.default.pages.contactPage, document.getElementById("contact__main-link3"));
+  if (window.innerWidth >= 600) {
+    (0, _pagePosition.default)(_DOMelements.default.svgs.homeAboutLine, _DOMelements.default.pages.aboutPage, document.getElementById("about__main-link0"), true);
+    (0, _pagePosition.default)(_DOMelements.default.svgs.homeProjectLine, _DOMelements.default.pages.projectPage, document.getElementById("project__main-link1"), true, true);
+    (0, _pagePosition.default)(_DOMelements.default.svgs.homeTechnologyLine, _DOMelements.default.pages.technologyPage, document.getElementById("technology__main-link2"));
+    (0, _pagePosition.default)(_DOMelements.default.svgs.homeContactLine, _DOMelements.default.pages.contactPage, document.getElementById("contact__main-link3"));
+  }
 };
 
 exports.default = _default;
@@ -5594,7 +5597,7 @@ var _default = function _default() {
   correctPosition(_DOMelements.default.svgs.aboutProjectLine, _DOMelements.default.links.projectProjectLink);
   correctPosition(_DOMelements.default.svgs.aboutTechnologiesLine, _DOMelements.default.links.technologiesTechnologiesLink); //     // portrait
 
-  correctHorizontal(_DOMelements.default.portrait.leadingLines.leftDownLine, _DOMelements.default.portrait.description); // // // project
+  correctPosition(_DOMelements.default.portrait.leadingLines.leftDownLine, _DOMelements.default.portrait.description); // // // project
 
   correctPosition(_DOMelements.default.svgs.projectAboutLine, _DOMelements.default.links.aboutAboutLink);
   correctPosition(_DOMelements.default.svgs.projectContactLine, _DOMelements.default.links.contactContactLink);
@@ -5605,12 +5608,12 @@ var _default = function _default() {
 exports.default = _default;
 
 function correctPosition(line, link) {
-  correctHorizontal(line, link); // correctVertical(line, link); 
+  correctHorizontal(line, link);
+  correctVertical(line, link);
 }
 
 function correctHorizontal(line, link) {
   var moveValue = (0, _GetAbsolutePosition.default)(link).left - (0, _GetAbsolutePosition.default)(line).left;
-  console.log(link.id, moveValue);
   var points = {
     firstPoint: getPoints(line, 1),
     secondPoint: getPoints(line, 2)
@@ -5645,7 +5648,6 @@ function correctVertical(line, link) {
     firstPoint: getPoints(line, 2),
     secondPoint: getPoints(line, 3)
   };
-  console.log(link.id, moveValue, (0, _GetAbsolutePosition.default)(line).top, (0, _GetAbsolutePosition.default)(link).bot, distancePoint);
 
   if (moveValue > 0) {
     points.firstPoint.y -= moveValue;
@@ -5879,8 +5881,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function setDashArrayAndDashOffset(lines) {
   var linesArr = (0, _values.default)(lines);
   linesArr.forEach(function (el) {
-    var lng = el.firstElementChild.getTotalLength(); // el.style.strokeDasharray = lng;
-    // el.style.strokeDashoffset = lng;
+    var lng = el.firstElementChild.getTotalLength();
+    el.style.strokeDasharray = lng;
+    el.style.strokeDashoffset = lng;
   });
 }
 
@@ -9475,7 +9478,28 @@ function handleClick(e) {
 
   e.target.classList.toggle('technologyClicked');
 }
-},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../textScramble":"../src/scripts/textScramble.js","../commons/technologyConst":"../src/scripts/commons/technologyConst.js"}],"../src/app.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../textScramble":"../src/scripts/textScramble.js","../commons/technologyConst":"../src/scripts/commons/technologyConst.js"}],"../src/scripts/handleBurger.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var btn = document.querySelector('.btn-menu');
+var menu = document.querySelector('.navigation__menu');
+
+var hmbListener = function hmbListener() {
+  btn.addEventListener('click', function () {
+    var isOpened = btn.getAttribute('aria-expanded') === 'true';
+    btn.classList.toggle('btn-menu_open', !isOpened);
+    btn.setAttribute('aria-expanded', String(!isOpened));
+    menu.classList.toggle('navigation__menu_open', !isOpened);
+  });
+};
+
+var _default = hmbListener;
+exports.default = _default;
+},{}],"../src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _LogoAnimations = _interopRequireDefault(require("./scripts/Animations/LogoAnimations"));
@@ -9504,27 +9528,38 @@ require("./scss/app.scss");
 
 var _technologyAnimations = _interopRequireDefault(require("./scripts/Animations/technologyAnimations"));
 
+var _handleBurger = _interopRequireDefault(require("./scripts/handleBurger"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = function app() {
   (0, _technologyAnimations.default)();
-  (0, _correctPosition.default)();
-  (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.svgs);
   (0, _allPagesPosition.default)();
   (0, _LogoAnimations.default)('.logo__underline', '.logo__cover', 0);
   (0, _LogoAnimations.default)('.navigation__underline', '.navigation__cover', 900);
   (0, _AnimationRouter.default)();
   (0, _NavItemsAnimations.default)();
   (0, _NavLinks.default)();
+  (0, _correctPosition.default)(); // set dasharray after correct posittion because length can change
+
+  (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.svgs);
   (0, _emailJsInit.default)();
   new _glide.default('.glide', {
     dragThreshold: false
   }).mount();
+
+  if (window.innerWidth < 600) {
+    new _glide.default('.glide_tech', {
+      dragThreshold: false
+    }).mount();
+    (0, _handleBurger.default)();
+  }
+
   (0, _CenterView.default)();
 };
 
 app();
-},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/pagePositioning/CenterView":"../src/scripts/pagePositioning/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/emailJsInit":"../src/scripts/emailJsInit.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","@glidejs/glide":"../node_modules/@glidejs/glide/dist/glide.esm.js","./scss/app.scss":"../src/scss/app.scss","./scripts/Animations/technologyAnimations":"../src/scripts/Animations/technologyAnimations.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/pagePositioning/CenterView":"../src/scripts/pagePositioning/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/emailJsInit":"../src/scripts/emailJsInit.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","@glidejs/glide":"../node_modules/@glidejs/glide/dist/glide.esm.js","./scss/app.scss":"../src/scss/app.scss","./scripts/Animations/technologyAnimations":"../src/scripts/Animations/technologyAnimations.js","./scripts/handleBurger":"../src/scripts/handleBurger.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -9552,7 +9587,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33479" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36743" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

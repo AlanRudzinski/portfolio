@@ -8,7 +8,7 @@ $global-width: 2000vw;
 
 $min_width: 360px;
 $max_width: 1900px;
-$min_font_p: 12px;
+$min_font_p: 16px;
 $max_font_p: 20px;
 
 $min_font_nav: 16px;
@@ -31,11 +31,16 @@ nav, span {
 }
 
 
-body {
+body, html {
     background: $main-grey;
     height: $global-height;
     width: $global-width;
-    // overflow: hidden;
+    @include sm-phone {
+        width: 100vw;
+    }
+    @include phone {
+        width: 100vw;
+    }
 }
 
 p, button, label, input, span {
