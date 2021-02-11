@@ -259,6 +259,22 @@ svg {
   }
 }
 
+.main-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+@media (max-width: 359px) {
+  .main-wrapper {
+    width: 80%;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  .main-wrapper {
+    width: 80%;
+  }
+}
+
 .logo {
   position: relative;
 }
@@ -283,14 +299,16 @@ svg {
 }
 @media (max-width: 359px) {
   .logo__text {
-    font-size: 2.8rem;
-    line-height: 2.8rem;
+    font-size: 8vw;
+    line-height: 8vw;
+    white-space: nowrap;
   }
 }
 @media (min-width: 360px) and (max-width: 599px) {
   .logo__text {
-    font-size: 2.8rem;
-    line-height: 2.8rem;
+    font-size: 8vw;
+    line-height: 8vw;
+    white-space: nowrap;
   }
 }
 .logo__underline {
@@ -334,6 +352,16 @@ svg {
 
 .navigation {
   position: relative;
+}
+@media (max-width: 359px) {
+  .navigation {
+    width: 100%;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  .navigation {
+    width: 100%;
+  }
 }
 .navigation__underline {
   min-height: 2px;
@@ -386,16 +414,16 @@ svg {
     margin-top: 4rem;
     flex-direction: column;
     height: 40vh;
-    font-size: 2rem;
-    width: 424px;
-  }
-  .navigation__list li:nth-child(1) {
-    padding-left: 25%;
+    font-size: 6vw;
+    width: 100%;
   }
   .navigation__list li:nth-child(2) {
-    padding-left: 50%;
+    padding-left: 25%;
   }
   .navigation__list li:nth-child(3) {
+    padding-left: 50%;
+  }
+  .navigation__list li:nth-child(4) {
     padding-left: 75%;
   }
 }
@@ -404,8 +432,8 @@ svg {
     margin-top: 4rem;
     flex-direction: column;
     height: 40vh;
-    font-size: 2rem;
-    width: 424px;
+    font-size: 6vw;
+    width: 100%;
   }
   .navigation__list li:nth-child(2) {
     padding-left: 25%;
@@ -446,23 +474,43 @@ svg {
 
 .mobileLine {
   position: absolute;
-  bottom: -3px;
+  bottom: -5px;
+}
+@media (min-width: 390px) {
+  .mobileLine {
+    bottom: -3px;
+  }
+}
+@media (min-width: 600px) and (max-width: 949px) {
+  .mobileLine {
+    display: none;
+  }
+}
+@media (min-width: 950px) and (max-width: 1599px) {
+  .mobileLine {
+    display: none;
+  }
+}
+@media (min-width: 1600px) {
+  .mobileLine {
+    display: none;
+  }
 }
 
 #mobileLine_1 {
-  left: 3px;
+  left: 4px;
 }
 
 #mobileLine_2 {
-  left: calc(3px + 25%);
+  left: calc(4px + 25%);
 }
 
 #mobileLine_3 {
-  left: calc(3px + 50%);
+  left: calc(4px + 50%);
 }
 
 #mobileLine_4 {
-  left: calc(3px + 75%);
+  left: calc(4px + 75%);
 }
 
 #contact-page {
@@ -1549,16 +1597,14 @@ svg {
   .hamburger_navigation {
     display: inline-block;
     position: fixed;
-    left: 80vw;
-    top: 50;
+    right: calc(10% - 25px);
   }
 }
 @media (min-width: 360px) and (max-width: 599px) {
   .hamburger_navigation {
     display: inline-block;
     position: fixed;
-    left: 80vw;
-    top: 50;
+    right: calc(10% - 25px);
   }
 }
 
