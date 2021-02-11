@@ -32,6 +32,12 @@
         top: 2.8rem;
         left: -29vw;
         z-index: 10;
+        @include sm-phone {
+            display: none;
+        }
+        @include phone {
+            display: none;
+        }
     }
     &__cover {
         background-color: $main-grey;
@@ -41,6 +47,12 @@
         z-index: 30;
         top: -10%;
         right: -5%;
+        @include sm-phone {
+            display: none;
+        }
+        @include phone {
+            display: none;
+        }
     }
 }
 

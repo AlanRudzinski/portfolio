@@ -1,0 +1,20 @@
+.mobileLine {
+    position: absolute;
+    bottom: -3px;
+}
+
+#mobileLine_1 {
+    left: 3px;
+}
+
+#mobileLine_2 {
+    left: calc(3px + 25%);
+}
+
+#mobileLine_3 {
+    left: calc(3px + 50%);
+}
+
+#mobileLine_4 {
+    left: calc(3px + 75%);
+}
