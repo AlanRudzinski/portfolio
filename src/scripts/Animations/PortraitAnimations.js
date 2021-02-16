@@ -16,19 +16,21 @@ async function PortraitAnimations() {
     resetDasharrayAndOffset(leadingLines)
 
     //animate
-    const entryLine = AnimateLine(DOM.portrait.leadingLines.leftLine, 2200, 2500)
-    entryLine.play();
-
-    lines.forEach(el => {
-        const animation = AnimateLine(el, 600, 4250, false);
-        animation.play();
-    })
-
-    const exitLines = Object.values(DOM.portrait.leadingLines).filter(el => el.id !== 'portrait__line-left')
-    exitLines.forEach(el => {
-        const animation = AnimateLine(el, 500, 4900, false);
-        animation.play();
-    })
+    if(window.innerWidth > 600) {
+        const entryLine = AnimateLine(DOM.portrait.leadingLines.leftLine, 2200, 2500)
+        entryLine.play();
+    
+        lines.forEach(el => {
+            const animation = AnimateLine(el, 600, 4250, false);
+            animation.play();
+        })
+    
+        const exitLines = Object.values(DOM.portrait.leadingLines).filter(el => el.id !== 'portrait__line-left')
+        exitLines.forEach(el => {
+            const animation = AnimateLine(el, 500, 4900, false);
+            animation.play();
+        })
+    }
 
     animateDescriptionCover(300, 4000)
 

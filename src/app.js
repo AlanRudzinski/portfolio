@@ -16,6 +16,8 @@ import './scss/app.scss';
 import technologyAnimations from './scripts/Animations/technologyAnimations';
 import hmbListener from './scripts/handleBurger';
 import animateMobileLines from './scripts/Animations/animateMobileLines';
+import PortraitAnimations from './scripts/Animations/PortraitAnimations';
+import { scrambleAllElements } from './scripts/textScramble';
 
 const app = () => {
     technologyAnimations();
@@ -36,12 +38,16 @@ const app = () => {
         dragThreshold: false,
     }).mount();
     if(window.innerWidth < 600) {
+        // window.addEventListener('scroll', () => window.scrollY > 450 ? PortraitAnimations() : '')
+        PortraitAnimations(); // todo: on scroll
+        scrambleAllElements(); // todo: onscroll
         new Glide('.glide_tech', {
             dragThreshold: false,
         }).mount();
         setDashArrayAndDashOffset(DOM.mobileLines);
         hmbListener();
         animateMobileLines([...Object.values(DOM.mobileLines)]);
+        // window.addEventListener('scroll', () => console.log(window.scrollY))
     }
     CenterView();
 

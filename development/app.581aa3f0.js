@@ -5099,22 +5099,25 @@ function _PortraitAnimations() {
             });
             resetDasharrayAndOffset(leadingLines); //animate
 
-            entryLine = (0, _AnimateLine.default)(_DOMelements.default.portrait.leadingLines.leftLine, 2200, 2500);
-            entryLine.play();
-            lines.forEach(function (el) {
-              var animation = (0, _AnimateLine.default)(el, 600, 4250, false);
-              animation.play();
-            });
-            exitLines = (0, _values.default)(_DOMelements.default.portrait.leadingLines).filter(function (el) {
-              return el.id !== 'portrait__line-left';
-            });
-            exitLines.forEach(function (el) {
-              var animation = (0, _AnimateLine.default)(el, 500, 4900, false);
-              animation.play();
-            });
+            if (window.innerWidth > 600) {
+              entryLine = (0, _AnimateLine.default)(_DOMelements.default.portrait.leadingLines.leftLine, 2200, 2500);
+              entryLine.play();
+              lines.forEach(function (el) {
+                var animation = (0, _AnimateLine.default)(el, 600, 4250, false);
+                animation.play();
+              });
+              exitLines = (0, _values.default)(_DOMelements.default.portrait.leadingLines).filter(function (el) {
+                return el.id !== 'portrait__line-left';
+              });
+              exitLines.forEach(function (el) {
+                var animation = (0, _AnimateLine.default)(el, 500, 4900, false);
+                animation.play();
+              });
+            }
+
             animateDescriptionCover(300, 4000);
 
-          case 10:
+          case 6:
           case "end":
             return _context.stop();
         }
@@ -5317,7 +5320,7 @@ function scrambleAllElements() {
   var titles = (0, _keys.default)(_technologyConst.technologySet);
   arr.forEach(function (element, idx) {
     var scrambleElement = new TextScramble(element.children[0].children[0]);
-    scrambleElement.setText(titles[idx]);
+    if (titles[idx]) scrambleElement.setText(titles[idx]);
   });
   (0, _delay.delay)(1000).then(glitch());
 }
@@ -9520,7 +9523,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function animateLines(linesArr) {
   linesArr.forEach(function (element, index) {
-    console.log(element);
     (0, _AnimateLine.default)(element, 2000, index * 250, true, true);
   });
 }
@@ -9564,6 +9566,10 @@ var _handleBurger = _interopRequireDefault(require("./scripts/handleBurger"));
 
 var _animateMobileLines = _interopRequireDefault(require("./scripts/Animations/animateMobileLines"));
 
+var _PortraitAnimations = _interopRequireDefault(require("./scripts/Animations/PortraitAnimations"));
+
+var _textScramble = require("./scripts/textScramble");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = function app() {
@@ -9583,19 +9589,24 @@ var app = function app() {
   }).mount();
 
   if (window.innerWidth < 600) {
+    // window.addEventListener('scroll', () => window.scrollY > 450 ? PortraitAnimations() : '')
+    (0, _PortraitAnimations.default)(); // todo: on scroll
+
+    (0, _textScramble.scrambleAllElements)(); // todo: onscroll
+
     new _glide.default('.glide_tech', {
       dragThreshold: false
     }).mount();
     (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.mobileLines);
     (0, _handleBurger.default)();
-    (0, _animateMobileLines.default)((0, _toConsumableArray2.default)((0, _values.default)(_DOMelements.default.mobileLines)));
+    (0, _animateMobileLines.default)((0, _toConsumableArray2.default)((0, _values.default)(_DOMelements.default.mobileLines))); // window.addEventListener('scroll', () => console.log(window.scrollY))
   }
 
   (0, _CenterView.default)();
 };
 
 app();
-},{"@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/toConsumableArray":"../node_modules/@babel/runtime-corejs2/helpers/toConsumableArray.js","./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/pagePositioning/CenterView":"../src/scripts/pagePositioning/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/emailJsInit":"../src/scripts/emailJsInit.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","@glidejs/glide":"../node_modules/@glidejs/glide/dist/glide.esm.js","./scss/app.scss":"../src/scss/app.scss","./scripts/Animations/technologyAnimations":"../src/scripts/Animations/technologyAnimations.js","./scripts/handleBurger":"../src/scripts/handleBurger.js","./scripts/Animations/animateMobileLines":"../src/scripts/Animations/animateMobileLines.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/toConsumableArray":"../node_modules/@babel/runtime-corejs2/helpers/toConsumableArray.js","./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/pagePositioning/CenterView":"../src/scripts/pagePositioning/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/emailJsInit":"../src/scripts/emailJsInit.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","@glidejs/glide":"../node_modules/@glidejs/glide/dist/glide.esm.js","./scss/app.scss":"../src/scss/app.scss","./scripts/Animations/technologyAnimations":"../src/scripts/Animations/technologyAnimations.js","./scripts/handleBurger":"../src/scripts/handleBurger.js","./scripts/Animations/animateMobileLines":"../src/scripts/Animations/animateMobileLines.js","./scripts/Animations/PortraitAnimations":"../src/scripts/Animations/PortraitAnimations.js","./scripts/textScramble":"../src/scripts/textScramble.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -9623,7 +9634,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "32933" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46317" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

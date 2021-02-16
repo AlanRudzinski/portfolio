@@ -162,3 +162,23 @@
         height: 180px;
     }
 }
+
+.alan-title-mobile {
+    display: inline-block;
+    font-family: 'Kumar One', cursive;
+    color: $main-line;
+    font-size: 7vw;
+    line-height: 7vw;
+    position: absolute;
+    top: 25%;
+    left: calc(50% - 30vw);
+    @include tablet {
+        display: none;
+    }
+    @include desktop {
+        display: none;
+    }
+    @include lg-desktop {
+        display: none;
+    }
+}

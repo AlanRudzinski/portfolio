@@ -1258,6 +1258,32 @@ svg {
   }
 }
 
+.alan-title-mobile {
+  display: inline-block;
+  font-family: "Kumar One", cursive;
+  color: #ff5217;
+  font-size: 7vw;
+  line-height: 7vw;
+  position: absolute;
+  top: 25%;
+  left: calc(50% - 30vw);
+}
+@media (min-width: 600px) and (max-width: 949px) {
+  .alan-title-mobile {
+    display: none;
+  }
+}
+@media (min-width: 950px) and (max-width: 1599px) {
+  .alan-title-mobile {
+    display: none;
+  }
+}
+@media (min-width: 1600px) {
+  .alan-title-mobile {
+    display: none;
+  }
+}
+
 .technology-page__navigation {
   display: block;
   margin-top: 0;
@@ -1326,16 +1352,6 @@ svg {
   width: 88%;
   height: calc(100% - 20%);
   margin: 60px auto 0;
-}
-@media (max-width: 359px) {
-  .technology-wrapper {
-    margin: 20px auto 0;
-  }
-}
-@media (min-width: 360px) and (max-width: 599px) {
-  .technology-wrapper {
-    margin: 20px auto 0;
-  }
 }
 
 .technology-content {
