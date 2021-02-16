@@ -1,4 +1,5 @@
 #project-page {
+    // display: none;
     top: 0;
     left: 0;
     position: absolute;
@@ -52,7 +53,6 @@
     cursor: default;
     width: 100%;
     height: 90vh;
-    // border: green 1px solid;
     position: relative;
     overflow: hidden;
     & > svg {
@@ -64,7 +64,13 @@
         height: 465px;
         min-width: 1591px;
         bottom: 2em;
-        left: -160px
+        left: -160px;
+        @include sm-phone {
+            display: none;
+        }
+        @include phone {
+            display: none;
+        }
     }
     .alan_svg {
         font-family: 'Kumar One', cursive;
@@ -73,9 +79,27 @@
         bottom: -7.5em;
         height: 615px;
         min-width: 1605px;
+
+        @include sm-phone {
+            display: none;
+        }
+        @include phone {
+            display: none;
+        }
     }
 }
 
+.project-page__wrapper {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    @include sm-phone {
+        width: 80%;
+    }
+    @include phone {
+        width: 80%;
+    }
+}
 
 
 .promyk-text {
@@ -84,10 +108,20 @@
     color: $main-line;
     position: absolute;
     bottom: 255px;
-    left: 590px;
+    // left: 590px;
     text-align: right;
     & h2 {
         margin-bottom: 20px;
+    }
+    @include sm-phone {
+        width: 200px;
+        top: 300px;
+        right: 0;
+    }
+    @include phone {
+        width: 340px;
+        top: 300px;
+        right: 0;
     }
 }
 
@@ -97,11 +131,18 @@
     color: $main-line;
     position: absolute;
     bottom: 102px;
-    right: 105px;
+    // right: 105px;
     text-align: right;
     & h2 {
         margin-bottom: 20px;
         font-family: 'Tomorrow', sans-serif;
+    }
+
+    @include sm-phone {
+        right: 0;
+    }
+    @include phone {
+        right: 0;
     }
 }
 
@@ -111,4 +152,13 @@
     left: 10vw;
     width: 359.8px;
     height: 268.3px;
+
+    @include sm-phone {
+        width: 190px;
+        height: 140px;
+    }
+    @include phone {
+        width: 239.8px;
+        height: 180px;
+    }
 }

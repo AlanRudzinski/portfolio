@@ -5,6 +5,13 @@
     right: 95%;
     bottom: 19%;
     z-index: -1;
+    @include sm-phone {
+        display: none;
+    }
+    
+    @include phone {
+        display: none;
+    }
 }
 
 #leading-line1 {
@@ -14,6 +21,13 @@
     right: 95%;
     top: 100%;
     z-index: -1;
+    @include sm-phone {
+        display: none;
+    }
+    
+    @include phone {
+        display: none;
+    }
 }
 
 #leading-line2 {
@@ -23,6 +37,13 @@
     left: 55%;
     bottom: -130px;
     z-index: -1;
+    @include sm-phone {
+        display: none;
+    }
+    
+    @include phone {
+        display: none;
+    }
 }
 
 #leading-line3 {
@@ -32,4 +53,11 @@
     left: 100%;
     bottom: 19%;
     z-index: -1;
+    @include sm-phone {
+        display: none;
+    }
+    
+    @include phone {
+        display: none;
+    }
 }

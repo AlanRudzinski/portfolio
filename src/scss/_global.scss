@@ -32,15 +32,24 @@ nav, span {
 
 
 body, html {
-    background: $main-grey;
-    height: $global-height;
-    width: $global-width;
     @include sm-phone {
         width: 100vw;
     }
     @include phone {
         width: 100vw;
     }
+    @include tablet {
+        width: $global-width;
+    }
+    @include desktop {
+        width: $global-width;
+    }
+    @include lg-desktop {
+        width: $global-width;
+    }
+    background: $main-grey;
+    height: $global-height;
+
 }
 
 p, button, label, input, span {

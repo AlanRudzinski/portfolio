@@ -169,7 +169,6 @@ nav, span {
 body, html {
   background: #1d1d1b;
   height: 2000vh;
-  width: 2000vw;
 }
 @media (max-width: 359px) {
   body, html {
@@ -179,6 +178,21 @@ body, html {
 @media (min-width: 360px) and (max-width: 599px) {
   body, html {
     width: 100vw;
+  }
+}
+@media (min-width: 600px) and (max-width: 949px) {
+  body, html {
+    width: 2000vw;
+  }
+}
+@media (min-width: 950px) and (max-width: 1599px) {
+  body, html {
+    width: 2000vw;
+  }
+}
+@media (min-width: 1600px) {
+  body, html {
+    width: 2000vw;
   }
 }
 
@@ -1025,19 +1039,8 @@ svg {
 }
 
 .project-page__navigation {
-  display: inline-block;
   margin-top: 0;
   margin-left: 0;
-}
-@media (max-width: 359px) {
-  .project-page__navigation {
-    display: none;
-  }
-}
-@media (min-width: 360px) and (max-width: 599px) {
-  .project-page__navigation {
-    display: none;
-  }
 }
 .project-page__navigation__list {
   color: #ff5217;
@@ -1050,6 +1053,16 @@ svg {
 }
 .project-page__navigation__list__item-link {
   cursor: pointer;
+}
+@media (max-width: 359px) {
+  .project-page__navigation {
+    display: none;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  .project-page__navigation {
+    display: none;
+  }
 }
 
 #project__main-link1 {
@@ -1131,6 +1144,16 @@ svg {
   bottom: 2em;
   left: -160px;
 }
+@media (max-width: 359px) {
+  .project__slide .promyk_svg {
+    display: none;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  .project__slide .promyk_svg {
+    display: none;
+  }
+}
 .project__slide .alan_svg {
   font-family: "Kumar One", cursive;
   text-align: center;
@@ -1139,6 +1162,32 @@ svg {
   height: 615px;
   min-width: 1605px;
 }
+@media (max-width: 359px) {
+  .project__slide .alan_svg {
+    display: none;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  .project__slide .alan_svg {
+    display: none;
+  }
+}
+
+.project-page__wrapper {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+@media (max-width: 359px) {
+  .project-page__wrapper {
+    width: 80%;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  .project-page__wrapper {
+    width: 80%;
+  }
+}
 
 .promyk-text {
   width: 400px;
@@ -1146,11 +1195,24 @@ svg {
   color: #ff5217;
   position: absolute;
   bottom: 255px;
-  left: 590px;
   text-align: right;
 }
 .promyk-text h2 {
   margin-bottom: 20px;
+}
+@media (max-width: 359px) {
+  .promyk-text {
+    width: 200px;
+    top: 300px;
+    right: 0;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  .promyk-text {
+    width: 340px;
+    top: 300px;
+    right: 0;
+  }
 }
 
 .alan-text {
@@ -1159,12 +1221,21 @@ svg {
   color: #ff5217;
   position: absolute;
   bottom: 102px;
-  right: 105px;
   text-align: right;
 }
 .alan-text h2 {
   margin-bottom: 20px;
   font-family: "Tomorrow", sans-serif;
+}
+@media (max-width: 359px) {
+  .alan-text {
+    right: 0;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  .alan-text {
+    right: 0;
+  }
 }
 
 #sloneczko_project {
@@ -1173,6 +1244,18 @@ svg {
   left: 10vw;
   width: 359.8px;
   height: 268.3px;
+}
+@media (max-width: 359px) {
+  #sloneczko_project {
+    width: 190px;
+    height: 140px;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  #sloneczko_project {
+    width: 239.8px;
+    height: 180px;
+  }
 }
 
 .technology-page__navigation {
@@ -1417,6 +1500,16 @@ svg {
   bottom: 19%;
   z-index: -1;
 }
+@media (max-width: 359px) {
+  #leading-line0 {
+    display: none;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  #leading-line0 {
+    display: none;
+  }
+}
 
 #leading-line1 {
   width: 1219px;
@@ -1425,6 +1518,16 @@ svg {
   right: 95%;
   top: 100%;
   z-index: -1;
+}
+@media (max-width: 359px) {
+  #leading-line1 {
+    display: none;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  #leading-line1 {
+    display: none;
+  }
 }
 
 #leading-line2 {
@@ -1435,6 +1538,16 @@ svg {
   bottom: -130px;
   z-index: -1;
 }
+@media (max-width: 359px) {
+  #leading-line2 {
+    display: none;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  #leading-line2 {
+    display: none;
+  }
+}
 
 #leading-line3 {
   width: 2962px;
@@ -1443,6 +1556,16 @@ svg {
   left: 100%;
   bottom: 19%;
   z-index: -1;
+}
+@media (max-width: 359px) {
+  #leading-line3 {
+    display: none;
+  }
+}
+@media (min-width: 360px) and (max-width: 599px) {
+  #leading-line3 {
+    display: none;
+  }
 }
 
 #leading-line-contact0 {
