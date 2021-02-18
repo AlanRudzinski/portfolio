@@ -3346,6 +3346,13 @@ var _default = {
     thirdLine: document.getElementById('mobileLine_3'),
     fourthLine: document.getElementById('mobileLine_4')
   },
+  hmg_mobileLines: {
+    firstLine: document.getElementById('hmg_mobileLine_1'),
+    secondLine: document.getElementById('hmg_mobileLine_2'),
+    thirdLine: document.getElementById('hmg_mobileLine_3'),
+    fourthLine: document.getElementById('hmg_mobileLine_4'),
+    fifthLine: document.getElementById('hmg_mobileLine_5')
+  },
   svgs: {
     homeAboutLine: document.getElementById("leading-line0"),
     homeProjectLine: document.getElementById("leading-line1"),
@@ -9488,28 +9495,7 @@ function handleClick(e) {
 
   e.target.classList.toggle('technologyClicked');
 }
-},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../textScramble":"../src/scripts/textScramble.js","../commons/technologyConst":"../src/scripts/commons/technologyConst.js"}],"../src/scripts/handleBurger.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var btn = document.querySelector('.btn-menu');
-var menu = document.querySelector('.navigation__menu');
-
-var hmbListener = function hmbListener() {
-  btn.addEventListener('click', function () {
-    var isOpened = btn.getAttribute('aria-expanded') === 'true';
-    btn.classList.toggle('btn-menu_open', !isOpened);
-    btn.setAttribute('aria-expanded', String(!isOpened));
-    menu.classList.toggle('navigation__menu_open', !isOpened);
-  });
-};
-
-var _default = hmbListener;
-exports.default = _default;
-},{}],"../src/scripts/Animations/animateMobileLines.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../textScramble":"../src/scripts/textScramble.js","../commons/technologyConst":"../src/scripts/commons/technologyConst.js"}],"../src/scripts/Animations/animateMobileLines.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9529,7 +9515,46 @@ function animateLines(linesArr) {
 
 var _default = animateLines;
 exports.default = _default;
-},{"../Animations/NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js"}],"../src/app.js":[function(require,module,exports) {
+},{"../Animations/NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js"}],"../src/scripts/handleBurger.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _values = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/object/values"));
+
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime-corejs2/helpers/toConsumableArray"));
+
+var _animateMobileLines = _interopRequireDefault(require("../scripts/Animations/animateMobileLines"));
+
+var _DOMelements = _interopRequireDefault(require("../scripts/commons/DOMelements"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var btn = document.querySelector('.btn-menu');
+var menu = document.querySelector('.navigation__menu');
+
+var hmbListener = function hmbListener() {
+  btn.addEventListener('click', function () {
+    var isOpened = btn.getAttribute('aria-expanded') === 'true';
+    btn.classList.toggle('btn-menu_open', !isOpened);
+    btn.setAttribute('aria-expanded', String(!isOpened));
+    menu.classList.toggle('navigation__menu_open', !isOpened);
+
+    if (!isOpened) {
+      (0, _animateMobileLines.default)((0, _toConsumableArray2.default)((0, _values.default)(_DOMelements.default.hmg_mobileLines)));
+      console.log(1);
+    }
+
+    ;
+  });
+};
+
+var _default = hmbListener;
+exports.default = _default;
+},{"@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/toConsumableArray":"../node_modules/@babel/runtime-corejs2/helpers/toConsumableArray.js","../scripts/Animations/animateMobileLines":"../src/scripts/Animations/animateMobileLines.js","../scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _values = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/object/values"));
@@ -9598,6 +9623,7 @@ var app = function app() {
       dragThreshold: false
     }).mount();
     (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.mobileLines);
+    (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.hmg_mobileLines);
     (0, _handleBurger.default)();
     (0, _animateMobileLines.default)((0, _toConsumableArray2.default)((0, _values.default)(_DOMelements.default.mobileLines))); // window.addEventListener('scroll', () => console.log(window.scrollY))
   }
@@ -9634,7 +9660,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46317" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44931" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

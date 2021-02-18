@@ -168,31 +168,41 @@ nav, span {
 
 body, html {
   background: #1d1d1b;
-  height: 2000vh;
 }
 @media (max-width: 359px) {
   body, html {
     width: 100vw;
+    height: 500vh;
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 }
 @media (min-width: 360px) and (max-width: 599px) {
   body, html {
     width: 100vw;
+    height: 500vh;
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 }
 @media (min-width: 600px) and (max-width: 949px) {
   body, html {
     width: 2000vw;
+    height: 2000vh;
   }
 }
 @media (min-width: 950px) and (max-width: 1599px) {
   body, html {
     width: 2000vw;
+    height: 2000vh;
   }
 }
 @media (min-width: 1600px) {
   body, html {
     width: 2000vw;
+    height: 2000vh;
   }
 }
 
@@ -1866,11 +1876,57 @@ svg {
   width: 100%;
   font-size: 7vw;
   font-family: "Tomorrow", sans-serif;
+  position: relative;
 }
 
 .navigation__menu_open {
   visibility: visible;
   z-index: 99;
+}
+
+.hmg_mobileLine {
+  position: absolute;
+  bottom: -3px;
+}
+@media (min-width: 390px) {
+  .hmg_mobileLine {
+    bottom: -2px;
+  }
+}
+@media (min-width: 600px) and (max-width: 949px) {
+  .hmg_mobileLine {
+    display: none;
+  }
+}
+@media (min-width: 950px) and (max-width: 1599px) {
+  .hmg_mobileLine {
+    display: none;
+  }
+}
+@media (min-width: 1600px) {
+  .hmg_mobileLine {
+    display: none;
+  }
+}
+
+#hmg_mobileLine_1 {
+  left: 6%;
+}
+
+#hmg_mobileLine_2 {
+  left: 21%;
+}
+
+#hmg_mobileLine_3 {
+  left: 36%;
+}
+
+#hmg_mobileLine_4 {
+  left: 56%;
+}
+
+#hmg_mobileLine_5 {
+  left: 66%;
 }
 
 /*# sourceMappingURL=/app.581aa3f0.css.map */

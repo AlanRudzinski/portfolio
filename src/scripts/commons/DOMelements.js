@@ -10,6 +10,13 @@ export default  {
         thirdLine: document.getElementById('mobileLine_3'),
         fourthLine: document.getElementById('mobileLine_4'),
     },
+    hmg_mobileLines: {
+        firstLine: document.getElementById('hmg_mobileLine_1'),
+        secondLine: document.getElementById('hmg_mobileLine_2'),
+        thirdLine: document.getElementById('hmg_mobileLine_3'),
+        fourthLine: document.getElementById('hmg_mobileLine_4'),
+        fifthLine: document.getElementById('hmg_mobileLine_5'),
+    },
     svgs: {
         homeAboutLine: document.getElementById("leading-line0"),
         homeProjectLine: document.getElementById("leading-line1"),

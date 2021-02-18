@@ -34,21 +34,31 @@ nav, span {
 body, html {
     @include sm-phone {
         width: 100vw;
+        height: 500vh;
+        display: inline-block;
+        max-width: 100%;
+        overflow-x: hidden;
     }
     @include phone {
         width: 100vw;
+        height: 500vh;
+        display: inline-block;
+        max-width: 100%;
+        overflow-x: hidden;
     }
     @include tablet {
         width: $global-width;
+        height: $global-height;
     }
     @include desktop {
         width: $global-width;
+        height: $global-height;
     }
     @include lg-desktop {
         width: $global-width;
+        height: $global-height;
     }
     background: $main-grey;
-    height: $global-height;
 
 }
 

@@ -45,7 +45,9 @@ const app = () => {
             dragThreshold: false,
         }).mount();
         setDashArrayAndDashOffset(DOM.mobileLines);
+        setDashArrayAndDashOffset(DOM.hmg_mobileLines);
         hmbListener();
+
         animateMobileLines([...Object.values(DOM.mobileLines)]);
         // window.addEventListener('scroll', () => console.log(window.scrollY))
     }
