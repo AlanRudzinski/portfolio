@@ -4,6 +4,7 @@ export default  {
     allNavLinks: document.querySelectorAll('.navLink'),
     technologiesList: document.querySelector('.technology-content'),
     technologiesEntries: document.querySelectorAll('.technologyEntry'),
+    hmgLinks: document.querySelectorAll('.menu__link'),
     mobileLines: {
         firstLine: document.getElementById('mobileLine_1'),
         secondLine: document.getElementById('mobileLine_2'),

@@ -301,6 +301,7 @@ svg {
 
 .logo {
   position: relative;
+  margin-top: calc(50vh - 128px);
 }
 @media (max-width: 359px) {
   .logo {

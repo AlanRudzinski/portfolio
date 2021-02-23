@@ -27,7 +27,7 @@ const app = () => {
     AnimationRouter();
     NavItemAnimations();
     NavLinks();
-
+    console.log(DOM.hmgLinks)
     correctPosition();
     // set dasharray after correct posittion because length can change
     setDashArrayAndDashOffset(DOM.svgs);

@@ -3340,6 +3340,7 @@ var _default = {
   allNavLinks: document.querySelectorAll('.navLink'),
   technologiesList: document.querySelector('.technology-content'),
   technologiesEntries: document.querySelectorAll('.technologyEntry'),
+  hmgLinks: document.querySelectorAll('.menu__link'),
   mobileLines: {
     firstLine: document.getElementById('mobileLine_1'),
     secondLine: document.getElementById('mobileLine_2'),
@@ -9535,22 +9536,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var btn = document.querySelector('.btn-menu');
 var menu = document.querySelector('.navigation__menu');
+var links = _DOMelements.default.hmgLinks;
 
 var hmbListener = function hmbListener() {
   btn.addEventListener('click', function () {
-    var isOpened = btn.getAttribute('aria-expanded') === 'true';
-    btn.classList.toggle('btn-menu_open', !isOpened);
-    btn.setAttribute('aria-expanded', String(!isOpened));
-    menu.classList.toggle('navigation__menu_open', !isOpened);
+    var isOpened = changeBurgerState();
 
     if (!isOpened) {
       (0, _animateMobileLines.default)((0, _toConsumableArray2.default)((0, _values.default)(_DOMelements.default.hmg_mobileLines)));
-      console.log(1);
     }
 
     ;
   });
+  links.forEach(function (el) {
+    el.addEventListener('click', function () {
+      changeBurgerState();
+    });
+  });
 };
+
+function changeBurgerState() {
+  var isOpened = btn.getAttribute('aria-expanded') === 'true';
+  btn.classList.toggle('btn-menu_open', !isOpened);
+  btn.setAttribute('aria-expanded', String(!isOpened));
+  menu.classList.toggle('navigation__menu_open', !isOpened);
+  return isOpened;
+}
 
 var _default = hmbListener;
 exports.default = _default;
@@ -9605,6 +9616,7 @@ var app = function app() {
   (0, _AnimationRouter.default)();
   (0, _NavItemsAnimations.default)();
   (0, _NavLinks.default)();
+  console.log(_DOMelements.default.hmgLinks);
   (0, _correctPosition.default)(); // set dasharray after correct posittion because length can change
 
   (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.svgs);
@@ -9660,7 +9672,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44931" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38457" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
