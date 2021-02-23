@@ -1,6 +1,7 @@
 @import 'mixins';
 
 #technology-page {
+    // display: none; // debug
     top: 0;
     left: 0;
     position: absolute;
@@ -26,12 +27,6 @@
     width: 88%;
     height: calc(100% - 20%);
     margin: 60px auto 0;
-    @include sm-phone {
-        margin: 20px auto 0;
-    }
-    @include phone {
-        margin: 20px auto 0;
-    }
 }
 
 .technology-content {
@@ -142,6 +137,15 @@
     & > div {
         height: 70px;
     }
+
+    // @include sm-phone {
+    //     height: 75vh;
+
+    // }
+    // @include phone {
+    //     height: 75vh;
+
+    // }
 }
 
 // .glide__slides, .glide__track {

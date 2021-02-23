@@ -3340,11 +3340,19 @@ var _default = {
   allNavLinks: document.querySelectorAll('.navLink'),
   technologiesList: document.querySelector('.technology-content'),
   technologiesEntries: document.querySelectorAll('.technologyEntry'),
+  hmgLinks: document.querySelectorAll('.menu__link'),
   mobileLines: {
     firstLine: document.getElementById('mobileLine_1'),
     secondLine: document.getElementById('mobileLine_2'),
     thirdLine: document.getElementById('mobileLine_3'),
     fourthLine: document.getElementById('mobileLine_4')
+  },
+  hmg_mobileLines: {
+    firstLine: document.getElementById('hmg_mobileLine_1'),
+    secondLine: document.getElementById('hmg_mobileLine_2'),
+    thirdLine: document.getElementById('hmg_mobileLine_3'),
+    fourthLine: document.getElementById('hmg_mobileLine_4'),
+    fifthLine: document.getElementById('hmg_mobileLine_5')
   },
   svgs: {
     homeAboutLine: document.getElementById("leading-line0"),
@@ -5099,22 +5107,25 @@ function _PortraitAnimations() {
             });
             resetDasharrayAndOffset(leadingLines); //animate
 
-            entryLine = (0, _AnimateLine.default)(_DOMelements.default.portrait.leadingLines.leftLine, 2200, 2500);
-            entryLine.play();
-            lines.forEach(function (el) {
-              var animation = (0, _AnimateLine.default)(el, 600, 4250, false);
-              animation.play();
-            });
-            exitLines = (0, _values.default)(_DOMelements.default.portrait.leadingLines).filter(function (el) {
-              return el.id !== 'portrait__line-left';
-            });
-            exitLines.forEach(function (el) {
-              var animation = (0, _AnimateLine.default)(el, 500, 4900, false);
-              animation.play();
-            });
+            if (window.innerWidth > 600) {
+              entryLine = (0, _AnimateLine.default)(_DOMelements.default.portrait.leadingLines.leftLine, 2200, 2500);
+              entryLine.play();
+              lines.forEach(function (el) {
+                var animation = (0, _AnimateLine.default)(el, 600, 4250, false);
+                animation.play();
+              });
+              exitLines = (0, _values.default)(_DOMelements.default.portrait.leadingLines).filter(function (el) {
+                return el.id !== 'portrait__line-left';
+              });
+              exitLines.forEach(function (el) {
+                var animation = (0, _AnimateLine.default)(el, 500, 4900, false);
+                animation.play();
+              });
+            }
+
             animateDescriptionCover(300, 4000);
 
-          case 10:
+          case 6:
           case "end":
             return _context.stop();
         }
@@ -5317,7 +5328,7 @@ function scrambleAllElements() {
   var titles = (0, _keys.default)(_technologyConst.technologySet);
   arr.forEach(function (element, idx) {
     var scrambleElement = new TextScramble(element.children[0].children[0]);
-    scrambleElement.setText(titles[idx]);
+    if (titles[idx]) scrambleElement.setText(titles[idx]);
   });
   (0, _delay.delay)(1000).then(glitch());
 }
@@ -9485,28 +9496,7 @@ function handleClick(e) {
 
   e.target.classList.toggle('technologyClicked');
 }
-},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../textScramble":"../src/scripts/textScramble.js","../commons/technologyConst":"../src/scripts/commons/technologyConst.js"}],"../src/scripts/handleBurger.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var btn = document.querySelector('.btn-menu');
-var menu = document.querySelector('.navigation__menu');
-
-var hmbListener = function hmbListener() {
-  btn.addEventListener('click', function () {
-    var isOpened = btn.getAttribute('aria-expanded') === 'true';
-    btn.classList.toggle('btn-menu_open', !isOpened);
-    btn.setAttribute('aria-expanded', String(!isOpened));
-    menu.classList.toggle('navigation__menu_open', !isOpened);
-  });
-};
-
-var _default = hmbListener;
-exports.default = _default;
-},{}],"../src/scripts/Animations/animateMobileLines.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../textScramble":"../src/scripts/textScramble.js","../commons/technologyConst":"../src/scripts/commons/technologyConst.js"}],"../src/scripts/Animations/animateMobileLines.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9520,14 +9510,62 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function animateLines(linesArr) {
   linesArr.forEach(function (element, index) {
-    console.log(element);
     (0, _AnimateLine.default)(element, 2000, index * 250, true, true);
   });
 }
 
 var _default = animateLines;
 exports.default = _default;
-},{"../Animations/NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js"}],"../src/app.js":[function(require,module,exports) {
+},{"../Animations/NavLinks/AnimateLine":"../src/scripts/Animations/NavLinks/AnimateLine.js"}],"../src/scripts/handleBurger.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _values = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/object/values"));
+
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime-corejs2/helpers/toConsumableArray"));
+
+var _animateMobileLines = _interopRequireDefault(require("../scripts/Animations/animateMobileLines"));
+
+var _DOMelements = _interopRequireDefault(require("../scripts/commons/DOMelements"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var btn = document.querySelector('.btn-menu');
+var menu = document.querySelector('.navigation__menu');
+var links = _DOMelements.default.hmgLinks;
+
+var hmbListener = function hmbListener() {
+  btn.addEventListener('click', function () {
+    var isOpened = changeBurgerState();
+
+    if (!isOpened) {
+      (0, _animateMobileLines.default)((0, _toConsumableArray2.default)((0, _values.default)(_DOMelements.default.hmg_mobileLines)));
+    }
+
+    ;
+  });
+  links.forEach(function (el) {
+    el.addEventListener('click', function () {
+      changeBurgerState();
+    });
+  });
+};
+
+function changeBurgerState() {
+  var isOpened = btn.getAttribute('aria-expanded') === 'true';
+  btn.classList.toggle('btn-menu_open', !isOpened);
+  btn.setAttribute('aria-expanded', String(!isOpened));
+  menu.classList.toggle('navigation__menu_open', !isOpened);
+  return isOpened;
+}
+
+var _default = hmbListener;
+exports.default = _default;
+},{"@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/toConsumableArray":"../node_modules/@babel/runtime-corejs2/helpers/toConsumableArray.js","../scripts/Animations/animateMobileLines":"../src/scripts/Animations/animateMobileLines.js","../scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js"}],"../src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _values = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/object/values"));
@@ -9564,6 +9602,10 @@ var _handleBurger = _interopRequireDefault(require("./scripts/handleBurger"));
 
 var _animateMobileLines = _interopRequireDefault(require("./scripts/Animations/animateMobileLines"));
 
+var _PortraitAnimations = _interopRequireDefault(require("./scripts/Animations/PortraitAnimations"));
+
+var _textScramble = require("./scripts/textScramble");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = function app() {
@@ -9574,6 +9616,7 @@ var app = function app() {
   (0, _AnimationRouter.default)();
   (0, _NavItemsAnimations.default)();
   (0, _NavLinks.default)();
+  console.log(_DOMelements.default.hmgLinks);
   (0, _correctPosition.default)(); // set dasharray after correct posittion because length can change
 
   (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.svgs);
@@ -9583,19 +9626,25 @@ var app = function app() {
   }).mount();
 
   if (window.innerWidth < 600) {
+    // window.addEventListener('scroll', () => window.scrollY > 450 ? PortraitAnimations() : '')
+    (0, _PortraitAnimations.default)(); // todo: on scroll
+
+    (0, _textScramble.scrambleAllElements)(); // todo: onscroll
+
     new _glide.default('.glide_tech', {
       dragThreshold: false
     }).mount();
     (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.mobileLines);
+    (0, _setDashArrayAndDashOffset.default)(_DOMelements.default.hmg_mobileLines);
     (0, _handleBurger.default)();
-    (0, _animateMobileLines.default)((0, _toConsumableArray2.default)((0, _values.default)(_DOMelements.default.mobileLines)));
+    (0, _animateMobileLines.default)((0, _toConsumableArray2.default)((0, _values.default)(_DOMelements.default.mobileLines))); // window.addEventListener('scroll', () => console.log(window.scrollY))
   }
 
   (0, _CenterView.default)();
 };
 
 app();
-},{"@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/toConsumableArray":"../node_modules/@babel/runtime-corejs2/helpers/toConsumableArray.js","./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/pagePositioning/CenterView":"../src/scripts/pagePositioning/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/emailJsInit":"../src/scripts/emailJsInit.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","@glidejs/glide":"../node_modules/@glidejs/glide/dist/glide.esm.js","./scss/app.scss":"../src/scss/app.scss","./scripts/Animations/technologyAnimations":"../src/scripts/Animations/technologyAnimations.js","./scripts/handleBurger":"../src/scripts/handleBurger.js","./scripts/Animations/animateMobileLines":"../src/scripts/Animations/animateMobileLines.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/core-js/object/values":"../node_modules/@babel/runtime-corejs2/core-js/object/values.js","@babel/runtime-corejs2/helpers/toConsumableArray":"../node_modules/@babel/runtime-corejs2/helpers/toConsumableArray.js","./scripts/Animations/LogoAnimations":"../src/scripts/Animations/LogoAnimations.js","./scripts/Animations/NavItemsAnimations":"../src/scripts/Animations/NavItemsAnimations.js","./scripts/Animations/NavLinks/NavLinks":"../src/scripts/Animations/NavLinks/NavLinks.js","./scripts/pagePositioning/CenterView":"../src/scripts/pagePositioning/CenterView.js","./scripts/pagePositioning/allPagesPosition":"../src/scripts/pagePositioning/allPagesPosition.js","./scripts/AnimationRouter":"../src/scripts/AnimationRouter.js","./scripts/Lines/correctPosition":"../src/scripts/Lines/correctPosition.js","./scripts/commons/DOMelements":"../src/scripts/commons/DOMelements.js","./scripts/emailJsInit":"../src/scripts/emailJsInit.js","./scripts/Lines/setDashArrayAndDashOffset":"../src/scripts/Lines/setDashArrayAndDashOffset.js","@glidejs/glide":"../node_modules/@glidejs/glide/dist/glide.esm.js","./scss/app.scss":"../src/scss/app.scss","./scripts/Animations/technologyAnimations":"../src/scripts/Animations/technologyAnimations.js","./scripts/handleBurger":"../src/scripts/handleBurger.js","./scripts/Animations/animateMobileLines":"../src/scripts/Animations/animateMobileLines.js","./scripts/Animations/PortraitAnimations":"../src/scripts/Animations/PortraitAnimations.js","./scripts/textScramble":"../src/scripts/textScramble.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -9623,7 +9672,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45893" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38457" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -8,7 +8,7 @@ export function scrambleAllElements() {
   const titles = Object.keys(technologySet);
   arr.forEach((element, idx) => {
     const scrambleElement = new TextScramble(element.children[0].children[0])
-    scrambleElement.setText(titles[idx])
+    if(titles[idx]) scrambleElement.setText(titles[idx]);
   });
   delay(1000).then(glitch())
 }

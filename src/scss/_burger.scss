@@ -147,6 +147,7 @@
       width: 100%;
       font-size: 7vw;
       font-family: 'Tomorrow', sans-serif;
+      position: relative;
     }
   }
   
@@ -155,3 +156,40 @@
     z-index: 99;
 
   }
+
+  .hmg_mobileLine {
+    position: absolute;
+    bottom: -3px;
+    @media (min-width: 390px) {
+        bottom: -2px; 
+    }
+    @include tablet {
+        display: none;
+    }
+    @include desktop {
+        display: none;
+    }
+    @include lg-desktop {
+        display: none;
+    }
+}
+
+#hmg_mobileLine_1 {
+    left: 6%;
+}
+
+#hmg_mobileLine_2 {
+    left: 21%;
+}
+
+#hmg_mobileLine_3 {
+    left: 36%;
+}
+
+#hmg_mobileLine_4 {
+    left: 56%;
+}
+
+#hmg_mobileLine_5 {
+  left: 66%;
+}

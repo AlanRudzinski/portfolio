@@ -4,11 +4,19 @@ export default  {
     allNavLinks: document.querySelectorAll('.navLink'),
     technologiesList: document.querySelector('.technology-content'),
     technologiesEntries: document.querySelectorAll('.technologyEntry'),
+    hmgLinks: document.querySelectorAll('.menu__link'),
     mobileLines: {
         firstLine: document.getElementById('mobileLine_1'),
         secondLine: document.getElementById('mobileLine_2'),
         thirdLine: document.getElementById('mobileLine_3'),
         fourthLine: document.getElementById('mobileLine_4'),
+    },
+    hmg_mobileLines: {
+        firstLine: document.getElementById('hmg_mobileLine_1'),
+        secondLine: document.getElementById('hmg_mobileLine_2'),
+        thirdLine: document.getElementById('hmg_mobileLine_3'),
+        fourthLine: document.getElementById('hmg_mobileLine_4'),
+        fifthLine: document.getElementById('hmg_mobileLine_5'),
     },
     svgs: {
         homeAboutLine: document.getElementById("leading-line0"),
